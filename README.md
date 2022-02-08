@@ -1,2 +1,3 @@
 # theme-doc
-FPM Theme Documentation Helpers
+
+A bunch of FTD components to be used for documenting a FPM theme.

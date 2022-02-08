@@ -1,0 +1,105 @@
+-- import: fpm
+
+-- ftd.column:
+id: main
+width: fill
+align: center
+spacing: 20
+padding-horizontal: 50
+padding-vertical: 20
+background-color: #f5f5f5
+height: fill
+
+-- dms.toggle:
+
+-- h1: Code Block Component for FPM Packages
+
+-- ftd.text: How to add:
+
+This is a re-usable component.
+
+-- code: Add this to FPM.ftd
+lang: ftd
+
+\-- fpm.dependency: fifthtry.github.io/code-block as cb
+
+-- code: Then use the component:
+lang: ftd
+
+
+\-- import: cb
+
+\-- cb.code:
+if: $caption is not null
+caption: $caption
+lang: $lang
+
+$body
+
+-- ftd.text: `lang`
+
+This is the file name extension.
+
+-- ftd.column code:
+optional caption caption:
+body body:
+string lang:
+string light-theme: InspiredGitHub
+padding-bottom: 12
+padding-top: 12
+width: fill
+
+--- ftd.text:
+text: $caption
+if: $caption is not null
+color: #DCDCDC
+width: fill
+size: 14
+background-color: #3a404e
+padding-top: 10
+padding-bottom: 10
+padding-left: 20
+padding-right: 20
+border-top-radius: 4
+font: Open sans
+
+--- ftd.code:
+if: $fpm.dark-mode
+text: $body
+lang: $lang
+color: #4D4D4D
+width: fill
+size: 17
+line-height: 25
+padding-top: 10
+padding-left: 20
+padding-bottom: 10
+padding-right: 20
+background-color: #2b303b
+border-top-radius if $caption is null: 4
+border-bottom-radius: 4
+border-width: 1
+overflow-x: auto
+
+--- ftd.code:
+if: not $fpm.dark-mode
+theme: $light-theme
+text: $body
+lang: $lang
+color: #4D4D4D
+width: fill
+size: 17
+line-height: 25
+padding-top: 10
+padding-left: 20
+padding-bottom: 10
+padding-right: 20
+background-color: white
+background-color if $light-theme == InspiredGitHub: #4D4D4D
+background-color if $light-theme == Solarized (light): #fdf6e3
+border-top-radius if $caption is null: 4
+border-bottom-radius if $caption is null: 4
+border-color: grey
+border-width: 1
+overflow-x: auto
+

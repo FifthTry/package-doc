@@ -1,0 +1,57 @@
+-- ftd.column package: $title
+caption title:
+body body:
+string name:
+width: fill
+
+--- h1: $title
+
+--- ftd.row:
+padding: 10
+border-width: 1
+spacing: 5
+
+--- ftd.text: Package Name
+style: bold
+
+--- ftd.text: $name
+
+--- container: ftd.main
+
+--- text:
+
+$body
+
+-- ftd.column h1:
+caption title:
+optional body body:
+width: fill
+region: h1
+padding-bottom: 12
+
+
+--- ftd.text:
+caption $title:
+text: $title
+region: title
+size: 30
+line-height: 40
+color: #000
+color if $fpm.dark-mode: #fff
+style: bold
+padding-bottom: 8
+padding-top: 16
+font: apple-system
+
+
+--- text: $body
+
+--- ftd.text text:
+optional caption or body body:
+color: #000
+color if $fpm.dark-mode: #fff
+padding-bottom: 8
+padding-top: 16
+font: apple-system
+
+$body
