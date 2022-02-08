@@ -1,7 +1,9 @@
--- ftd.column package: $title
+-- import: fpm
+
+-- ftd.column package:
 caption title:
-body body:
 string name:
+body body:
 width: fill
 
 --- h1: $title
@@ -24,7 +26,7 @@ $body
 
 -- ftd.column h1:
 caption title:
-optional body body:
+/optional body b:
 width: fill
 region: h1
 padding-bottom: 12
@@ -44,10 +46,12 @@ padding-top: 16
 font: apple-system
 
 
---- text: $body
+/--- text:
 
---- ftd.text text:
-optional caption or body body:
+$b
+
+-- ftd.text text:
+optional body body:
 color: #000
 color if $fpm.dark-mode: #fff
 padding-bottom: 8
