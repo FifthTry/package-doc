@@ -1,4 +1,6 @@
 -- import: fpm
+-- import: dms
+-- import: fifthtry.github.io/package-doc/doc
 
 -- ftd.column:
 id: main
@@ -12,7 +14,7 @@ height: fill
 
 -- dms.toggle:
 
--- h1: Code Block Component for FPM Packages
+-- doc.h1: Code Block Component for FPM Packages
 
 -- ftd.text: How to add:
 
