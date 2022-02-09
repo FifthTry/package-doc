@@ -102,6 +102,8 @@ color if $fpm.dark-mode: rgb(235, 203, 139)
 
 --- ftd.text: $value
 color if $fpm.dark-mode: rgba(220,220,220,1)
+font: monospace
+move-down: 2
 
 
 
@@ -131,7 +133,7 @@ text: $caption
 if: $caption is not null
 color: #DCDCDC
 width: fill
-size: 17
+size: 16
 size if $fpm.mobile: 14
 background-color: #3a404e
 padding-vertical: 10
@@ -147,7 +149,7 @@ text: $body
 lang: $lang
 color: #4D4D4D
 width: fill
-size: 17
+size: 16
 size if $fpm.mobile: 14
 line-height: 25
 padding-vertical: 10
@@ -167,7 +169,7 @@ text: $body
 lang: $lang
 color: #4D4D4D
 width: fill
-size: 17
+size: 16
 size if $fpm.mobile: 14
 line-height: 25
 padding-vertical: 10

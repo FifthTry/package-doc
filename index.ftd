@@ -1,19 +1,19 @@
--- import: fifthtry.github.io/package-doc/doc
+-- import: fifthtry.github.io/package-doc/doc as pd
 
 
 
--- doc.package: Package Docs
+-- pd.package: Package Docs
 name: fifthtry.github.io/package-doc
 
 This package can be used for documenting other packages.
 
 
--- doc.code: Add this to your FPM.ftd
+-- pd.code: Add this to your FPM.ftd
 
 \-- fpm.dependency: fifthtry.github.io/package-doc
 
 
--- doc.code: Then use the component:
+-- pd.code: Then use the component:
 
 \-- import: fifthtry.github.io/package-doc as pd
 
@@ -28,34 +28,34 @@ name: fifthtry.github.io/package-doc
 
 
 
--- doc.component: Package Page
-name: fifthtry.github.io/package-doc/doc.package
+-- pd.component: Package Page
+name: fifthtry.github.io/package-doc/pd.package
 
 Package documentation page should be powered by `package` component.
 
 This should be the first element in the page.
 
 
--- doc.attribute: Title Of The Package
+-- pd.attribute: Title Of The Package
 name: title
 
 
 This is the title of the package being documented. This should be human readable
 name. This should be put in the caption.
 
--- doc.code: How to specify component title
+-- pd.code: How to specify component title
 
 \-- pd.package: Title Of The Package
 
 
 
--- doc.attribute: Name Of The Package
+-- pd.attribute: Name Of The Package
 name: name
 
 The name of the package. This is the name that people use when importing the
 package:
 
--- doc.code: How to specify component title
+-- pd.code: How to specify component title
 
 \-- pd.package: Title Of The Component
 name: fifthtry.github.io/package-doc
