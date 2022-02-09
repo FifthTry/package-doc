@@ -10,10 +10,12 @@ This package can be used for documenting other packages.
 
 -- doc.code: Add this to your FPM.ftd
 
-\-- fpm.dependency: fifthtry.github.io/package-doc as pd
+\-- fpm.dependency: fifthtry.github.io/package-doc
 
 
 -- doc.code: Then use the component:
+
+\-- import: fifthtry.github.io/package-doc as pd
 
 \-- pd.package: Package Docs
 name: fifthtry.github.io/package-doc
