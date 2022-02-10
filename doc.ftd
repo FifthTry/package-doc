@@ -29,6 +29,7 @@ padding-bottom: 20
 --- ftd.column:
 border-width: 1
 border-color: #ddedff
+border-color if $fpm.dark-mode: rgb(58, 64, 78)
 width: fill
 id: output-container
 padding-top: 30
@@ -36,8 +37,8 @@ padding-bottom: 30
 padding-left: 20
 padding-right: 20
 border-radius: 2
-background-color: #f6faff
-
+background-color: #f5f5f5
+background-color if $fpm.dark-mode: #2b303b
 
 
 
