@@ -9,6 +9,10 @@ optional string reference-width:
 width: fill
 open: output-container
 padding-top: 12
+border-width: 1
+padding: 20
+background-color: red
+boolean reference-open: false
 
 --- ftd.text: $caption
 color: white
@@ -19,24 +23,33 @@ padding-bottom: 3
 padding-left: 10
 padding-right: 10
 size: 12
+$event-click$: toggle $reference-open
 
 --- ftd.image:
+if: $reference-open
 src: $reference
 if: $reference is not null
 width: $reference-width
 padding-bottom: 20
+padding-vertical: 30
+padding-horizontal: 20
+background-color: #f5f5f5
+background-color if $fpm.dark-mode: #2b303b
+border-radius: 2
+border-width: 1
+border-color: #ddedff
+border-color if $fpm.dark-mode: rgb(58, 64, 78)
+margin-bottom: 10
 
 --- ftd.column:
+border-radius: 2
 border-width: 1
 border-color: #ddedff
 border-color if $fpm.dark-mode: rgb(58, 64, 78)
 width: fill
 id: output-container
-padding-top: 30
-padding-bottom: 30
-padding-left: 20
-padding-right: 20
-border-radius: 2
+padding-vertical: 30
+padding-horizontal: 20
 background-color: #f5f5f5
 background-color if $fpm.dark-mode: #2b303b
 
