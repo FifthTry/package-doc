@@ -3,15 +3,30 @@
 
 
 -- ftd.column output:
-caption caption: Output
+caption caption:
+body body:
 optional string reference:
 optional string reference-width:
 width: fill
 open: output-container
-padding-top: 12
 boolean reference-open: false
+padding-left: 20
+border-left: 5
+border-color: gray
+border-color if $fpm.dark-mode: rgb(58, 64, 78)
+margin-top: 30
+margin-bottom: 20
+padding-bottom: 10
 
---- ftd.text: $caption
+--- h2: $caption
+padding-top: 0
+padding-bottom: 0
+
+--- code:
+
+$body
+
+--- ftd.text: Output
 color: #dcdcdc
 background-color: #3a404e
 border-top-radius: 2
@@ -19,6 +34,7 @@ padding-vertical: 10
 padding-horizontal: 20
 size: 16
 $event-click$: toggle $reference-open
+
 
 --- ftd.column:
 width: fill
@@ -282,7 +298,10 @@ $b
 caption title:
 optional body b:
 width: fill
-padding-bottom: 12
+integer padding-bottom: 12
+integer padding-top: 16
+padding-bottom: $padding-bottom
+
 
 --- ftd.text:
 text: $title
@@ -292,7 +311,7 @@ color: #000
 color if $fpm.dark-mode: rgba(220,220,220,1)
 style: bold
 padding-bottom: 8
-padding-top: 16
+padding-top: $padding-top
 font: apple-system
 
 --- markdown:
