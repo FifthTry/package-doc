@@ -9,21 +9,26 @@ optional string reference-width:
 width: fill
 open: output-container
 padding-top: 12
-border-width: 1
-padding: 20
-background-color: red
 boolean reference-open: false
 
 --- ftd.text: $caption
-color: white
-background-color: #aed581
+color: #dcdcdc
+background-color: #3a404e
 border-top-radius: 2
-padding-top: 3
-padding-bottom: 3
-padding-left: 10
-padding-right: 10
-size: 12
+padding-vertical: 10
+padding-horizontal: 20
+size: 16
 $event-click$: toggle $reference-open
+
+--- ftd.column:
+width: fill
+background-color: #f5f5f5
+background-color if $fpm.dark-mode: #2b303b
+border-radius: 2
+border-width: 1
+border-color: gray
+border-color if $fpm.dark-mode: rgb(58, 64, 78)
+
 
 --- ftd.image:
 if: $reference-open
@@ -33,25 +38,14 @@ width: $reference-width
 padding-bottom: 20
 padding-vertical: 30
 padding-horizontal: 20
-background-color: #f5f5f5
-background-color if $fpm.dark-mode: #2b303b
-border-radius: 2
-border-width: 1
-border-color: #ddedff
-border-color if $fpm.dark-mode: rgb(58, 64, 78)
 margin-bottom: 10
+min-width: 1200
 
 --- ftd.column:
-border-radius: 2
-border-width: 1
-border-color: #ddedff
-border-color if $fpm.dark-mode: rgb(58, 64, 78)
 width: fill
 id: output-container
 padding-vertical: 30
 padding-horizontal: 20
-background-color: #f5f5f5
-background-color if $fpm.dark-mode: #2b303b
 
 
 
