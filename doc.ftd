@@ -35,7 +35,8 @@ body body:
 optional string reference:
 optional string reference-width:
 width: fill
-open: output-container
+open: true
+append-at: output-container
 boolean reference-open: false
 padding-left: 20
 border-left: 5
