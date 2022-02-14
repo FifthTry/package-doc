@@ -206,17 +206,6 @@ move-down: 2
 
 
 
-
--- ftd.text markdown:
-color if $fpm.dark-mode: #fff
-body body:
-
-
-$body
-
-
-
-
 -- ftd.column code:
 optional caption caption:
 body body:
