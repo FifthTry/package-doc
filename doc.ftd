@@ -23,6 +23,11 @@ padding-bottom: 0
 --- ftd.text: Click To View Code
 if: not $open
 
+--- ftd.column:
+width: fill
+$on-click$: toggle $open
+
+
 --- code:
 if: $open
 
