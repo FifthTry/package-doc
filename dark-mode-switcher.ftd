@@ -1,0 +1,180 @@
+-- import: fpm
+
+-- ftd.column:
+padding: 20
+spacing: 20
+
+-- ftd.text: Dark Mode Switcher
+
+-- ftd.row:
+width: 500
+
+--- preview:
+
+This is some text to show you dark mode. Try clicking on the 🌙 / 🌞 above.
+
+
+-- ftd.column preview:
+body body:
+width: fill
+margin-bottom: 15
+padding: 10
+border-width: 1
+border-radius: 5
+background-color if $fpm.dark-mode: #8B8000
+background-color: yellow
+
+--- ftd.row:
+spacing: 5
+align: right
+
+--- ftd.text: Dark Mode:
+color if $fpm.dark-mode: white
+color: black
+move-down: 5
+
+--- switcher:
+
+--- container: ftd.main
+
+--- ftd.row:
+body body:
+border-bottom-radius: 5
+width: fill
+
+--- ftd.text:
+color if $fpm.dark-mode: white
+color: black
+
+$body
+
+
+
+
+
+
+
+
+-- ftd.row switcher:
+boolean open: false
+string background: #F5f5f5
+string text-color: #333333
+string menu-border: #cccccc
+string font-family: Lato
+string menu-bg:  #F5F5F5
+string menu-hover-bg: #EEEEEE
+string menu-link: #333333
+string menu-link-active: #F5F5F5
+$on-click$: toggle $open
+$on-click-outside$: $open=false
+
+--- ftd.text: 🌙
+if: $fpm.dark-mode
+
+--- ftd.text: 🌞
+if: not $fpm.dark-mode
+scale: 1.2
+
+--- ftd.text: .
+color if not $fpm.follow-system-dark-mode: black
+color: rgba(0, 0, 0, 0)
+
+
+--- ftd.column:
+string background:
+string menu-border:
+string font-family:
+string menu-bg:
+string menu-hover-bg:
+string menu-link:
+string menu-link-active:
+string menu-border:
+if: $open
+background-color: $menu-bg
+width: 120
+border-width: 1
+border-radius: 4
+anchor: parent
+/position: bottom
+shadow-offset-x: 3
+shadow-offset-y: 0
+shadow-size: 1
+shadow-blur: 10
+shadow-color: rgba (0, 0, 0, 0.05)
+padding: 5
+border-width: 1
+border-color: $menu-border
+border-radius: 6
+z-index: 4
+right: 0
+top: 30
+
+--- t: 🌙 - Dark  
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link  
+menu-link-active: $menu-link-active  
+font-family: $font-family
+$on-click$: message-host enable-dark-mode
+$on-click$: $open=false
+
+--- t: 🌞 - Light
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link  
+menu-link-active: $menu-link-active  
+font-family: $font-family
+$on-click$: message-host enable-light-mode
+$on-click$: $open=false
+
+--- t: 🌞 - System
+if: not $fpm.system-dark-mode
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link  
+menu-link-active: $menu-link-active  
+font-family: $font-family
+$on-click$: message-host enable-system-mode
+$on-click$: $open=false
+
+--- t: 🌙 - System
+if: $fpm.system-dark-mode
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link  
+menu-link-active: $menu-link-active  
+font-family: $font-family
+$on-click$: message-host enable-system-mode
+$on-click$: $open=false
+
+
+
+
+-- ftd.text t: $text
+caption text:
+string menu-hover-bg: 
+string menu-link: 
+string menu-link-active:  
+string font-family: 
+font: $font-family
+size: 14
+width: fill
+padding-horizontal: 10
+padding-vertical: 5
+background-color if $MOUSE-IN: $menu-hover-bg
+color: $menu-link
+color if $MOUSE-IN: $menu-link-active
+border-radius: 4
+
+
+-- ftd.row toggle:
+
+--- ftd.image:
+if: not $fpm.dark-mode
+src: https://res.cloudinary.com/dphj6havg/image/upload/v1640938217/dark-mode_mfy9hd.svg
+height: 18
+$on-click$: message-host enable-dark-mode
+align: center
+
+--- ftd.image:
+if:  $fpm.dark-mode
+src: https://res.cloudinary.com/dphj6havg/image/upload/v1641367492/light-mode_o0zne7.svg
+height: 18
+$on-click$: message-host enable-light-mode
+align: center

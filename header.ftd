@@ -1,0 +1,997 @@
+
+-- import: fpm
+-- import: fifthtry.github.io/package-doc/dark-mode-switcher as dms
+-- import: fifthtry.github.io/package-doc/doc as pd
+
+-- boolean sidebar-open: false
+
+
+-- pd.package: Header
+name: fifthtry.github.io/header
+
+This component can be used as a site header.
+
+
+-- pd.component: Header
+name: fifthtry.github.io/header.header
+
+This is the main header.
+
+
+-- pd.hidden-code: toc definitions
+
+
+\-- fpm.toc-item list empty-toc:
+
+\-- fpm.toc-item list toc-top-right:
+$processor$: toc
+
+- Roadmap: /roadmap/
+- Journal: 
+  - Home Index: /index/
+  - Docs: /index/
+  - Articles: /index/
+  - Home Pictures: /index/
+
+\-- fpm.toc-item list toc-bottom-left:
+$processor$: toc
+
+- Home: 
+  - Home Index: /index/
+  - Docs: /index/
+  - Articles: /index/
+  - Home Pictures: /index/
+- Payments: /payments/
+- Business Operations: /businessops/
+- Developer Tools: /developer-tools/
+- Security: /security/
+- All Products: /all-products/
+
+\-- fpm.toc-item list toc-bottom-right:
+$processor$: toc
+
+- APIs & SKDs: 
+  - API: /api/
+  - Stripe.js: /index/
+  - CLI: /cli/
+  - ios: /ios/
+  - Android: /android/
+  - React Native: /react-native/
+- Support: /support/
+
+
+-- pd.output: Basic usage example
+reference: header-1200.png
+reference-width: fill
+
+\-- header:
+site-logo: logo-text.png
+site-url: /
+toc-top-right: $toc-top-right
+toc-bottom-left: $toc-bottom-left
+toc-bottom-right: $toc-bottom-right
+link-style: bold
+menu-right: 0
+menu-left: -88
+
+--- header:
+site-logo: logo-text.png
+site-url: /
+toc-top-right: $toc-top-right
+toc-bottom-left: $toc-bottom-left
+toc-bottom-right: $toc-bottom-right
+link-style: bold
+menu-right: 0
+menu-left: -88
+
+
+-- pd.output: with design elements of light mode
+reference: header-black-1200.png
+reference-width: fill
+
+\-- header:
+background: #2B2B2B
+text-color: #F7CE46
+active-text-color: #F7CE46
+site-logo: site-logo.png
+site-url: /
+current-url: /payments/
+toc-top-right: $toc-top-right
+toc-bottom-left: $toc-bottom-left
+toc-bottom-right: $toc-bottom-right
+logo-width: auto
+link-height: 16
+width: fill
+menu-left: -88
+menu-right: 0
+menu-bg: #3D3C3C
+menu-hover-bg: #454545
+menu-link: #F6FAFF
+menu-link-active: #F7CE46 
+menu-border: #464040
+
+--- header:
+background: #2B2B2B
+text-color: #F7CE46
+active-text-color: #F7CE46
+site-logo: site-logo.png
+site-url: /
+current-url: /payments/
+toc-top-right: $toc-top-right
+toc-bottom-left: $toc-bottom-left
+toc-bottom-right: $toc-bottom-right
+logo-width: auto
+link-height: 16
+width: fill
+menu-left: -88
+menu-right: 0
+menu-bg: #3D3C3C
+menu-hover-bg: #454545
+menu-link: #F6FAFF
+menu-link-active: #F7CE46 
+menu-border: #464040
+
+
+
+
+
+-- pd.output: Single Row Header 
+
+\-- header:
+site-logo: logo.png
+site-url: /
+toc-top-right: $toc-top-right
+current-url: /
+link-style: bold
+
+--- header:
+site-logo: logo-text.png
+site-url: /
+toc-top-right: $toc-top-right
+link-style: bold
+menu-right: 0
+
+
+-- pd.output: Header with Left Menu 
+
+\-- header:
+site-logo: logo.png
+site-url: /
+toc-bottom-left: $toc-bottom-left
+current-url: /
+link-style: bold
+include-dark-mode-switcher: false
+
+--- header:
+site-logo: logo-text.png
+site-url: /
+toc-bottom-left: $toc-bottom-left
+link-style: bold
+menu-left: -88
+menu-right: 0
+include-dark-mode-switcher: false
+
+
+
+
+
+
+
+
+
+
+
+-- ftd.column header:
+optional string site-logo:
+string site-url: /
+string menu-icon: hamburger.png
+string current-url: /payments/
+fpm.toc-item list toc-top-right: $empty-toc
+fpm.toc-item list toc-bottom-left: $empty-toc
+fpm.toc-item list toc-bottom-right: $empty-toc
+integer menu-left: 10
+integer menu-right: 10
+optional string logo-width: 
+optional string logo-height: 26
+string link-style: regular
+string background: #F8FAFC 
+string text-color: #3E4255
+string active-text-color: #5967CD 
+integer link-height: 16 
+string menu-bg: #FFFFFF
+string menu-hover-bg: #f7fafc
+string menu-link: #5469d4
+string menu-link-active: #1a1f36 
+string menu-border: #EEEEEE
+string width: fill
+string font-family: Roboto 
+boolean include-dark-mode-switcher: true
+width: $width
+padding-left if not $fpm.mobile: 10
+padding-right if not $fpm.mobile: 0
+padding-top if not $fpm.mobile: 20
+/padding-vertical if not $fpm.mobile: 30
+color: white
+background-color: $background
+/background-color if $fpm.dark-mode: $background
+z-index: 10
+
+--- mobile-sidebar:
+if: $sidebar-open
+
+--- container: ftd.main
+
+--- menu-mobile:
+if: $sidebar-open
+site-logo: $site-logo
+menu-icon: $menu-icon
+site-url: $site-url 
+current-url: $current-url
+toc-top-right: $toc-top-right
+toc-bottom-left: $toc-bottom-left 
+toc-bottom-right: $toc-bottom-right
+menu-left: $menu-left 
+menu-right: $menu-right
+logo-width: $logo-width 
+logo-height: $logo-height 
+link-style: $link-style 
+background: $background  
+text-color: $text-color 
+active-text-color: $active-text-color
+link-height: $link-height
+width: $width
+menu-bg: $menu-bg
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link 
+menu-link-active: $menu-link-active
+menu-border: $menu-border
+font-family: $font-family
+
+--- header-desktop:
+if: not $fpm.mobile
+site-logo: $site-logo
+site-url: $site-url 
+current-url: $current-url
+toc-top-right: $toc-top-right
+toc-bottom-left: $toc-bottom-left 
+toc-bottom-right: $toc-bottom-right
+include-dark-mode-switcher: $include-dark-mode-switcher
+menu-left: $menu-left 
+menu-right: $menu-right
+logo-width: $logo-width 
+logo-height: $logo-height 
+link-style: $link-style 
+background: $background  
+text-color: $text-color 
+active-text-color: $active-text-color
+link-height: $link-height
+width: $width
+menu-bg: $menu-bg
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link 
+menu-link-active: $menu-link-active
+menu-border: $menu-border
+font-family: $font-family
+
+--- header-mobile:
+if: $fpm.mobile
+site-logo: $site-logo
+menu-icon: $menu-icon
+site-url: $site-url 
+current-url: $current-url
+toc-top-right: $toc-top-right
+toc-bottom-left: $toc-bottom-left 
+toc-bottom-right: $toc-bottom-right
+include-dark-mode-switcher: $include-dark-mode-switcher
+menu-border: $menu-border
+menu-bg: $menu-bg
+menu-hover-bg: $menu-hover-bg
+menu-left: $menu-left 
+menu-right: $menu-right
+menu-link: $menu-link 
+menu-link-active: $menu-link-active
+logo-width: $logo-width 
+logo-height: $logo-height 
+link-style: $link-style 
+background: $background  
+text-color: $text-color 
+active-text-color: $active-text-color
+link-height: $link-height
+width: $width
+font-family: $font-family
+
+
+
+
+
+
+
+
+
+-- ftd.column header-desktop:
+optional string site-logo:
+string site-url: 
+string current-url:
+fpm.toc-item list toc-top-right:
+fpm.toc-item list toc-bottom-left:
+fpm.toc-item list toc-bottom-right:
+boolean include-dark-mode-switcher:
+integer menu-left: 
+integer menu-right:
+optional string logo-width: 
+optional string logo-height: 
+string link-style: 
+string background:  
+string text-color: 
+string active-text-color:
+integer link-height: 
+string width: 
+width: $width
+optional string font-family:
+optional string menu-bg:
+optional string menu-hover-bg:
+optional string menu-link:
+optional string menu-link-active:
+optional string menu-border:
+move-right: 10
+
+--- ftd.row:
+/spacing: 10
+link: $site-url
+width: fill
+
+--- ftd.row:
+position: left
+width: fill
+id: right-side-top
+
+--- ftd.image:
+src: $site-logo
+if: $site-logo is not null
+width: $logo-width
+height: $logo-height
+
+
+--- ftd.row:
+position: right
+width: fill
+id: right-side-top
+/spacing: 10
+
+--- header-item: $obj.title
+$loop$: $toc-top-right as $obj
+children: $obj.children 
+link: $obj.url
+text-color: $text-color
+active-text-color: $active-text-color
+current-url: $current-url
+link-height: $link-height
+link-style: $link-style
+menu-right: $menu-right
+/menu-left: $menu-left
+menu-bg: $menu-bg 
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link
+menu-link-active: $menu-link-active
+menu-border: $menu-border
+font-family: $font-family
+
+
+--- ftd.row:
+if: $include-dark-mode-switcher
+margin-right: 25
+margin-top: -6
+
+--- dms.switcher:
+if: $include-dark-mode-switcher
+background: $menu-bg 
+menu-bg: $menu-bg 
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link
+menu-link-active: $menu-link-active
+menu-border: $menu-border
+font-family: $font-family
+
+/--- site-url: $site-url
+if: $site-url is not null
+
+--- container: ftd.main
+
+--- ftd.row:
+width: fill
+id: bottom-row
+padding-top: 20
+
+--- ftd.column:
+position: left
+id: left-side
+width: fill
+
+--- ftd.row:
+width: auto
+/spacing: 12
+
+--- header-item: $obj.title
+$loop$: $toc-bottom-left as $obj
+children: $obj.children 
+link: $obj.url
+text-color: $text-color
+active-text-color: $active-text-color
+current-url: $current-url
+link-height: $link-height
+link-style: $link-style
+/menu-right: $menu-right
+menu-left: $menu-left
+menu-bg: $menu-bg 
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link
+menu-link-active: $menu-link-active
+menu-border: $menu-border
+font-family: $font-family
+
+--- container: bottom-row
+
+--- ftd.column:
+position: right
+width: auto
+id: right-side
+
+--- ftd.row:
+width: auto
+/spacing: 10
+
+--- header-item: $obj.title
+$loop$: $toc-bottom-right as $obj
+children: $obj.children 
+link: $obj.url
+text-color: $text-color
+active-text-color: $active-text-color
+current-url: $current-url
+link-height: $link-height
+link-style: $link-style
+menu-right: $menu-right
+/menu-left: $menu-left
+menu-bg: $menu-bg 
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link
+menu-link-active: $menu-link-active
+menu-border: $menu-border
+font-family: $font-family
+
+
+-- ftd.text site-url: $title
+caption title:
+optional string font-family:
+size: 24
+font: $font-family
+line-height: 22
+align: center
+white-space: nowrap
+
+
+
+
+
+
+
+
+
+
+-- ftd.text header-top-right-item: $title
+caption title:
+string link:
+optional string text-color:
+optional string active-text-color:
+optional string current-url:
+optional string font-family:
+integer link-height: 16
+optional string link-style:
+size: 14
+font: $font-family
+style: $link-style
+link: $link
+line-height: $link-height
+align: center
+white-space: nowrap
+padding-horizontal: 10
+color: $text-color
+color if $current-url == $link: $active-text-color
+border-bottom if $current-url == $link: 2
+border-color if $current-url == $link: $active-text-color
+
+
+
+
+
+
+
+
+
+
+-- ftd.row header-item: 
+caption title:
+optional string link:
+fpm.toc-item list children:
+optional string text-color:
+optional string active-text-color:
+optional string current-url:
+optional integer menu-right:
+optional integer menu-left:
+optional string menu-bg:
+optional string menu-hover-bg:
+optional string menu-link:
+optional string menu-link-active:
+optional string menu-border:
+optional string font-family:
+integer link-height: 16
+string link-style:
+/spacing: 10
+align: center
+/move-left: 22
+boolean open: false
+$on-click$: toggle $open
+$on-click-outside$: $open = false
+
+
+--- ftd.text: $title
+if: $link is not null
+size: 14
+font: $font-family
+style: $link-style
+link: $link
+line-height: $link-height
+padding-bottom: 15
+white-space: nowrap
+padding-horizontal: 10
+color: $text-color
+color if $current-url == $link: $active-text-color
+border-bottom if $current-url == $link: 2
+border-color if $current-url == $link: $active-text-color
+margin-left: 10
+move-left: 22
+
+--- ftd.text: $title
+if: $link is null
+size: 14
+font: $font-family
+style: $link-style
+line-height: $link-height
+padding-bottom: 15
+white-space: nowrap
+padding-horizontal: 10
+color: $text-color
+margin-left: 10
+move-left: 22
+
+
+
+--- ftd.text: ﹀
+if: $children is not empty
+color: $text-color
+position: center
+size: 14
+style: bold
+line-height: $link-height
+move-up: 2
+move-left: 30
+
+--- ftd.column:
+width: 0
+if: $open
+
+--- show-children:
+if: $children is not empty
+children: $children
+left: $menu-left
+right: $menu-right
+menu-bg: $menu-bg
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link
+menu-link-active: $menu-link-active
+menu-border: $menu-border
+font-family: $font-family
+
+-- ftd.column mobile-sidebar:
+anchor: window
+top: 0
+bottom: 0
+left: 0
+right: 0
+background-color:  rgba (227, 227, 227, 0.9)
+z-index: 1
+$on-click$: toggle $sidebar-open
+
+
+-- ftd.row header-mobile:
+string menu-icon:
+optional string site-logo:
+string site-url: 
+string current-url:
+fpm.toc-item list toc-top-right:
+fpm.toc-item list toc-bottom-left:
+fpm.toc-item list toc-bottom-right:
+boolean include-dark-mode-switcher:
+integer menu-left: 
+integer menu-right:
+optional string logo-width: 
+optional string logo-height: 
+string link-style: 
+string background:  
+string text-color: 
+string active-text-color:
+optional string font-family:
+integer link-height: 
+string menu-hover-bg:
+string menu-border:
+string menu-bg: 
+string menu-link: 
+string menu-link-active: 
+string width: 
+width: $width
+background-color: $background
+background-color if $fpm.dark-mode: #333
+padding-horizontal: 20
+padding-vertical: 15
+
+
+--- ftd.row:
+position: left
+spacing: 25
+id: left-side
+
+--- ftd.image:
+src: $menu-icon
+width: 24
+height: auto
+$on-click$: toggle $sidebar-open
+position: center
+
+--- ftd.row:
+spacing: 10
+link: $site-url
+
+--- ftd.image:
+src: $site-logo
+width: 78
+height: 32
+
+
+/--- site-link: $site-url
+
+--- container: left-side
+
+--- container: ftd.main
+
+--- ftd.column: 
+width: fill
+position: center
+
+--- ftd.row:
+position: right
+spacing: 25
+width: auto
+
+
+--- dms.switcher:
+if: $include-dark-mode-switcher
+background: $menu-bg 
+menu-bg: $menu-bg 
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link
+menu-link-active: $menu-link-active
+menu-border: $menu-border
+font-family: $font-family
+
+
+
+/--- ftd.image:
+src: images/github-dark.svg
+src: images/github-light.svg
+width: 20
+min-width: 20
+link: $github
+align: center
+
+/--- ftd.image:
+/src: images/dark-mode.svg
+height: 18
+src: images/light-mode.svg
+$on-click$: toggle $fpm.dark-mode
+align: center
+
+
+--- container: ftd.main
+
+-- ftd.column menu-mobile:
+optional string site-logo:
+string menu-icon:
+string site-url: 
+string current-url:
+fpm.toc-item list toc-top-right:
+fpm.toc-item list toc-bottom-left:
+fpm.toc-item list toc-bottom-right:
+integer menu-left: 
+integer menu-right:
+optional string logo-width: 
+optional string logo-height: 
+string link-style: 
+string background:  
+string text-color: 
+string active-text-color:
+integer link-height: 
+string width: 
+width: $width
+optional string menu-bg:
+optional string menu-hover-bg:
+optional string menu-link:
+optional string menu-link-active:
+optional string menu-border:
+optional string font-family:
+sticky: true
+height: calc 100vh - 0px
+overflow-y: auto
+width: percent 70
+align: top-left
+padding-left: 10
+padding-top: 15
+padding-right: 20
+padding-bottom: 40
+border-right: 1
+border-color: #ebedef
+anchor: window
+left: 0
+top: 0
+background-color: $background
+shadow-offset-x: 3
+shadow-offset-y: 0
+shadow-size: 1
+shadow-blur: 10
+shadow-color: rgba (0, 0, 0, 0.05)
+z-index: 4
+
+--- ftd.column:
+width: 0
+
+
+--- header-item: $obj.title
+$loop$: $toc-top-right as $obj
+children: $obj.children 
+link: $obj.url
+text-color: $text-color
+active-text-color: $active-text-color
+current-url: $current-url
+link-height: $link-height
+link-style: $link-style
+/menu-right: $menu-right
+menu-left: $menu-left
+menu-bg: $menu-bg 
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link
+menu-link-active: $menu-link-active
+menu-border: $menu-border
+font-family: $font-family
+
+
+--- header-item: $obj.title
+$loop$: $toc-bottom-left as $obj
+children: $obj.children 
+link: $obj.url
+text-color: $text-color
+active-text-color: $active-text-color
+current-url: $current-url
+link-height: $link-height
+link-style: $link-style
+/menu-right: $menu-right
+menu-left: $menu-left
+menu-bg: $menu-bg 
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link
+menu-link-active: $menu-link-active
+menu-border: $menu-border
+font-family: $font-family
+
+--- header-item: $obj.title
+$loop$: $toc-bottom-right as $obj
+children: $obj.children 
+link: $obj.url
+text-color: $text-color
+active-text-color: $active-text-color
+current-url: $current-url
+link-height: $link-height
+link-style: $link-style
+/menu-right: $menu-right
+menu-left: $menu-left
+menu-bg: $menu-bg 
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link
+menu-link-active: $menu-link-active
+menu-border: $menu-border
+font-family: $font-family
+
+
+
+
+-- ftd.text site-link: $title
+caption title:
+optional string font-family:
+size: 16
+style: semi-bold
+font: $font-family
+color: white
+color if $fpm.dark-mode: #333
+line-height: 22
+align: center
+white
+
+
+
+
+
+
+-- ftd.row header-item-mobile:
+caption title:
+string link:
+fpm.toc-item list children:
+optional string text-color:
+optional string active-text-color:
+optional string current-url:
+optional integer menu-right:
+optional integer menu-left:
+optional string font-family:
+integer link-height: 16
+optional string link-style:
+fpm.toc-item list toc-obj:
+sticky: true
+height: calc 100vh - 0px
+overflow-y: auto
+/width: $toc-mobile-sidebar-width
+align: top-left
+anchor: window
+left: 0
+top: 0
+shadow-offset-x: 3
+shadow-offset-y: 0
+shadow-size: 1
+shadow-blur: 10
+shadow-color: rgba (0, 0, 0, 0.05)
+z-index: 4
+/boolean mouseover: false
+/$on-mouse-enter$: $mouseover = true
+/$on-mouse-leave$: $mouseover = false
+
+
+
+
+
+
+
+
+-- ftd.column show-children:
+fpm.toc-item list children:
+optional integer left: 
+optional integer right: 
+optional string menu-bg:
+optional string menu-hover-bg:
+optional string menu-link:
+optional string menu-link-active:
+optional string menu-border:
+optional string font-family:
+if: $children is not empty
+anchor: parent
+left if $left is not null: $left
+right if $right is not null: $right
+top: 30
+background-color: $menu-bg
+border-width: 1
+border-color: $menu-border
+border-radius: 6
+shadow-offset-x: 3
+shadow-offset-y: 0
+shadow-size: 1
+shadow-blur: 10
+shadow-color: rgba (0, 0, 0, 0.05)
+z-index: 4
+padding: 5
+min-width: 150
+
+--- l:
+obj: $obj
+$loop$: $children as $obj
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link
+menu-link-active: $menu-link-active
+font-family: $font-family 
+
+
+-- ftd.column l:
+fpm.toc-item obj:
+optional string menu-hover-bg:
+optional string menu-link:
+optional string menu-link-active:
+optional string font-family:
+width: fill
+
+--- ftd.text: $obj.title
+if: $obj.url is not null
+link: $obj.url
+color: $menu-link
+color if $MOUSE-IN: $menu-link-active
+background-color if $MOUSE-IN: $menu-hover-bg
+white-space: nowrap
+padding-vertical: 8
+padding-horizontal: 10
+font: $font-family
+size: 14
+line-height: 12
+width: fill
+border-radius: 4
+
+--- ftd.text: $obj.title
+if: $obj.url is null
+color: $menu-link
+color if $MOUSE-IN: $menu-link-active
+background-color if $MOUSE-IN: $menu-hover-bg
+white-space: nowrap
+padding-vertical: 8
+padding-horizontal: 10
+font: $font-family
+size: 14
+line-height: 12
+width: fill
+border-radius: 4
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- fpm.toc-item list empty-toc:
+
+
+-- fpm.toc-item list toc-top-right:
+$processor$: toc
+
+- Roadmap: /roadmap/
+- Journal: 
+  - Home Index: /index/
+  - Docs: /index/
+  - Articles: /index/
+  - Home Pictures: /index/  
+
+-- fpm.toc-item list toc-bottom-left:
+$processor$: toc
+
+- Home: 
+  - Home Bottom: /index/
+  - Docs: /index/
+  - Articles: /index/
+  - Home Pictures: /index/  
+- Payments: /payments/
+- Business Operations: /businessops/
+- Developer Tools: /developer-tools/
+- Security: /security/
+- All Products: /all-products/
+
+
+-- fpm.toc-item list toc-bottom-right:
+$processor$: toc
+
+- APIs & SKDs: 
+  - API: /api/
+  - Stripe.js: /index/
+  - CLI: /cli/
+  - ios: /ios/
+  - Android: /android/
+  - React Native: /react-native/
+- Support: /support/
+
+
+
+

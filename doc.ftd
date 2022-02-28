@@ -1,4 +1,6 @@
 -- import: fpm
+-- import: fifthtry.github.io/package-doc/typography as tf
+-- import: fifthtry.github.io/package-doc/code-block as cb
 
 
 
@@ -14,9 +16,7 @@ border-color: gray
 border-color if $fpm.dark-mode: rgb(58, 64, 78)
 padding: 20
 
---- h2: $title
-padding-top: 0
-padding-bottom: 0
+--- tf.h2: $title
 
 --- ftd.text: Click To View Code
 if: not $open
@@ -25,7 +25,7 @@ if: not $open
 width: fill
 $on-click$: toggle $open
 
---- code:
+--- cb.code:
 if: $open
 
 $body
@@ -48,11 +48,9 @@ margin-top: 30
 margin-bottom: 20
 padding-bottom: 10
 
---- h2: $caption
-padding-top: 0
-padding-bottom: 0
+--- tf.h2: $caption
 
---- code:
+--- cb.code:
 
 $body
 
@@ -85,7 +83,7 @@ padding-bottom: 20
 padding-vertical: 30
 padding-horizontal: 20
 margin-bottom: 10
-min-width: 1200
+width: fill
 
 --- ftd.column:
 width: fill
@@ -109,12 +107,12 @@ string name:
 body body:
 width: fill
 
---- h3: $title
+--- tf.h3: $title
 
 --- kv: Attribute Name
 value: $name
 
---- markdown:
+--- tf.markdown:
 
 $body
 
@@ -131,12 +129,12 @@ string name:
 body body:
 width: fill
 
---- h2: $title
+--- tf.h2: $title
 
 --- kv: Component Name
 value: $name
 
---- markdown:
+--- tf.markdown:
 
 $body
 
@@ -151,16 +149,12 @@ string name:
 body body:
 width: fill
 spacing: 20
-padding-horizontal: 50
-padding-vertical: 40
-background-color: #f5f5f5
-background-color if $fpm.dark-mode: #333
 open: true
 
 --- ftd.row:
 anchor: window
 right: 50
-top: 50
+bottom: 100
 padding: 10
 background-color if $fpm.dark-mode: rgb(43, 48, 59)
 background-color: rgb(253, 246, 227)
@@ -173,12 +167,12 @@ z-index: 99999999999999
 
 --- container: ftd.main
 
---- h1: $title
+--- tf.h1: $title
 
 --- kv: Package Name
 value: $name
 
---- markdown:
+--- tf.markdown:
 
 $body
 
@@ -209,68 +203,6 @@ move-down: 2
 
 
 
--- ftd.column code:
-optional caption caption:
-body body:
-string lang: ftd
-padding-bottom: 12
-padding-top: 12
-width: fill
-
---- ftd.text:
-text: $caption
-if: $caption is not null
-color: #DCDCDC
-width: fill
-size: 16
-size if $fpm.mobile: 14
-background-color: #3a404e
-padding-vertical: 10
-padding-horizontal: 20
-padding-vertical if $fpm.mobile: 7
-padding-horizontal if $fpm.mobile: 14
-border-top-radius: 4
-font: Open sans
-
---- ftd.code:
-if: $fpm.dark-mode
-text: $body
-lang: $lang
-color: #4D4D4D
-width: fill
-size: 16
-size if $fpm.mobile: 14
-line-height: 25
-padding-vertical: 10
-padding-horizontal: 20
-padding-vertical if $fpm.mobile: 0
-padding-horizontal if $fpm.mobile: 14
-background-color: #2b303b
-border-top-radius if $caption is null: 4
-border-bottom-radius: 4
-border-width: 1
-overflow-x: auto
-
---- ftd.code:
-if: not $fpm.dark-mode
-theme: Solarized (light)
-text: $body
-lang: $lang
-color: #4D4D4D
-width: fill
-size: 16
-size if $fpm.mobile: 14
-line-height: 25
-padding-vertical: 10
-padding-horizontal: 20
-padding-vertical if $fpm.mobile: 0
-padding-horizontal if $fpm.mobile: 14
-background-color: rgb(253, 246, 227)
-border-top-radius if $caption is null: 4
-border-bottom-radius if $caption is null: 4
-border-color: grey
-border-width: 1
-overflow-x: auto
 
 
 
@@ -281,30 +213,6 @@ overflow-x: auto
 
 
 
--- ftd.column h1:
-caption title:
-optional body b:
-width: fill
-region: h1
-padding-bottom: 12
-
---- ftd.text:
-text: $title
-region: title
-size: 30
-line-height: 40
-color: #000
-color if $fpm.dark-mode: rgba(220,220,220,1)
-style: bold
-padding-bottom: 8
-padding-bottom if $b is null: 16
-padding-top: 16
-font: apple-system
-
---- markdown:
-if: $b is not null
-
-$b
 
 
 
@@ -314,69 +222,8 @@ $b
 
 
 
--- ftd.column h2:
-caption title:
-optional body b:
-width: fill
-integer padding-bottom: 12
-integer padding-top: 16
-padding-bottom: $padding-bottom
 
 
---- ftd.text:
-text: $title
-size: 27
-line-height: 36
-color: #000
-color if $fpm.dark-mode: rgba(220,220,220,1)
-style: bold
-padding-bottom: 8
-padding-top: $padding-top
-font: apple-system
-
---- markdown:
-if: $b is not null
-
-$b
-
-
-
-
--- ftd.column h3:
-caption title:
-optional body b:
-width: fill
-padding-bottom: 12
-
---- ftd.text:
-text: $title
-size: 24
-line-height: 30
-color: #000
-color if $fpm.dark-mode: rgba(220,220,220,1)
-style: bold
-padding-bottom: 8
-padding-top: 16
-font: apple-system
-
---- markdown:
-if: $b is not null
-
-$b
-
-
-
-
-
--- ftd.text markdown:
-optional body body:
-color: #000
-color if $fpm.dark-mode: rgba(220,220,220,1)
-padding-bottom: 8
-padding-top: 16
-font: apple-system
-
-$body
 
 
 
