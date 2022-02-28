@@ -3,4 +3,3 @@
 -- fpm.package: fifthtry.github.io/package-doc
 zip: github.com/fifthtry/package-doc/archive/refs/heads/main.zip
 
--- fpm.dependency: fifthtry.github.io/dark-mode-switcher as dms
