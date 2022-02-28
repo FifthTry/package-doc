@@ -62,3 +62,2518 @@ name: fifthtry.github.io/package-doc
 
 
 
+
+
+
+
+
+
+
+
+-- boolean sidebar-open: false
+-- string neutral: #fff
+/-- string neutral-200: #e5e5e5
+-- string neutral-200: #EDEDED
+-- string neutral-300: #F9F9F9
+-- string neutral-400: #E1E1E1
+-- string neutral-500: #323546
+-- string neutral-600: #3E4155
+/-- string neutral-700: #18191a
+-- string neutral-700: #0A1A1F
+/-- string neutral-800: #000
+-- string neutral-800: #0A1A1F
+-- string header-dark-color: #11404a
+-- string header-light-color: #1F5E6B
+-- string sidebar-dark-color: #082b32
+-- string sidebar-light-color: #FFFBEF
+-- string code-bg-light: #0A1A1F
+-- string code-bg-dark: #0A1A1F
+
+
+-- string toc-sidebar-width: 300
+-- string toc-mobile-sidebar-width: percent 70
+-- integer content-padding: 150
+-- integer max-width: 1000
+-- string github: NA
+-- optional string site-name:
+-- string site-icon: /Forest-Theme/static/ftd-logo-desktop.png
+-- string site-icon-mobile: /Forest-Theme/static/ftd-logo-mobile.png
+-- string site-url: /Forest-Theme/sample/
+
+
+-- fpm.toc-item list header-toc:
+-- fpm.toc-item list header-left:
+-- fpm.toc-item list header-right:
+-- fpm.toc-item list toc:
+-- fpm.toc-item list footer-toc:
+
+
+
+
+
+
+
+-- ftd.column page:
+width: fill
+background-color: $neutral
+background-color if $fpm.dark-mode: $neutral-700
+open: true
+append-at: content-container
+fpm.toc-item list header-toc: $header-toc
+
+
+--- container: ftd.main
+
+--- header:
+toc-top-right: $header-toc
+toc-bottom-left: $header-left
+toc-bottom-right: $header-right
+site-logo: $site-icon
+site-url: $site-url
+background: $header-dark-color
+text-color: white
+active-text-color: $neutral
+menu-right: 0
+menu-left: -88
+menu-bg: #EEEEEE 
+menu-hover-bg: #F8f8f8
+menu-link: #1F3E48
+menu-link-active: #1F3E48 
+logo-height: 38
+current-url: /home/
+menu-icon: https://res.cloudinary.com/datvlgpxl/image/upload/v1642751099/hamburger_ks2zcc.png
+
+
+
+
+--- container: ftd.main
+
+--- ftd.column:
+id: content-container
+width: fill
+
+--- container: ftd.main
+
+--- footer:
+if: $footer-toc is not empty
+footer-toc: $footer-toc
+
+
+
+
+
+
+
+
+
+-- ftd.column create-section:
+width: fill
+open: true
+append-at: content-container
+padding-vertical: 30
+
+--- ftd.column:
+if: not $fpm.mobile
+max-width: 1000
+width: fill
+align: center
+id:  content-container
+
+--- container: ftd.main
+
+--- ftd.column:
+if: $fpm.mobile
+width: fill
+align: center
+padding-horizontal if $fpm.mobile: 20
+id:  content-container
+
+
+
+
+
+
+
+
+-- ftd.column content:
+width: fill
+open: true
+append-at: content-container
+padding-vertical: 30
+
+--- ftd.column:
+if: not $fpm.mobile
+max-width: 1200
+width: fill
+align: center
+id:  content-container
+
+--- container: ftd.main
+
+--- ftd.column:
+if: $fpm.mobile
+width: fill
+align: center
+padding-horizontal if $fpm.mobile: 20
+id:  content-container
+
+
+
+
+
+
+
+
+
+-- ftd.column doc-page:
+fpm.toc-item list toc: $toc
+fpm.toc-item list header-toc: $header-toc
+fpm.toc-item list header-left: $header-left
+fpm.toc-item list header-right: $header-right
+fpm.toc-item list footer-toc: $footer-toc
+width: fill
+open: true
+append-at: main-container
+
+--- doc-page-desktop:
+if: not $fpm.mobile
+id: main-container
+toc: $toc
+footer-toc: $footer-toc
+header-toc: $header-toc
+header-left: $header-left
+header-right: $header-right
+
+--- container: ftd.main
+
+--- doc-page-mobile:
+if: $fpm.mobile
+id: main-container
+toc: $toc
+footer-toc: $footer-toc
+header-toc: $header-toc
+header-left: $header-left
+header-right: $header-right
+
+
+
+
+
+
+
+
+
+-- ftd.column doc-page-desktop:
+fpm.toc-item list toc: $toc
+fpm.toc-item list header-toc:
+fpm.toc-item list header-left:
+fpm.toc-item list header-right:
+fpm.toc-item list footer-toc:
+width: fill
+open: true
+append-at: main-container
+background-color: $neutral
+background-color if $fpm.dark-mode: $neutral-700
+
+
+--- header:
+toc-top-right: $header-toc
+toc-bottom-left: $header-left
+toc-bottom-right: $header-right
+site-logo: $site-icon
+site-url: $site-url
+background: $header-dark-color
+text-color: white
+active-text-color: $neutral
+menu-bg: #EEEEEE 
+menu-hover-bg: #F8f8f8
+menu-link: #1F3E48
+menu-link-active: #1F3E48 
+logo-height: 38
+menu-right: 0
+menu-left: -88
+current-url: /home/
+menu-icon: https://res.cloudinary.com/datvlgpxl/image/upload/v1642751099/hamburger_ks2zcc.png
+
+
+--- ftd.row:
+width: fill
+id: main-row
+
+--- render-toc:
+toc-obj: $toc
+
+--- container: main-row
+
+--- ftd.column:
+id: main-container
+max-width: 1104
+align: top
+padding-horizontal: 92
+padding-vertical: 20
+width: fill
+
+--- container: ftd.main
+
+--- footer:
+if: $footer-toc is not empty
+footer-toc: $footer-toc
+
+
+
+
+
+
+
+
+
+-- ftd.column doc-page-mobile:
+fpm.toc-item list toc: $toc
+fpm.toc-item list header-toc:
+fpm.toc-item list header-left:
+fpm.toc-item list header-right:
+fpm.toc-item list footer-toc:
+fpm.toc-item list footer-toc: $footer-toc
+width: fill
+open: true
+append-at: main-container
+background-color: $neutral
+background-color if $fpm.dark-mode: $neutral-700
+
+
+
+--- header:
+toc-top-right: $header-toc
+toc-bottom-left: $header-left
+toc-bottom-right: $header-right
+site-logo: $site-icon
+site-url: $site-url
+background: $header-dark-color
+text-color: white
+active-text-color: $neutral
+menu-bg: #EEEEEE 
+menu-hover-bg: #F8f8f8
+menu-link: #1F3E48
+menu-link-active: #1F3E48 
+logo-height: 38
+menu-right: 0
+menu-left: -88
+current-url: /home/
+menu-icon: https://res.cloudinary.com/datvlgpxl/image/upload/v1642751099/hamburger_ks2zcc.png
+
+
+--- container: ftd.main
+
+--- ftd.row:
+width: fill
+id: main-row
+
+--- ftd.column:
+id: main-container
+width: fill
+align: top
+padding-horizontal: 20
+padding-vertical: 20
+
+--- container: ftd.main
+
+--- footer:
+if: $footer-toc is not empty
+footer-toc: $footer-toc
+
+
+
+
+
+
+
+-- ftd.text footer-link:
+string url:
+caption title:
+link: $url
+text: $title
+size: 15
+line-height: 22
+min-width: fit-content
+padding-left: 10
+padding-top: 6
+padding-bottom: 6
+font: Roboto
+color: $neutral
+
+
+
+
+
+
+
+-- ftd.column footer-instance:
+fpm.toc-item footer-toc:
+min-width: portion 1
+
+--- ftd.text: $footer-toc.title
+size: 15
+line-height: 40
+min-width: fit-content
+padding-left: 10
+padding-top: 3
+padding-bottom: 8
+font: Roboto
+color: $neutral
+style: semi-bold
+
+--- footer-link: $obj.title
+$loop$: $footer-toc.children as $obj
+url: $obj.url
+
+
+-- ftd.row footer:
+fpm.toc-item list footer-toc:
+width: fill
+
+--- footer-desktop:
+if: not $fpm.mobile
+footer-toc: $footer-toc
+
+container: ftd.main
+
+--- footer-mobile:
+if: $fpm.mobile
+footer-toc: $footer-toc
+
+
+
+
+
+
+
+
+-- ftd.row footer-desktop:
+fpm.toc-item list footer-toc:
+width: fill
+background-color: #2b3136
+background-color if $fpm.dark-mode: #242424
+padding-horizontal: 150
+padding-vertical: 50
+spacing: space-between
+
+--- footer-instance:
+$loop$: $footer-toc as $obj
+footer-toc: $obj
+
+
+
+
+
+
+-- ftd.column footer-mobile:
+fpm.toc-item list footer-toc:
+width: fill
+background-color: #2b3136
+background-color if $fpm.dark-mode: #242424
+padding-horizontal: 20
+padding-vertical: 50
+position: left
+
+--- footer-instance:
+$loop$: $footer-toc as $obj
+footer-toc: $obj
+
+
+
+
+
+
+
+
+
+-- ftd.column hero:
+caption title:
+string image:
+open: true
+append-at: main-container
+
+--- hero-desktop: $title
+if: not $fpm.mobile
+id: main-container
+image: $image
+
+--- container: ftd.main
+
+--- hero-mobile: $title
+if: $fpm.mobile
+id: main-container
+image: $image
+
+
+
+
+
+
+
+-- ftd.column hero-desktop:
+caption title:
+string image:
+width: fill
+background-color: #2b3136
+padding-horizontal: $content-padding
+padding-vertical: 50
+spacing: 40
+open: true
+append-at: desktop-action-container
+
+--- ftd.row:
+width: fill
+
+--- ftd.text: $title
+size: 56
+line-height: 80
+style: bold
+color: $neutral
+width: percent 75
+position: center
+font: Roboto
+
+--- ftd.image:
+src: $image
+width: percent 15
+height: auto
+position: right
+
+--- container: ftd.main
+
+--- ftd.row:
+id: desktop-action-container
+spacing: 40
+
+
+
+
+
+
+-- ftd.column hero-mobile:
+caption title:
+string image:
+optional string id:
+id: $id
+width: fill
+background-color: #2b3136
+padding-horizontal: 20
+padding-vertical: 50
+spacing: 30
+open: true
+append-at: mobile-action-container
+
+--- ftd.image:
+src: $image
+width: percent 50
+height: auto
+position: center
+
+--- ftd.text: $title
+size: 36
+line-height: 50
+style: bold
+color: $neutral
+padding-horizontal: 20
+position: center
+text-align: center
+font: Roboto
+
+--- container: ftd.main
+
+--- ftd.column:
+id: mobile-action-container
+position: center
+padding-top: 10
+spacing: 30
+
+
+
+
+
+-- ftd.text action-button:
+caption title:
+string url:
+optional string color: white
+optional string background-color: #25c19f
+text: $title
+link: $url
+background-color: $background-color
+color: $color
+border-radius: 6
+padding-vertical: 15
+padding-horizontal: 40
+font: Roboto
+size: 20
+style: semi-bold
+
+
+
+
+
+-- ftd.text banner:
+caption title:
+text: $title
+size: 24
+style: semi-bold
+padding: 45
+text-align: center
+color: #25c19f
+background-color: #20232a
+width: fill
+font: Roboto
+
+
+
+
+
+
+
+
+-- ftd.column toc-instance:
+fpm.toc-item toc:
+padding-left: 10
+padding-top: 2
+padding-bottom: 2
+
+--- ftd.text:
+link: $toc.url
+text: $toc.title
+size: 15
+line-height: 22
+min-width: fit-content
+padding-left: 10
+padding-top: 3
+padding-bottom: 3
+font: Roboto
+color: $neutral-700
+color if $fpm.dark-mode: $neutral-200
+
+--- toc-instance:
+$loop$: $toc.children as $obj
+toc: $obj
+
+
+
+
+
+
+
+-- ftd.column render-toc:
+fpm.toc-item list toc-obj:
+sticky: true
+top: 0
+height: calc 100vh - 0px
+overflow-y: auto
+width: $toc-sidebar-width
+align: top-left
+padding-left: 10
+padding-top: 15
+padding-right: 20
+padding-bottom: 40
+border-right: 1
+border-color: rgba(31, 94, 107, 0.13)
+border-color if $fpm.dark-mode: #32616a
+background-color if $fpm.dark-mode: $sidebar-dark-color
+background-color:  $sidebar-light-color
+
+--- toc-instance:
+$loop$: $toc-obj as $obj
+toc: $obj
+
+
+
+
+
+
+
+
+
+-- ftd.column sub-title:
+caption title:
+optional body body:
+width: fill
+region: h1
+padding-bottom: 12
+boolean open: true
+append-at: inner
+
+--- ftd.text:
+text: $title
+caption $title:
+region: title
+text: $title
+size: 19
+line-height: 24
+color: $neutral-800
+color if $fpm.dark-mode: $neutral
+style: italic
+padding-bottom: 8
+padding-top: 16
+font: Roboto
+$on-click$: toggle $open
+
+--- ftd.column:
+id: inner
+if: $open
+width: fill
+
+--- markdown:
+if: $body is not null
+body: $body
+
+
+
+
+
+-- ftd.column h0:
+caption title:
+optional body body:
+width: fill
+region: h0
+padding-bottom: 12
+boolean open: true
+append-at: inner
+
+--- ftd.text:
+text: $title
+caption $title:
+region: title
+text: $title
+size: 46
+line-height: 46
+color: $neutral-800
+color if $fpm.dark-mode: $neutral
+style: bold
+padding-bottom: 16
+padding-top: 8
+font: apple-system
+$on-click$ if $open: toggle $open
+
+--- ftd.column:
+id: inner
+if: $open
+width: fill
+
+--- markdown:
+if: $body is not null
+body: $body
+
+
+
+
+
+
+
+
+
+
+-- ftd.column h1:
+caption title:
+optional body body:
+boolean open: true
+append-at: inner
+width: fill
+region: h1
+padding-left: 20
+border-left: 5
+border-color: rgba(250, 242, 220, 1)
+border-color if $fpm.dark-mode: rgb(17, 64, 74)
+move-left: 25
+margin-bottom: 30
+$on-click$: toggle $open
+
+--- ftd.row:
+width: fill
+spacing: 20
+
+--- ftd.text:
+caption $title:
+text: $title
+region: title
+size: 30
+line-height: 40
+color: $neutral-800
+color if $fpm.dark-mode: $neutral
+style: bold
+padding-bottom: 8
+font: apple-system
+
+--- ftd.text: Click To Expand
+if: not $open
+color: $neutral
+color if $fpm.dark-mode: $neutral-800
+background-color: $neutral-700
+background-color if $fpm.dark-mode: $neutral
+size: 10
+border-radius: 3
+padding: 3
+align: center
+text-align: center
+move-up: 2
+
+--- container: ftd.main
+
+--- ftd.column:
+id: inner
+if: $open
+width: fill
+$on-click$: stop-propagation
+cursor: default
+spacing: 20
+
+--- markdown:
+if: $body is not null
+body: $body
+
+
+
+
+
+
+
+-- ftd.column h2:
+caption title:
+optional body body:
+width: fill
+region: h2
+padding-bottom: 12
+boolean open: true
+append-at: inner
+
+--- ftd.text:
+caption $title:
+text: $title
+region: title
+size: 26
+line-height: 32
+color: $neutral-800
+color if $fpm.dark-mode: $neutral
+style: bold
+padding-bottom: 8
+padding-top: 16
+font: apple-system
+$on-click$: toggle $open
+
+--- ftd.column:
+id: inner
+if: $open
+width: fill
+
+--- markdown:
+if: $body is not null
+body: $body
+
+
+
+
+
+
+
+
+-- ftd.column h3:
+caption title:
+optional body body:
+width: fill
+region: h3
+padding-bottom: 12
+boolean open: true
+append-at: inner
+
+--- ftd.text:
+caption $title:
+text: $title
+region: title
+size: 21
+line-height: 30
+color: $neutral-800
+color if $fpm.dark-mode: $neutral
+style: bold
+padding-bottom: 8
+padding-top: 16
+font: apple-system
+$on-click$: toggle $open
+
+--- ftd.column:
+id: inner
+if: $open
+width: fill
+
+
+--- markdown:
+if: $body is not null
+body: $body
+
+
+
+
+
+
+
+
+
+-- ftd.column h4:
+caption title:
+optional body body:
+width: fill
+region: h4
+boolean open: true
+append-at: inner
+
+--- ftd.text:
+caption $title:
+text: $title
+region: title
+size: 18
+line-height: 24
+color: $neutral-800
+color if $fpm.dark-mode: $neutral
+style: bold
+padding-bottom: 12
+padding-top: 34
+font: apple-system
+$on-click$: toggle $open
+
+--- ftd.column:
+id: inner
+if: $open
+width: fill
+
+--- markdown:
+if: $body is not null
+body: $body
+
+
+
+
+
+
+
+
+
+
+-- ftd.column h5:
+caption title:
+optional body body:
+width: fill
+region: h5
+boolean open: true
+append-at: inner
+
+--- ftd.text:
+caption $title:
+text: $title
+region: title
+size: 16
+line-height: 22
+color: $neutral-800
+color if $fpm.dark-mode: $neutral
+style: bold
+padding-bottom: 12
+padding-top: 34
+font: apple-system
+$on-click$: toggle $open
+
+--- ftd.column:
+id: inner
+if: $open
+width: fill
+
+--- markdown:
+if: $body is not null
+body: $body
+
+
+
+
+
+
+-- ftd.text markdown:
+body body:
+optional boolean collapsed:
+optional caption title:
+optional boolean two_columns:
+text: $body
+size: 15
+line-height: 24
+color: $neutral-700
+color if $fpm.dark-mode: $neutral-200
+padding-bottom: 8
+font: apple-system
+
+
+
+
+-- code:
+optional caption caption:
+body body:
+string lang:
+caption: $caption
+lang: $lang
+
+$body
+
+
+
+
+
+
+
+
+
+-- ftd.row feature-list:
+width: fill
+open: true
+append-at: main-container
+
+--- ftd.row:
+width: fill
+if: not $fpm.mobile
+padding-horizontal: $content-padding
+spacing: space-between
+wrap: true
+padding-bottom: 60
+id: main-container
+
+--- container: ftd.main
+
+--- ftd.column:
+if: $fpm.mobile
+width: fill
+padding-horizontal: 20
+spacing: space-around
+wrap: true
+padding-bottom: 40
+id: main-container
+
+
+
+
+
+
+
+
+-- ftd.column feature:
+caption title:
+string image:
+body body:
+width: percent 30
+width if $fpm.mobile: fill
+spacing: 15
+padding-top: 60
+align: left
+
+--- ftd.image:
+src: $image
+width: percent 60
+align: center
+
+--- container: ftd.main
+
+--- ftd.text: $title
+width: fill
+size: 22
+font: Roboto
+width: fill
+text-align: center
+style: bold
+color if $fpm.dark-mode: $neutral
+
+--- ftd.text:
+text: $body
+width: fill
+size: 15
+line-height: 26
+font: Roboto
+width: fill
+text-align: center
+color if $fpm.dark-mode: $neutral
+
+-- ftd.row testimony-list:
+width: fill
+background-color: #f5f6f7
+background-color if $fpm.dark-mode: #2b3136
+open: true
+append-at: main-container
+
+--- ftd.row:
+width: fill
+if: not $fpm.mobile
+padding-horizontal: $content-padding
+spacing: space-between
+wrap: true
+padding-bottom: 60
+id: main-container
+
+--- container: ftd.main
+
+--- ftd.column:
+if: $fpm.mobile
+width: fill
+padding-horizontal: 20
+spacing: space-around
+wrap: true
+padding-bottom: 40
+id: main-container
+
+
+
+
+
+
+
+-- ftd.column testimony:
+caption title:
+string image:
+string designation:
+body body:
+width: percent 30
+width if $fpm.mobile: fill
+spacing: 15
+padding-top: 60
+
+--- ftd.image:
+src: $image
+width: percent 30
+border-radius: 1000
+align: center
+
+--- ftd.text: $title
+width: fill
+size: 20
+font: Roboto
+width: fill
+text-align: center
+style: bold
+color if $fpm.dark-mode: $neutral
+
+--- ftd.text: $designation
+width: fill
+size: 14
+font: Roboto
+width: fill
+text-align: center
+color if $fpm.dark-mode: $neutral
+
+--- ftd.text:
+text: $body
+width: fill
+size: 15
+line-height: 26
+font: Roboto
+width: fill
+text-align: center
+color if $fpm.dark-mode: $neutral
+
+
+
+
+
+
+
+
+
+-- ftd.iframe iframe:
+string src:
+src: $src
+height: 400
+width: fill
+margin-bottom: 34
+
+
+
+
+
+
+
+
+-- ftd.iframe youtube:
+string id:
+youtube: $id
+height: 400
+width: fill
+margin-bottom: 34
+
+
+
+
+
+
+
+-- ftd.column container:
+optional string id:
+id: $id
+max-width: 800
+width: fill
+padding-top: 15
+padding-left: 100
+padding-bottom: 60
+align: top
+
+
+
+
+
+
+-- ftd.column output:
+caption caption: Output
+width: fill
+open: true
+append-at: output-container
+padding-top: 12
+
+--- ftd.text: $caption
+color: white
+background-color: #aed581
+border-top-radius: 2
+padding-top: 3
+padding-bottom: 3
+padding-left: 10
+padding-right: 10
+size: 12
+font: Open sans
+
+--- ftd.column:
+border-width: 1
+border-color: #ddedff
+width: fill
+id: output-container
+padding-top: 30
+padding-bottom: 30
+padding-left: 20
+padding-right: 20
+border-radius: 2
+background-color: #f6faff
+
+
+
+
+
+
+
+
+-- ftd.column image:
+string src:
+optional caption caption:
+optional body body:
+optional string link:
+optional string align:
+optional string width:
+optional string height:
+width: fill
+height: fill
+padding-bottom: 20
+
+--- ftd.image:
+src: $src
+padding-bottom: 15
+width: $width
+height: $height
+align: $align
+
+--- ftd.text:
+if: $caption is not null
+text: $caption
+color: $neutral-800
+color if $fpm.dark-mode: $neutral
+align: center
+width: fill
+size: 17
+style: italic
+font: Open sans
+
+--- markdown:
+if: $body is not null
+body: $body
+
+
+
+
+
+
+
+
+
+-- ftd.column template-list:
+width: fill
+open: true
+append-at: main-container
+padding-top: 20
+
+--- ftd.row:
+width: fill
+align: center
+
+--- ftd.row:
+width: fill
+if: not $fpm.mobile
+spacing: space-between
+wrap: true
+padding-bottom: 60
+id: main-container
+
+--- container: ftd.main
+
+--- ftd.column:
+if: $fpm.mobile
+width: fill
+padding-horizontal: 20
+spacing: space-between
+wrap: true
+padding-bottom: 40
+id: main-container
+
+
+
+
+
+
+
+
+
+-- ftd.column template:
+caption title:
+string image:
+optional string link: /
+boolean active:
+string cta-text:
+width: 400
+height: 225
+width if $fpm.mobile: fill
+spacing: 15
+background-image: $image
+border-radius: 4
+border-width: 1
+border-color: #d9d9d9
+margin-bottom: 50
+
+--- ftd.text: $title
+size: 20
+style: semi-bold
+anchor: parent
+top: 5
+left: 0
+font: Roboto
+background-color: #919191
+padding-horizontal: 20
+padding-vertical: 5
+min-width: 200
+color: white
+
+--- ftd.text: $cta-text
+if: $active
+size: 15
+font: Roboto
+text-align: center
+link: $link
+anchor: parent
+bottom: 30
+right: 40
+color: white
+background-color: #2db7f5
+border-radius: 20
+padding-vertical: 5
+padding-horizontal: 20
+
+--- container: ftd.main
+
+--- ftd.text: $cta-text
+if: not $active
+size: 15
+font: Roboto
+text-align: center
+anchor: parent
+bottom: 30
+right: 40
+color: white
+background-color: gray
+border-radius: 20
+padding-vertical: 5
+padding-horizontal: 20
+
+
+
+
+
+
+
+
+
+
+-- ftd.column theme:
+caption title:
+string image:
+optional string link: /
+optional string live_preview:
+width: 400
+height: 225
+width if $fpm.mobile: fill
+spacing: 15
+background-image: $image
+border-radius: 4
+border-width: 1
+border-color: #d9d9d9
+margin-bottom: 50
+
+--- ftd.text: $title
+size: 20
+style: semi-bold
+anchor: parent
+top: 5
+left: 0
+font: Roboto
+background-color: #919191
+padding-horizontal: 20
+padding-vertical: 5
+min-width: 200
+color: white
+
+--- ftd.row:
+anchor: parent
+bottom: 30
+right: 40
+id: link-row
+
+--- container: link-row
+
+--- ftd.text: Live Preview
+size: 15
+if: $live_preview is not null
+font: Roboto
+text-align: center
+link: $live_preview
+color: white
+background-color: #2db7f5
+border-radius: 20
+padding-vertical: 5
+padding-horizontal: 20
+margin-right: 5
+
+--- ftd.text: Create
+size: 15
+font: Roboto
+text-align: center
+link: $link
+color: white
+background-color: #2db7f5
+border-radius: 20
+padding-vertical: 5
+padding-horizontal: 20
+
+
+
+
+
+
+
+
+
+
+-- ftd.row bread-crumb:
+padding-vertical: 20
+open: true
+append-at: main-container
+
+--- ftd.row:
+spacing: 20
+id: main-container
+
+
+
+
+
+
+
+
+
+
+-- ftd.row crumb:
+spacing: 20
+caption title:
+optional string link:
+
+--- ftd.text: $title
+if: $link is not null
+link: $link
+size: 16
+color: $neutral-700
+color if $fpm.dark-mode: white
+font: Roboto
+style: medium
+
+--- ftd.image:
+if: $link is not null
+src: /images/arrow.svg
+width: 16
+
+--- container: ftd.main
+
+--- ftd.text: $title
+if: $link is null
+color: $neutral-600
+color if $fpm.dark-mode: white
+font: Roboto
+style: medium
+
+
+
+
+
+
+
+
+
+-- ftd.text highlight: $title
+caption title:
+color if $fpm.dark-mode: yellow
+background-color if not $fpm.dark-mode: yellow
+
+
+
+
+
+
+
+
+-- ftd.row tip:
+optional caption title:
+optional body body:
+border-radius: 3
+width: fill
+background-color: rgb(0, 49, 0)
+color: rgb(230, 246, 230)
+
+--- ftd.column:
+width: 5
+height: percent 100
+open: false
+background-color: red
+
+--- ftd.column:
+width: fill
+padding: 10
+id: m
+spacing: 10
+
+--- ftd.row:
+spacing: 5
+
+--- ftd.text: Tip
+style: bold
+
+--- ftd.text: $title
+if: $title is not null
+
+--- container: m
+
+--- ftd.text:
+if: $body is not null
+
+$body
+
+
+
+
+
+-- ftd.column header:
+optional string site-logo:
+string site-url: /
+string menu-icon: hamburger.png
+string current-url: /payments/
+fpm.toc-item list toc-top-right: $empty-toc
+fpm.toc-item list toc-bottom-left: $empty-toc
+fpm.toc-item list toc-bottom-right: $empty-toc
+integer menu-left: 10
+integer menu-right: 10
+optional string logo-width: 
+optional string logo-height: 26
+string link-style: regular
+string background: #F8FAFC 
+string text-color: #3E4255
+string active-text-color: #5967CD 
+integer link-height: 16 
+string menu-bg: #FFFFFF
+string menu-hover-bg: #f7fafc
+string menu-link: #5469d4
+string menu-link-active: #1a1f36 
+string menu-border: #EEEEEE
+string width: fill
+string font-family: Roboto 
+boolean include-dark-mode-switcher: true
+width: $width
+padding-left if not $fpm.mobile: 10
+padding-right if not $fpm.mobile: 0
+padding-top if not $fpm.mobile: 20
+/padding-vertical if not $fpm.mobile: 30
+color: white
+background-color: $background
+/background-color if $fpm.dark-mode: $background
+z-index: 10
+
+--- mobile-sidebar:
+if: $sidebar-open
+
+--- container: ftd.main
+
+--- menu-mobile:
+if: $sidebar-open
+site-logo: $site-logo
+menu-icon: $menu-icon
+site-url: $site-url 
+current-url: $current-url
+toc-top-right: $toc-top-right
+toc-bottom-left: $toc-bottom-left 
+toc-bottom-right: $toc-bottom-right
+menu-left: $menu-left 
+menu-right: $menu-right
+logo-width: $logo-width 
+logo-height: $logo-height 
+link-style: $link-style 
+background: $background  
+text-color: $text-color 
+active-text-color: $active-text-color
+link-height: $link-height
+width: $width
+menu-bg: $menu-bg
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link 
+menu-link-active: $menu-link-active
+menu-border: $menu-border
+font-family: $font-family
+
+--- header-desktop:
+if: not $fpm.mobile
+site-logo: $site-logo
+site-url: $site-url 
+current-url: $current-url
+toc-top-right: $toc-top-right
+toc-bottom-left: $toc-bottom-left 
+toc-bottom-right: $toc-bottom-right
+include-dark-mode-switcher: $include-dark-mode-switcher
+menu-left: $menu-left 
+menu-right: $menu-right
+logo-width: $logo-width 
+logo-height: $logo-height 
+link-style: $link-style 
+background: $background  
+text-color: $text-color 
+active-text-color: $active-text-color
+link-height: $link-height
+width: $width
+menu-bg: $menu-bg
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link 
+menu-link-active: $menu-link-active
+menu-border: $menu-border
+font-family: $font-family
+
+--- header-mobile:
+if: $fpm.mobile
+site-logo: $site-logo
+menu-icon: $menu-icon
+site-url: $site-url 
+current-url: $current-url
+toc-top-right: $toc-top-right
+toc-bottom-left: $toc-bottom-left 
+toc-bottom-right: $toc-bottom-right
+include-dark-mode-switcher: $include-dark-mode-switcher
+menu-border: $menu-border
+menu-bg: $menu-bg
+menu-hover-bg: $menu-hover-bg
+menu-left: $menu-left 
+menu-right: $menu-right
+menu-link: $menu-link 
+menu-link-active: $menu-link-active
+logo-width: $logo-width 
+logo-height: $logo-height 
+link-style: $link-style 
+background: $background  
+text-color: $text-color 
+active-text-color: $active-text-color
+link-height: $link-height
+width: $width
+font-family: $font-family
+
+
+
+
+
+
+
+
+
+-- ftd.column header-desktop:
+optional string site-logo:
+string site-url: 
+string current-url:
+fpm.toc-item list toc-top-right:
+fpm.toc-item list toc-bottom-left:
+fpm.toc-item list toc-bottom-right:
+boolean include-dark-mode-switcher:
+integer menu-left: 
+integer menu-right:
+optional string logo-width: 
+optional string logo-height: 
+string link-style: 
+string background:  
+string text-color: 
+string active-text-color:
+integer link-height: 
+string width: 
+width: $width
+optional string font-family:
+optional string menu-bg:
+optional string menu-hover-bg:
+optional string menu-link:
+optional string menu-link-active:
+optional string menu-border:
+move-right: 10
+
+--- ftd.row:
+/spacing: 10
+link: $site-url
+width: fill
+
+--- ftd.row:
+position: left
+width: fill
+id: right-side-top
+
+--- ftd.image:
+src: $site-logo
+if: $site-logo is not null
+width: $logo-width
+height: $logo-height
+
+
+--- ftd.row:
+position: right
+width: fill
+id: right-side-top
+/spacing: 10
+
+--- header-item: $obj.title
+$loop$: $toc-top-right as $obj
+children: $obj.children 
+link: $obj.url
+text-color: $text-color
+active-text-color: $active-text-color
+current-url: $current-url
+link-height: $link-height
+link-style: $link-style
+menu-right: $menu-right
+/menu-left: $menu-left
+menu-bg: $menu-bg 
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link
+menu-link-active: $menu-link-active
+menu-border: $menu-border
+font-family: $font-family
+
+
+--- ftd.row:
+margin-right: 25
+margin-top: -6
+
+--- switcher:
+if: $include-dark-mode-switcher
+background: $menu-bg 
+menu-bg: $menu-bg 
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link
+menu-link-active: $menu-link-active
+menu-border: $menu-border
+font-family: $font-family
+
+/--- site-url: $site-url
+if: $site-url is not null
+
+--- container: ftd.main
+
+--- ftd.row:
+width: fill
+id: bottom-row
+padding-top: 20
+
+--- ftd.column:
+position: left
+id: left-side
+width: fill
+
+--- ftd.row:
+width: auto
+/spacing: 12
+
+--- header-item: $obj.title
+$loop$: $toc-bottom-left as $obj
+children: $obj.children 
+link: $obj.url
+text-color: $text-color
+active-text-color: $active-text-color
+current-url: $current-url
+link-height: $link-height
+link-style: $link-style
+/menu-right: $menu-right
+menu-left: $menu-left
+menu-bg: $menu-bg 
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link
+menu-link-active: $menu-link-active
+menu-border: $menu-border
+font-family: $font-family
+
+--- container: bottom-row
+
+--- ftd.column:
+position: right
+width: auto
+id: right-side
+
+--- ftd.row:
+width: auto
+/spacing: 10
+
+--- header-item: $obj.title
+$loop$: $toc-bottom-right as $obj
+children: $obj.children 
+link: $obj.url
+text-color: $text-color
+active-text-color: $active-text-color
+current-url: $current-url
+link-height: $link-height
+link-style: $link-style
+menu-right: $menu-right
+/menu-left: $menu-left
+menu-bg: $menu-bg 
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link
+menu-link-active: $menu-link-active
+menu-border: $menu-border
+font-family: $font-family
+
+
+-- ftd.text site-url: $title
+caption title:
+optional string font-family:
+size: 24
+font: $font-family
+line-height: 22
+align: center
+white-space: nowrap
+
+
+
+
+
+
+
+
+
+
+-- ftd.text header-top-right-item: $title
+caption title:
+string link:
+optional string text-color:
+optional string active-text-color:
+optional string current-url:
+optional string font-family:
+integer link-height: 16
+optional string link-style:
+size: 14
+font: $font-family
+style: $link-style
+link: $link
+line-height: $link-height
+align: center
+white-space: nowrap
+padding-horizontal: 10
+color: $text-color
+color if $current-url == $link: $active-text-color
+border-bottom if $current-url == $link: 2
+border-color if $current-url == $link: $active-text-color
+
+
+
+
+
+
+
+
+
+
+-- ftd.row header-item: 
+caption title:
+optional string link:
+fpm.toc-item list children:
+optional string text-color:
+optional string active-text-color:
+optional string current-url:
+optional integer menu-right:
+optional integer menu-left:
+optional string menu-bg:
+optional string menu-hover-bg:
+optional string menu-link:
+optional string menu-link-active:
+optional string menu-border:
+optional string font-family:
+integer link-height: 16
+string link-style:
+/spacing: 10
+align: center
+/move-left: 22
+boolean open: false
+$on-click$: toggle $open
+$on-click-outside$: $open = false
+
+
+--- ftd.text: $title
+if: $link is not null
+size: 14
+font: $font-family
+style: $link-style
+link: $link
+line-height: $link-height
+padding-bottom: 15
+white-space: nowrap
+padding-horizontal: 10
+color: $text-color
+color if $current-url == $link: $active-text-color
+border-bottom if $current-url == $link: 2
+border-color if $current-url == $link: $active-text-color
+margin-left: 10
+move-left: 22
+
+--- ftd.text: $title
+if: $link is null
+size: 14
+font: $font-family
+style: $link-style
+line-height: $link-height
+padding-bottom: 15
+white-space: nowrap
+padding-horizontal: 10
+color: $text-color
+margin-left: 10
+move-left: 22
+
+
+
+--- ftd.text: ﹀
+if: $children is not empty
+color: $text-color
+position: center
+size: 14
+style: bold
+line-height: $link-height
+move-up: 2
+move-left: 30
+
+--- ftd.column:
+width: 0
+if: $open
+
+--- show-children:
+if: $children is not empty
+children: $children
+left: $menu-left
+right: $menu-right
+menu-bg: $menu-bg
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link
+menu-link-active: $menu-link-active
+menu-border: $menu-border
+font-family: $font-family
+
+-- ftd.column mobile-sidebar:
+anchor: window
+top: 0
+bottom: 0
+left: 0
+right: 0
+background-color:  rgba (227, 227, 227, 0.9)
+z-index: 1
+$on-click$: toggle $sidebar-open
+
+
+-- ftd.row header-mobile:
+string menu-icon:
+optional string site-logo:
+string site-url: 
+string current-url:
+fpm.toc-item list toc-top-right:
+fpm.toc-item list toc-bottom-left:
+fpm.toc-item list toc-bottom-right:
+boolean include-dark-mode-switcher:
+integer menu-left: 
+integer menu-right:
+optional string logo-width: 
+optional string logo-height: 
+string link-style: 
+string background:  
+string text-color: 
+string active-text-color:
+optional string font-family:
+integer link-height: 
+string menu-hover-bg:
+string menu-border:
+string menu-bg: 
+string menu-link: 
+string menu-link-active: 
+string width: 
+width: $width
+background-color: $background
+background-color if $fpm.dark-mode: #333
+padding-horizontal: 20
+padding-vertical: 15
+
+
+--- ftd.row:
+position: left
+spacing: 25
+id: left-side
+
+--- ftd.image:
+src: $menu-icon
+width: 24
+height: auto
+$on-click$: toggle $sidebar-open
+position: center
+
+--- ftd.row:
+spacing: 10
+link: $site-url
+
+--- ftd.image:
+src: $site-logo
+width: 78
+height: 32
+
+
+/--- site-link: $site-url
+
+--- container: left-side
+
+--- container: ftd.main
+
+--- ftd.column: 
+width: fill
+position: center
+
+--- ftd.row:
+position: right
+spacing: 25
+width: auto
+
+
+--- switcher:
+if: $include-dark-mode-switcher
+background: $menu-bg 
+menu-bg: $menu-bg 
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link
+menu-link-active: $menu-link-active
+menu-border: $menu-border
+font-family: $font-family
+
+
+
+/--- ftd.image:
+src: images/github-dark.svg
+src: images/github-light.svg
+width: 20
+min-width: 20
+link: $github
+align: center
+
+/--- ftd.image:
+/src: images/dark-mode.svg
+height: 18
+src: images/light-mode.svg
+$on-click$: toggle $fpm.dark-mode
+align: center
+
+
+--- container: ftd.main
+
+-- ftd.column menu-mobile:
+optional string site-logo:
+string menu-icon:
+string site-url: 
+string current-url:
+fpm.toc-item list toc-top-right:
+fpm.toc-item list toc-bottom-left:
+fpm.toc-item list toc-bottom-right:
+integer menu-left: 
+integer menu-right:
+optional string logo-width: 
+optional string logo-height: 
+string link-style: 
+string background:  
+string text-color: 
+string active-text-color:
+integer link-height: 
+string width: 
+width: $width
+optional string menu-bg:
+optional string menu-hover-bg:
+optional string menu-link:
+optional string menu-link-active:
+optional string menu-border:
+optional string font-family:
+sticky: true
+height: calc 100vh - 0px
+overflow-y: auto
+width: percent 70
+align: top-left
+padding-left: 10
+padding-top: 15
+padding-right: 20
+padding-bottom: 40
+border-right: 1
+border-color: #ebedef
+anchor: window
+left: 0
+top: 0
+background-color: $background
+shadow-offset-x: 3
+shadow-offset-y: 0
+shadow-size: 1
+shadow-blur: 10
+shadow-color: rgba (0, 0, 0, 0.05)
+z-index: 4
+
+--- ftd.column:
+width: 0
+
+
+--- header-item: $obj.title
+$loop$: $toc-top-right as $obj
+children: $obj.children 
+link: $obj.url
+text-color: $text-color
+active-text-color: $active-text-color
+current-url: $current-url
+link-height: $link-height
+link-style: $link-style
+/menu-right: $menu-right
+menu-left: $menu-left
+menu-bg: $menu-bg 
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link
+menu-link-active: $menu-link-active
+menu-border: $menu-border
+font-family: $font-family
+
+
+--- header-item: $obj.title
+$loop$: $toc-bottom-left as $obj
+children: $obj.children 
+link: $obj.url
+text-color: $text-color
+active-text-color: $active-text-color
+current-url: $current-url
+link-height: $link-height
+link-style: $link-style
+/menu-right: $menu-right
+menu-left: $menu-left
+menu-bg: $menu-bg 
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link
+menu-link-active: $menu-link-active
+menu-border: $menu-border
+font-family: $font-family
+
+--- header-item: $obj.title
+$loop$: $toc-bottom-right as $obj
+children: $obj.children 
+link: $obj.url
+text-color: $text-color
+active-text-color: $active-text-color
+current-url: $current-url
+link-height: $link-height
+link-style: $link-style
+/menu-right: $menu-right
+menu-left: $menu-left
+menu-bg: $menu-bg 
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link
+menu-link-active: $menu-link-active
+menu-border: $menu-border
+font-family: $font-family
+
+
+
+
+-- ftd.text site-link: $title
+caption title:
+optional string font-family:
+size: 16
+style: semi-bold
+font: $font-family
+color: white
+color if $fpm.dark-mode: #333
+line-height: 22
+align: center
+white
+
+
+
+
+
+
+-- ftd.row header-item-mobile:
+caption title:
+string link:
+fpm.toc-item list children:
+optional string text-color:
+optional string active-text-color:
+optional string current-url:
+optional integer menu-right:
+optional integer menu-left:
+optional string font-family:
+integer link-height: 16
+optional string link-style:
+fpm.toc-item list toc-obj:
+sticky: true
+height: calc 100vh - 0px
+overflow-y: auto
+/width: $toc-mobile-sidebar-width
+align: top-left
+anchor: window
+left: 0
+top: 0
+shadow-offset-x: 3
+shadow-offset-y: 0
+shadow-size: 1
+shadow-blur: 10
+shadow-color: rgba (0, 0, 0, 0.05)
+z-index: 4
+/boolean mouseover: false
+/$on-mouse-enter$: $mouseover = true
+/$on-mouse-leave$: $mouseover = false
+
+
+
+
+
+
+
+
+-- ftd.column show-children:
+fpm.toc-item list children:
+optional integer left: 
+optional integer right: 
+optional string menu-bg:
+optional string menu-hover-bg:
+optional string menu-link:
+optional string menu-link-active:
+optional string menu-border:
+optional string font-family:
+if: $children is not empty
+anchor: parent
+left if $left is not null: $left
+right if $right is not null: $right
+top: 30
+background-color: $menu-bg
+border-width: 1
+border-color: $menu-border
+border-radius: 6
+shadow-offset-x: 3
+shadow-offset-y: 0
+shadow-size: 1
+shadow-blur: 10
+shadow-color: rgba (0, 0, 0, 0.05)
+z-index: 4
+padding: 5
+min-width: 150
+
+--- l:
+obj: $obj
+$loop$: $children as $obj
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link
+menu-link-active: $menu-link-active
+font-family: $font-family 
+
+
+-- ftd.column l:
+fpm.toc-item obj:
+optional string menu-hover-bg:
+optional string menu-link:
+optional string menu-link-active:
+optional string font-family:
+width: fill
+
+--- ftd.text: $obj.title
+if: $obj.url is not null
+link: $obj.url
+color: $menu-link
+color if $MOUSE-IN: $menu-link-active
+background-color if $MOUSE-IN: $menu-hover-bg
+white-space: nowrap
+padding-vertical: 8
+padding-horizontal: 10
+font: $font-family
+size: 14
+line-height: 12
+width: fill
+border-radius: 4
+
+--- ftd.text: $obj.title
+if: $obj.url is null
+color: $menu-link
+color if $MOUSE-IN: $menu-link-active
+background-color if $MOUSE-IN: $menu-hover-bg
+white-space: nowrap
+padding-vertical: 8
+padding-horizontal: 10
+font: $font-family
+size: 14
+line-height: 12
+width: fill
+border-radius: 4
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- fpm.toc-item list empty-toc:
+
+
+-- fpm.toc-item list toc-top-right:
+$processor$: toc
+
+- Roadmap: /roadmap/
+- Journal: 
+  - Home Index: /index/
+  - Docs: /index/
+  - Articles: /index/
+  - Home Pictures: /index/  
+
+-- fpm.toc-item list toc-bottom-left:
+$processor$: toc
+
+- Home: 
+  - Home Bottom: /index/
+  - Docs: /index/
+  - Articles: /index/
+  - Home Pictures: /index/  
+- Payments: /payments/
+- Business Operations: /businessops/
+- Developer Tools: /developer-tools/
+- Security: /security/
+- All Products: /all-products/
+
+
+-- fpm.toc-item list toc-bottom-right:
+$processor$: toc
+
+- APIs & SKDs: 
+  - API: /api/
+  - Stripe.js: /index/
+  - CLI: /cli/
+  - ios: /ios/
+  - Android: /android/
+  - React Native: /react-native/
+- Support: /support/
+
+
+
+
+
+-- ftd.row switcher:
+boolean open: false
+string background: #F5f5f5
+string text-color: #333333
+string menu-border: #cccccc
+string font-family: Lato
+string menu-bg:  #F5F5F5
+string menu-hover-bg: #EEEEEE
+string menu-link: #333333
+string menu-link-active: #F5F5F5
+$on-click$: toggle $open
+$on-click-outside$: $open=false
+
+--- ftd.text: 🌙
+if: $fpm.dark-mode
+
+--- ftd.text: 🌞
+if: not $fpm.dark-mode
+scale: 1.2
+
+--- ftd.text: .
+color if not $fpm.follow-system-dark-mode: black
+color: rgba(0, 0, 0, 0)
+
+
+--- ftd.column:
+string background:
+string menu-border:
+string font-family:
+string menu-bg:
+string menu-hover-bg:
+string menu-link:
+string menu-link-active:
+string menu-border:
+if: $open
+background-color: $menu-bg
+width: 120
+border-width: 1
+border-radius: 4
+anchor: parent
+/position: bottom
+shadow-offset-x: 3
+shadow-offset-y: 0
+shadow-size: 1
+shadow-blur: 10
+shadow-color: rgba (0, 0, 0, 0.05)
+padding: 5
+border-width: 1
+border-color: $menu-border
+border-radius: 6
+z-index: 4
+right: 0
+top: 30
+
+--- t: 🌙 - Dark  
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link  
+menu-link-active: $menu-link-active  
+font-family: $font-family
+$on-click$: message-host enable-dark-mode
+$on-click$: $open=false
+
+--- t: 🌞 - Light
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link  
+menu-link-active: $menu-link-active  
+font-family: $font-family
+$on-click$: message-host enable-light-mode
+$on-click$: $open=false
+
+--- t: 🌞 - System
+if: not $fpm.system-dark-mode
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link  
+menu-link-active: $menu-link-active  
+font-family: $font-family
+$on-click$: message-host enable-system-mode
+$on-click$: $open=false
+
+--- t: 🌙 - System
+if: $fpm.system-dark-mode
+menu-hover-bg: $menu-hover-bg
+menu-link: $menu-link  
+menu-link-active: $menu-link-active  
+font-family: $font-family
+$on-click$: message-host enable-system-mode
+$on-click$: $open=false
+
+
+
+
+-- ftd.text t: $text
+caption text:
+string menu-hover-bg: 
+string menu-link: 
+string menu-link-active:  
+string font-family: 
+font: $font-family
+size: 14
+width: fill
+padding-horizontal: 10
+padding-vertical: 5
+background-color if $MOUSE-IN: $menu-hover-bg
+color: $menu-link
+color if $MOUSE-IN: $menu-link-active
+border-radius: 4
+
+
+-- ftd.row toggle:
+
+--- ftd.image:
+if: not $fpm.dark-mode
+src: https://res.cloudinary.com/dphj6havg/image/upload/v1640938217/dark-mode_mfy9hd.svg
+height: 18
+$on-click$: message-host enable-dark-mode
+align: center
+
+--- ftd.image:
+if:  $fpm.dark-mode
+src: https://res.cloudinary.com/dphj6havg/image/upload/v1641367492/light-mode_o0zne7.svg
+height: 18
+$on-click$: message-host enable-light-mode
+align: center
+
+
+
+
+
+-- ftd.column code:
+optional caption caption:
+body body:
+string lang:
+padding-bottom: 12
+padding-top: 12
+width: fill
+
+--- ftd.text:
+text: $caption
+if: $caption is not null
+color: #DCDCDC
+width: fill
+size: 14
+background-color: #3a404e
+padding-top: 10
+padding-bottom: 10
+padding-left: 20
+padding-right: 20
+border-top-radius: 4
+font: Open sans
+
+--- ftd.code:
+if: $fpm.dark-mode
+text: $body
+lang: $lang
+color: #4D4D4D
+width: fill
+size: 17
+line-height: 25
+padding-top: 10
+padding-left: 20
+padding-bottom: 10
+padding-right: 20
+background-color: #2b303b
+border-top-radius if $caption is null: 4
+border-bottom-radius: 4
+border-width: 1
+overflow-x: auto
+
+--- ftd.code:
+if: not $fpm.dark-mode
+theme: InspiredGitHub
+text: $body
+lang: $lang
+color: #4D4D4D
+width: fill
+size: 17
+line-height: 25
+padding-top: 10
+padding-left: 20
+padding-bottom: 10
+padding-right: 20
+background-color: white
+border-top-radius if $caption is null: 4
+border-bottom-radius if $caption is null: 4
+border-color: grey
+border-width: 1
+overflow-x: auto
