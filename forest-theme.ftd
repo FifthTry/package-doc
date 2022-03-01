@@ -35,9 +35,9 @@
 -- integer max-width: 1000
 -- string github: NA
 -- optional string site-name:
--- string site-icon: /Forest-Theme/static/ftd-logo-desktop.png
--- string site-icon-mobile: /Forest-Theme/static/ftd-logo-mobile.png
--- string site-url: /Forest-Theme/sample/
+-- string site-icon: static/logo.svg
+-- string site-icon-mobile: static/logo.svg
+-- string site-url: /
 
 
 -- fpm.toc-item list header-toc:
@@ -53,6 +53,8 @@
 
 
 -- ftd.column page:
+optional caption title:
+optional body body:
 width: fill
 background-color: $neutral
 background-color if $fpm.dark-mode: $neutral-700
@@ -85,12 +87,29 @@ include-dark-mode-switcher: false
 
 
 
-
 --- container: ftd.main
 
 --- ftd.column:
 id: content-container
+max-width: 1104
+align: top
+padding-horizontal: 92
+padding-horizontal if $fpm.mobile: 20
+padding-vertical: 20
 width: fill
+
+
+
+--- tf.h0: $title
+
+--- ftd.column:
+id: inner
+width: fill
+
+--- tf.markdown:
+if: $body is not null
+body: $body
+
 
 --- container: ftd.main
 
@@ -166,6 +185,8 @@ id:  content-container
 
 
 -- ftd.column doc-page:
+optional caption title:
+optional body body:
 fpm.toc-item list toc: $toc
 fpm.toc-item list header-toc: $header-toc
 fpm.toc-item list header-left: $header-left
@@ -175,10 +196,12 @@ width: fill
 open: true
 append-at: main-container
 
---- doc-page-desktop:
+--- doc-page-desktop: 
 if: not $fpm.mobile
 id: main-container
 toc: $toc
+title: $title
+body: $body 
 footer-toc: $footer-toc
 header-toc: $header-toc
 header-left: $header-left
@@ -204,6 +227,8 @@ header-right: $header-right
 
 
 -- ftd.column doc-page-desktop:
+optional caption title: 
+optional body body:
 fpm.toc-item list toc: $toc
 fpm.toc-item list header-toc:
 fpm.toc-item list header-left:
@@ -255,6 +280,19 @@ padding-horizontal: 92
 padding-vertical: 20
 width: fill
 
+
+--- tf.h0: $title
+
+--- ftd.column:
+id: inner
+width: fill
+
+--- tf.markdown:
+if: $body is not null
+body: $body
+
+
+
 --- container: ftd.main
 
 --- footer:
@@ -270,6 +308,8 @@ footer-toc: $footer-toc
 
 
 -- ftd.column doc-page-mobile:
+optional caption title: 
+optional body body:
 fpm.toc-item list toc: $toc
 fpm.toc-item list header-toc:
 fpm.toc-item list header-left:
@@ -288,7 +328,7 @@ background-color if $fpm.dark-mode: $neutral-700
 toc-top-right: $header-toc
 toc-bottom-left: $header-left
 toc-bottom-right: $header-right
-site-logo: $site-icon
+site-logo: $site-icon-mobile
 site-url: $site-url
 background: $header-dark-color
 text-color: white
@@ -316,6 +356,18 @@ width: fill
 align: top
 padding-horizontal: 20
 padding-vertical: 20
+
+
+--- tf.h0: $title
+
+--- ftd.column:
+id: inner
+width: fill
+
+--- tf.markdown:
+if: $body is not null
+body: $body
+
 
 --- container: ftd.main
 
