@@ -2,33 +2,18 @@
 -- import: fifthtry.github.io/package-doc/doc as pd
 -- import: fifthtry.github.io/package-doc/forest-theme as ft
 
+-- fpm.theme-color: red
+
 -- ft.toc:
 $processor$: toc
 
-- Introduction: index.html
-- Quickstart: index.html
-- Getting started: index.html
-  - Deploy: index.html
+- Home: index.html
+- Docs: docs/
 
 -- ft.header-toc:
 $processor$: toc
 
-- Quickstart: index.html
-- Use this package: https://github.com/FifthTry/fpm-book/generate/
-
-
--- ft.header-left:
-$processor$: toc
-
-- Home: index.html
-- About: index.html
-
--- ft.header-right:
-$processor$: toc
-
-- Latest Packages: index.html
-
-
+- Github: https://github.com/FifthTry/fpm-book/generate/
 
 
 -- ft.doc-page:
