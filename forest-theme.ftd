@@ -37,7 +37,7 @@
 -- optional string site-name:
 -- string site-icon: static/logo.svg
 -- string site-icon-mobile: static/logo.svg
--- string site-url: /
+-- string site-url: Package-docs
 
 
 -- fpm.toc-item list header-toc:

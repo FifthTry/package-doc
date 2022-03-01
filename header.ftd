@@ -310,7 +310,7 @@ font-family: $font-family
 
 -- ftd.column header-desktop:
 optional string site-logo:
-string site-url: 
+optional string site-url: 
 string current-url:
 fpm.toc-item list toc-top-right:
 fpm.toc-item list toc-bottom-left:
@@ -350,6 +350,11 @@ src: $site-logo
 if: $site-logo is not null
 width: $logo-width
 height: $logo-height
+
+
+--- site-url: $site-url
+if: $site-url is not null
+color: $text-color
 
 
 --- ftd.row:
@@ -392,8 +397,6 @@ menu-link-active: $menu-link-active
 menu-border: $menu-border
 font-family: $font-family
 
-/--- site-url: $site-url
-if: $site-url is not null
 
 --- container: ftd.main
 
@@ -462,11 +465,14 @@ font-family: $font-family
 -- ftd.text site-url: $title
 caption title:
 optional string font-family:
+string color: #FFFFFF
 size: 24
 font: $font-family
 line-height: 22
 align: center
 white-space: nowrap
+color: $color
+padding-left: 15
 
 
 
