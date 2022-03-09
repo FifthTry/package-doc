@@ -115,17 +115,11 @@ body: $body
 
 
 
--- ftd.column h2-raw:
-caption title:
-optional body body:
-width: fill
-padding-bottom: 12
-boolean open: true
-append-at: inner
 
---- ftd.text:
-caption $title:
-text: $title
+
+
+-- ftd.text h2-text: $title
+caption title:
 size: 26
 line-height: 32
 color: $neutral-800
@@ -134,19 +128,6 @@ style: bold
 padding-bottom: 8
 padding-top: 16
 font: apple-system
-$on-click$: toggle $open
-
---- ftd.column:
-id: inner
-if: $open
-width: fill
-
---- markdown:
-if: $body is not null
-body: $body
-
-
-
 
 
 
