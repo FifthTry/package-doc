@@ -2,6 +2,7 @@
 -- import: fpm
 -- import: fifthtry.github.io/package-doc/dark-mode-switcher as dms
 -- import: fifthtry.github.io/package-doc/doc as pd
+-- import: fifthtry.github.io/roboto/assets as roboto-assets
 
 -- boolean sidebar-open: false
 
@@ -204,7 +205,7 @@ string menu-link: #5469d4
 string menu-link-active: #1a1f36 
 string menu-border: #EEEEEE
 string width: fill
-string font-family: Roboto 
+string font-family: $roboto-assets.fonts.Roboto
 boolean include-dark-mode-switcher: true
 width: $width
 padding-left if not $fpm.mobile: 10

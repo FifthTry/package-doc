@@ -3,6 +3,7 @@
 -- import: fifthtry.github.io/package-doc/dark-mode-switcher as dms
 -- import: fifthtry.github.io/package-doc/header as h
 -- import: fifthtry.github.io/package-doc/typography as tf
+-- import: fifthtry.github.io/roboto/assets as roboto-assets
 
 
 
@@ -392,7 +393,7 @@ min-width: fit-content
 padding-left: 10
 padding-top: 6
 padding-bottom: 6
-font: Roboto
+font: $roboto-assets.fonts.Roboto
 color: $neutral
 
 
@@ -412,7 +413,7 @@ min-width: fit-content
 padding-left: 10
 padding-top: 3
 padding-bottom: 8
-font: Roboto
+font: $roboto-assets.fonts.Roboto
 color: $neutral
 style: semi-bold
 
@@ -526,7 +527,7 @@ style: bold
 color: $neutral
 width: percent 75
 position: center
-font: Roboto
+font: $roboto-assets.fonts.Roboto
 
 --- ftd.image:
 src: $image
@@ -572,7 +573,7 @@ color: $neutral
 padding-horizontal: 20
 position: center
 text-align: center
-font: Roboto
+font: $roboto-assets.fonts.Roboto
 
 --- container: ftd.main
 
@@ -598,7 +599,7 @@ color: $color
 border-radius: 6
 padding-vertical: 15
 padding-horizontal: 40
-font: Roboto
+font: $roboto-assets.fonts.Roboto
 size: 20
 style: semi-bold
 
@@ -616,7 +617,7 @@ text-align: center
 color: #25c19f
 background-color: #20232a
 width: fill
-font: Roboto
+font: $roboto-assets.fonts.Roboto
 
 
 
@@ -640,7 +641,7 @@ min-width: fit-content
 padding-left: 10
 padding-top: 3
 padding-bottom: 3
-font: Roboto
+font: $roboto-assets.fonts.Roboto
 color: $neutral-700
 color if $fpm.dark-mode: $neutral-200
 
@@ -705,7 +706,7 @@ color if $fpm.dark-mode: $neutral
 style: italic
 padding-bottom: 8
 padding-top: 16
-font: Roboto
+font: $roboto-assets.fonts.Roboto
 $on-click$: toggle $open
 
 --- ftd.column:
@@ -856,7 +857,7 @@ align: center
 --- ftd.text: $title
 width: fill
 size: 22
-font: Roboto
+font: $roboto-assets.fonts.Roboto
 width: fill
 text-align: center
 style: bold
@@ -867,7 +868,7 @@ text: $body
 width: fill
 size: 15
 line-height: 26
-font: Roboto
+font: $roboto-assets.fonts.Roboto
 width: fill
 text-align: center
 color if $fpm.dark-mode: $neutral
@@ -924,7 +925,7 @@ align: center
 --- ftd.text: $title
 width: fill
 size: 20
-font: Roboto
+font: $roboto-assets.fonts.Roboto
 width: fill
 text-align: center
 style: bold
@@ -933,7 +934,7 @@ color if $fpm.dark-mode: $neutral
 --- ftd.text: $designation
 width: fill
 size: 14
-font: Roboto
+font: $roboto-assets.fonts.Roboto
 width: fill
 text-align: center
 color if $fpm.dark-mode: $neutral
@@ -943,7 +944,7 @@ text: $body
 width: fill
 size: 15
 line-height: 26
-font: Roboto
+font: $roboto-assets.fonts.Roboto
 width: fill
 text-align: center
 color if $fpm.dark-mode: $neutral
@@ -1136,7 +1137,7 @@ style: semi-bold
 anchor: parent
 top: 5
 left: 0
-font: Roboto
+font: $roboto-assets.fonts.Roboto
 background-color: #919191
 padding-horizontal: 20
 padding-vertical: 5
@@ -1146,7 +1147,7 @@ color: white
 --- ftd.text: $cta-text
 if: $active
 size: 15
-font: Roboto
+font: $roboto-assets.fonts.Roboto
 text-align: center
 link: $link
 anchor: parent
@@ -1163,7 +1164,7 @@ padding-horizontal: 20
 --- ftd.text: $cta-text
 if: not $active
 size: 15
-font: Roboto
+font: $roboto-assets.fonts.Roboto
 text-align: center
 anchor: parent
 bottom: 30
@@ -1204,7 +1205,7 @@ style: semi-bold
 anchor: parent
 top: 5
 left: 0
-font: Roboto
+font: $roboto-assets.fonts.Roboto
 background-color: #919191
 padding-horizontal: 20
 padding-vertical: 5
@@ -1222,7 +1223,7 @@ id: link-row
 --- ftd.text: Live Preview
 size: 15
 if: $live_preview is not null
-font: Roboto
+font: $roboto-assets.fonts.Roboto
 text-align: center
 link: $live_preview
 color: white
@@ -1234,7 +1235,7 @@ margin-right: 5
 
 --- ftd.text: Create
 size: 15
-font: Roboto
+font: $roboto-assets.fonts.Roboto
 text-align: center
 link: $link
 color: white
@@ -1281,7 +1282,7 @@ link: $link
 size: 16
 color: $neutral-700
 color if $fpm.dark-mode: white
-font: Roboto
+font: $roboto-assets.fonts.Roboto
 style: medium
 
 --- ftd.image:
@@ -1295,7 +1296,7 @@ width: 16
 if: $link is null
 color: $neutral-600
 color if $fpm.dark-mode: white
-font: Roboto
+font: $roboto-assets.fonts.Roboto
 style: medium
 
 
