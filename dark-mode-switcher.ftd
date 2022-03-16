@@ -52,7 +52,6 @@ menu-bg:  #FFFFFF
 menu-link: #6C7384
 menu-link-active: #7CC4FA
 position-left: true
-dark-menu-bg: #212121
 
 
 
@@ -72,16 +71,13 @@ dark-menu-bg: #212121
 
 -- ftd.column switcher:
 boolean open: false
-string background: #F5f5f5
-string text-color: #333333
-string dark-text-color: #D9D9D9
-string menu-border: #cccccc
-string font-family: Roboto
-string menu-bg:  #FFFFFF
-string dark-menu-bg: #212121
-/string menu-hover-bg: #EEEEEE
-string menu-link: #6C7384
-string menu-link-active: #7CC4FA
+string background: $fpm.design.color.region
+string text-color: $fpm.design.color.on-region
+string menu-border: $fpm.design.color.secondary-action
+string font-family: $fpm.design.type.body-small
+string menu-bg:  $fpm.design.color.region
+string menu-link: $fpm.design.color.on-region
+string menu-link-active: $fpm.design.color.on-region
 $on-click$: toggle $open
 $on-click-outside$: $open=false
 string dark-polygon-up: -/fifthtry.github.io/dark-mode-switcher/images/dark/polygon-up.png
@@ -137,11 +133,9 @@ if: $fpm.follow-system-dark-mode
 src: $system-mode-active
 
 
-
 --- ftd.column:
 if: $open
 background-color: $menu-bg
-background-color if $fpm.dark-mode: $dark-menu-bg
 width: 180
 border-radius: 4
 anchor: parent
@@ -251,7 +245,6 @@ is-active: $fpm.follow-system-dark-mode
 
 -- ftd.row t-light: 
 caption text:
-/string menu-hover-bg: 
 string menu-link: 
 optional string menu-link-active:  
 optional string light-mode-default: 
@@ -309,7 +302,6 @@ padding-left: 10
 
 -- ftd.row t-dark: 
 caption text:
-/string menu-hover-bg: 
 string menu-link: 
 optional string menu-link-active:  
 optional string dark-mode-default:
@@ -369,7 +361,6 @@ padding-left: 10
 
 -- ftd.column t-system: 
 caption text:
-/string menu-hover-bg: 
 string menu-link: 
 optional string menu-link-active:  
 optional string system-mode-default:

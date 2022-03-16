@@ -12,8 +12,7 @@ spacing: 10
 $on-click$: toggle $open
 width: fill
 border-left: 5
-border-color: gray
-border-color if $fpm.dark-mode: rgb(58, 64, 78)
+border-color: $fpm.design.color.brand.on-region
 padding: 20
 
 --- tf.h2-text: $title
@@ -32,6 +31,14 @@ if: $open
 $body
 
 
+
+
+
+
+
+
+
+
 -- ftd.column output:
 caption caption:
 body body:
@@ -43,8 +50,7 @@ append-at: output-container
 boolean reference-open: false
 padding-left: 20
 border-left: 5
-border-color: gray
-border-color if $fpm.dark-mode: rgb(58, 64, 78)
+border-color: $fpm.design.color.brand.on-region
 margin-top: 30
 margin-bottom: 20
 padding-bottom: 10
@@ -56,24 +62,20 @@ padding-bottom: 10
 $body
 
 --- ftd.text: Output
-color: #dcdcdc
-background-color: #3a404e
+color: $fpm.design.color.brand.on-region
+background-color: $fpm.design.color.brand.region
 border-top-radius: 2
 padding-vertical: 10
 padding-horizontal: 20
-size: 16
+role: $fpm.design.type.body-large
 $on-click$: toggle $reference-open
-
 
 --- ftd.column:
 width: fill
-background-color: #f5f5f5
-background-color if $fpm.dark-mode: #2b303b
+background-color: $fpm.design.color.brand.region
 border-radius: 2
 border-width: 1
-border-color: gray
-border-color if $fpm.dark-mode: rgb(58, 64, 78)
-
+border-color: $fpm.design.color.brand.on-region
 
 --- ftd.image:
 if: $reference-open
@@ -85,15 +87,11 @@ padding-vertical: 30
 padding-horizontal: 20
 margin-bottom: 10
 
-
 --- ftd.column:
 width: fill
 id: output-container
 padding-vertical: 30
 padding-horizontal: 20
-
-
-
 
 
 
@@ -126,6 +124,8 @@ $body
 
 
 
+
+
 -- ftd.column component:
 caption title:
 string name:
@@ -146,6 +146,10 @@ $body
 
 
 
+
+
+
+
 -- ftd.column package:
 caption title:
 string name:
@@ -159,10 +163,9 @@ anchor: window
 right: 50
 bottom: 100
 padding: 10
-background-color if $fpm.dark-mode: rgb(43, 48, 59)
-background-color: rgb(253, 246, 227)
+background-color: $fpm.design.color.brand.region
 border-width: 1
-border-color if $fpm.dark-mode: rgb(58, 64, 78)
+border-color: $fpm.design.color.brand.on-region
 border-radius: 4
 z-index: 99999999999999
 
@@ -187,40 +190,19 @@ caption title:
 string value:
 padding: 10
 border-width: 1
-border-color if $fpm.dark-mode: rgb(58, 64, 78)
+border-color: $fpm.design.color.brand.on-region
 spacing: 7
 width: fill
-background-color: rgb(253, 246, 227)
-background-color if $fpm.dark-mode: rgb(43, 48, 59)
+background-color: $fpm.design.color.brand.region
 border-radius: 4
 
 --- ftd.text: $title
-style: bold
-color if $fpm.dark-mode: rgb(235, 203, 139)
+role: $fpm.design.type.body-medium
 
 --- ftd.text: $value
-color if $fpm.dark-mode: rgba(220,220,220,1)
-font: monospace
+color: $fpm.design.color.brand.on-region
+role: $fpm.design.type.body-medium
 move-down: 2
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

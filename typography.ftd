@@ -97,6 +97,9 @@ body: $body
 
 
 
+
+
+
 -- ftd.column h2:
 caption title:
 optional body body:
@@ -125,6 +128,8 @@ width: fill
 --- markdown:
 if: $body is not null
 body: $body
+
+
 
 
 
@@ -171,75 +176,6 @@ body: $body
 
 
 
--- ftd.column h4:
-caption title:
-optional body body:
-width: fill
-region: h4
-boolean open: true
-append-at: inner
-
---- ftd.text:
-caption $title:
-text: $title
-region: title
-role: $fpm.design.type.headline-small
-color: $fpm.design.color.brand.on-region
-style: bold
-padding-bottom: 12
-padding-top: 34
-$on-click$: toggle $open
-
---- ftd.column:
-id: inner
-if: $open
-width: fill
-
---- markdown:
-if: $body is not null
-body: $body
-
-
-
-
-
-
-
-
-
-
--- ftd.column h5:
-caption title:
-optional body body:
-width: fill
-region: h5
-boolean open: true
-append-at: inner
-
---- ftd.text:
-caption $title:
-text: $title
-region: title
-role: $fpm.design.type.headline-small
-color: $fpm.design.color.brand.on-region
-style: bold
-padding-bottom: 12
-padding-top: 34
-$on-click$: toggle $open
-
---- ftd.column:
-id: inner
-if: $open
-width: fill
-
---- markdown:
-if: $body is not null
-body: $body
-
-
-
-
-
 
 -- ftd.text markdown:
 body body:
@@ -274,4 +210,12 @@ if: $value is not null
 
 --- ftd.text: $default
 if: $value is null
+
+
+
+
+
+
+
+
 
