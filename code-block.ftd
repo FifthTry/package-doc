@@ -1,10 +1,90 @@
 -- import: fpm
+-- import: fifthtry.github.io/package-doc/doc as pd
+
+-- ftd.column:
+id: code-wrap
+width: fill
+align: center
+spacing: 20
+padding-horizontal: 50
+padding-vertical: 20
+background-color: $fpm.design.color.brand.region
+
+-- pd.package: Code Block Component for FPM Packages
+name: fifthtry.github.io/code-block
+
+This package can be used to show source code in any document.
+
+-- ftd.text: Output on browser will as below:
+padding-top: 20
+
+
+-- h2: How to add: onto your project:
+
+
+-- ftd.column:
+width: percent 50
+
+-- code: Add this to FPM.ftd
+lang: ftd
+
+\-- fpm.dependency: fifthtry.github.io/code-block as cb
+
+
+-- code: Then use the component:
+lang: ftd
+
+\-- fpm.dependency: fifthtry.github.io/code-block as cb
+
+\-- import: cb
+
+\-- cb.code:
+if: $caption is not null
+caption: $caption
+lang: $lang
+
+$body
+
+-- ftd.text: `lang` is the file name extension.
+
+-- ftd.text: `caption` is the the title/caption of code block.
+size: 20
+padding-bottom: 10
+
+-- ftd.text: `lang` is the file name extension.
+size: 20
+padding-bottom: 10
+
+-- ftd.text: `body` is main body of the code block.
+size: 20
+padding-bottom: 10
+
+-- h2: Usage: how to write
+
+-- code: How to write code block of image shown above
+lang: ftd
+
+\-- cb.code: hello world ftd
+lang: ftd
+
+\-- string msg: hello world
+\-- ftd.text: $msg
+
+
+-- h2: Output: of above code snippet
+
+-- code: hello world ftd
+lang: ftd
+
+\-- string msg: hello world
+\-- ftd.text: $msg
+
 
 
 -- ftd.column code:
 optional caption caption:
 body body:
-optional string lang: ftd
+string lang:
 padding-bottom: 12
 padding-top: 12
 width: fill
@@ -14,13 +94,12 @@ text: $caption
 if: $caption is not null
 color: #DCDCDC
 width: fill
-size: 16
-size if $fpm.mobile: 14
+size: 14
 background-color: #3a404e
-padding-vertical: 10
-padding-horizontal: 20
-padding-vertical if $fpm.mobile: 7
-padding-horizontal if $fpm.mobile: 14
+padding-top: 10
+padding-bottom: 10
+padding-left: 20
+padding-right: 20
 border-top-radius: 4
 font: Open sans
 
@@ -30,13 +109,12 @@ text: $body
 lang: $lang
 color: #4D4D4D
 width: fill
-size: 16
-size if $fpm.mobile: 14
+size: 17
 line-height: 25
-padding-vertical: 10
-padding-horizontal: 20
-padding-vertical if $fpm.mobile: 0
-padding-horizontal if $fpm.mobile: 14
+padding-top: 10
+padding-left: 20
+padding-bottom: 10
+padding-right: 20
 background-color: #2b303b
 border-top-radius if $caption is null: 4
 border-bottom-radius: 4
@@ -45,23 +123,60 @@ overflow-x: auto
 
 --- ftd.code:
 if: not $fpm.dark-mode
-theme: Solarized (light)
+theme: InspiredGitHub
 text: $body
 lang: $lang
 color: #4D4D4D
 width: fill
-size: 16
-size if $fpm.mobile: 14
+size: 17
 line-height: 25
-padding-vertical: 10
-padding-horizontal: 20
-padding-vertical if $fpm.mobile: 0
-padding-horizontal if $fpm.mobile: 14
-background-color: rgb(253, 246, 227)
+padding-top: 10
+padding-left: 20
+padding-bottom: 10
+padding-right: 20
+background-color: white
 border-top-radius if $caption is null: 4
 border-bottom-radius if $caption is null: 4
 border-color: grey
 border-width: 1
 overflow-x: auto
 
+-- ftd.column h1:
+caption title:
+optional body body:
+width: fill
+region: h1
+padding-bottom: 12
 
+--- ftd.text:
+caption $title:
+text: $title
+region: title
+size: 30
+line-height: 40
+color: #000
+color if $fpm.dark-mode: #fff
+style: bold
+padding-bottom: 8
+padding-top: 16
+font: apple-system
+
+-- ftd.column h2:
+caption title:
+optional body body:
+width: fill
+region: h2
+padding-bottom: 12
+
+--- ftd.text:
+caption $title:
+text: $title
+region: title
+size: 24
+line-height: 30
+color: #000
+color if $fpm.dark-mode: #fff
+style: bold
+padding-bottom: 8
+padding-top: 16
+font: apple-system

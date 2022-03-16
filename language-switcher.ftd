@@ -1,0 +1,575 @@
+-- import: fpm
+-- import: fifthtry.github.io/package-doc/doc as pd
+
+-- ftd.column:
+padding-horizontal: 50
+padding-vertical: 20
+width: fill
+background-color: #cccccc
+
+
+-- pd.package: Language Switcher
+name: fifthtry.github.io/language-switcher
+
+This component can be used as a site language switcher.
+
+
+-- pd.component: Language Switcher
+name: fifthtry.github.io/language-switcher.switcher
+
+This is the main language switcher.
+
+
+
+-- pd.hidden-code: toc definitions
+
+
+\-- fpm.toc-item list languages:
+$processor$: toc
+
+- English: /
+- Hindi: /hi
+- Spanish: /es
+- German: /de
+
+
+
+
+-- pd.output: Basic usage example
+reference: -/fifthtry.github.io/language-switcher/images/language-switcher-light.png
+reference-width: 200
+
+\-- switcher:
+languages: $languages
+current: English
+switcher-text: EN
+font: Roboto
+size: 14
+text-color: #000000
+text-color-dark: #FFFFFF
+horizontal-position: -30
+
+
+
+--- switcher:
+languages: $languages
+current: English
+switcher-text: EN
+font: Roboto
+size: 14
+text-color: #000000
+text-color-dark: #FFFFFF
+horizontal-position: -30
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- fpm.toc-item list languages:
+$processor$: toc
+
+- English: /
+- Hindi: /hi
+- Spanish: /es
+- German: /de
+
+
+
+
+
+
+
+
+	
+
+-- ftd.column switcher:
+boolean open: false
+fpm.toc-item list languages: $fpm.language-toc
+optional string current: $fpm.language
+optional intger vertical-position: 8
+optional integer horizontal-position: 0
+string dark-radio-default: -/fifthtry.github.io/language-switcher/images/dropdown-icons/dark/radio-default.png
+string dark-radio-active: -/fifthtry.github.io/language-switcher/images/dropdown-icons/dark/radio-active.png
+string light-radio-default: -/fifthtry.github.io/language-switcher/images/dropdown-icons/light/radio-default.png
+string light-radio-active: -/fifthtry.github.io/language-switcher/images/dropdown-icons/light/radio-active.png
+string dark-polygon-up: -/fifthtry.github.io/language-switcher/images/dropdown-icons/dark/polygon-up.png
+string light-polygon-up: -/fifthtry.github.io/language-switcher/images/dropdown-icons/light/polygon-up.png
+string dark-polygon-down: -/fifthtry.github.io/language-switcher/images/dropdown-icons/dark/polygon-down.png
+string light-polygon-down: -/fifthtry.github.io/language-switcher/images/dropdown-icons/light/polygon-down.png
+string dark-lang-icon: -/fifthtry.github.io/language-switcher/images/dropdown-icons/dark/lang-icon.png
+string light-lang-icon: -/fifthtry.github.io/language-switcher/images/dropdown-icons/light/lang-icon.png
+string font: Roboto
+integer size: 14
+if: $languages is not empty
+z-index: 99999
+optional string switcher-text: $fpm.language
+width if $fpm.mobile: fill
+$on-click$: toggle $open
+$on-click-outside$: $open = false
+string background: #F5f5f5
+string background-dark-mode: #232324
+string text-color: #333333
+string menu-border: #cccccc
+string menu-border-dark: #2E2D2D
+string text-color-dark: #FFFFFF 
+string menu-hover-color: #F48D0C
+string current-lang-color: #F48D0C
+string footer-lang-color: #61B7F5
+
+
+--- ftd.column:
+spacing: 4
+
+--- ftd.image: 
+if: not $fpm.dark-mode
+src: $light-lang-icon
+anchor: parent
+right: -27
+top: -1
+
+
+--- ftd.image: 
+if: $fpm.dark-mode
+src: $dark-lang-icon
+anchor: parent
+right: -27
+top: -3
+
+
+--- ftd.row:
+if: not $fpm.dark-mode
+
+--- ftd.image:
+if: not $fpm.mobile
+src: $light-polygon-down
+anchor: parent
+right: -30
+bottom: -18
+
+--- container: ftd.main
+
+--- ftd.row:
+if: $fpm.dark-mode
+
+--- ftd.image:
+if: not $fpm.mobile
+src: $dark-polygon-down
+anchor: parent
+right: -30
+bottom: -18
+
+--- container: ftd.main
+
+--- ftd.text: $switcher-text
+if: $switcher-text is not null
+font: $font
+size: $size
+line-height: 28
+padding-right: 5
+color: $text-color
+color if $fpm.dark-mode: $text-color-dark
+
+
+--- ftd.column:
+if: not $fpm.mobile
+margin-top: 0
+
+--- ftd.column:
+if: $open
+anchor: parent
+right: -30
+bottom: -8
+
+--- ftd.image:
+if: not $fpm.dark-mode
+src: $light-polygon-up
+
+--- ftd.image:
+if: $fpm.dark-mode
+src: $dark-polygon-up
+
+--- container: ftd.main
+
+--- ftd.column:
+if: $fpm.mobile
+width: fill
+
+--- ftd.column:
+if: not $open
+anchor: parent
+right: 30
+bottom: 8
+
+--- ftd.image:
+src: -/fifthtry.github.io/language-switcher/images/mobile-menu-arrw-right.png
+
+--- container: ftd.main
+
+--- ftd.column:
+if: $fpm.mobile
+width: fill
+
+--- ftd.column:
+if: $open
+anchor: parent
+right: 30
+top: -25
+
+--- ftd.image:
+src: -/fifthtry.github.io/language-switcher/images/mobile-menu-arrw-up.png
+
+
+--- container: ftd.main
+
+--- ftd.column:
+if: not $fpm.mobile
+
+--- ftd.column:
+if: $open
+background-color: $background
+background-color if $fpm.dark-mode: $background-dark-mode
+border-radius: 4
+border-width: 1
+border-color: $menu-border
+border-color if $fpm.dark-mode: $menu-border-dark
+width: 180
+border-width: 1
+border-radius: 6
+anchor: parent
+top: $vertical-position
+left: $horizontal-position
+shadow-offset-x: 3
+shadow-offset-y: 3
+shadow-size: 1
+shadow-blur: 5
+shadow-color: rgba (0, 0, 0, 0.25)
+
+
+--- active: $current
+dark-radio-active: $dark-radio-active
+light-radio-active: $light-radio-active
+font: $font
+url: /
+size: $size
+current-lang-color: $current-lang-color
+
+--- lang-list-desktop: $o.title
+if: not $fpm.mobile
+$loop$: $languages as $o
+url: $o.url
+font: $font
+size: $size
+dark-radio-default: $dark-radio-default
+dark-radio-active: $dark-radio-active
+light-radio-default: $light-radio-default
+light-radio-active: $light-radio-active
+text-color: $text-color
+text-color-dark: $text-color-dark
+menu-hover-color: $menu-hover-color
+
+--- footer: Translation Status
+link: $fpm.translation-status-url
+font: $font
+size: $size
+footer-lang-color: $footer-lang-color
+
+--- container: ftd.main
+
+--- ftd.column:
+if: $fpm.mobile
+
+--- ftd.column:
+if: $open
+width: 180
+
+--- active: $current
+dark-radio-active: $dark-radio-active
+light-radio-active: $light-radio-active
+font: $font
+url: /
+size: $size
+current-lang-color: $current-lang-color
+
+--- lang-list-desktop: $o.title
+if: not $fpm.mobile
+$loop$: $languages as $o
+url: $o.url
+font: $font
+size: $size
+dark-radio-default: $dark-radio-default
+dark-radio-active: $dark-radio-active
+light-radio-default: $light-radio-default
+light-radio-active: $light-radio-active
+text-color: $text-color
+text-color-dark: $text-color-dark
+menu-hover-color: $menu-hover-color
+
+--- lang-list-mobile: $o.title
+if: $fpm.mobile
+$loop$: $languages as $o
+url: $o.url
+font: $font
+size: $size
+text-color: $text-color
+text-color-dark: $text-color-dark
+menu-hover-color: $menu-hover-color
+
+--- footer: Translation Status
+link: $fpm.translation-status-url
+font: $font
+size: $size
+footer-lang-color: $footer-lang-color
+
+-- ftd.row lang-list-desktop:
+spacing: 5 
+caption text: 
+string url:
+string dark-radio-default: 
+string dark-radio-active: 
+string light-radio-default: 
+string light-radio-active: 
+string menu-hover-color:
+string text-color:
+string text-color-dark:
+string font:
+integer size:
+width: fill
+padding-horizontal: 10
+padding-vertical: 8
+boolean showactive: false
+$on-mouse-enter$: $showactive = true
+$on-mouse-leave$: $showactive = false
+
+
+--- ftd.row:
+if: not $showactive
+
+
+--- ftd.image:
+if: not $fpm.dark-mode
+src: $light-radio-default
+padding-right: 10
+
+
+--- ftd.image:
+if: $fpm.dark-mode
+src: $dark-radio-default
+padding-right: 10
+
+
+--- ftd.text: $text
+width: fill
+line-height: 16
+link: $url
+font: $font
+color: $text-color
+color if $fpm.dark-mode: $text-color-dark
+size: $size
+
+
+--- container: ftd.main
+
+--- ftd.row:
+if: $showactive
+
+
+--- ftd.image:
+if: not $fpm.dark-mode
+src: $light-radio-active
+padding-right: 10
+
+
+--- ftd.image:
+if: $fpm.dark-mode
+src: $dark-radio-active
+padding-right: 10
+
+
+--- ftd.text: $text
+width: fill
+line-height: 16
+link: $url
+font: $font
+color: $menu-hover-color
+color if $fpm.dark-mode: $menu-hover-color
+size: $size
+
+
+
+-- ftd.row lang-list-mobile:
+spacing: 5 
+caption text: 
+string url:
+string font:
+string text-color:
+string text-color-dark:
+string menu-hover-color:
+integer size:
+width: fill
+padding-horizontal: 10
+padding-vertical: 8
+boolean showactive: false
+$on-mouse-enter$: $showactive = true
+$on-mouse-leave$: $showactive = false
+
+
+--- ftd.row:
+if: not $showactive
+
+--- ftd.text: $text
+width: fill
+line-height: 16
+link: $url
+font: $font
+color: $text-color
+color if $fpm.dark-mode: $text-color-dark
+size: $size
+
+
+--- container: ftd.main
+
+--- ftd.row:
+if: $showactive
+
+--- ftd.text: $text
+width: fill
+line-height: 16
+link: $url
+font: $font
+color: $menu-hover-color
+color if $fpm.dark-mode: $menu-hover-color
+size: $size
+
+
+
+
+
+
+
+
+
+
+
+
+-- ftd.row active: 
+caption text: 
+string url:
+string font:
+string current-lang-color:
+width: fill
+padding-vertical: 10
+padding-bottom: 0
+padding-horizontal: 15
+padding-horizontal if $fpm.mobile: 10
+string light-radio-active:
+string dark-radio-active:
+integer size:
+margin-bottom: 5
+
+
+--- ftd.row:
+if: not $fpm.mobile
+width: fill
+border-bottom: 1
+border-bottom if $fpm.mobile: 0
+border-color: #EBEBEB
+border-color if $fpm.dark-mode: #343434
+padding-bottom: 10
+
+
+--- ftd.image:
+if: not $fpm.dark-mode
+src: $light-radio-active
+padding-right: 10
+
+--- ftd.image:
+if: $fpm.dark-mode
+src: $dark-radio-active
+padding-right: 10
+
+
+--- ftd.text: $text
+width: fill
+line-height: 16
+link: $url
+font: $font
+size: $size
+color: $current-lang-color
+color if $fpm.dark-mode: $current-lang-color
+
+--- container: ftd.main
+
+--- ftd.row:
+if: $fpm.mobile
+width: fill
+border-bottom: 1
+border-bottom if $fpm.mobile: 0
+border-color: #EBEBEB
+border-color if $fpm.dark-mode: #343434
+padding-bottom: 10
+
+
+--- ftd.text: $text
+if: $fpm.mobile
+width: fill
+line-height: 16
+link: $url
+font: $font
+size: $size
+color: $current-lang-color
+color if $fpm.dark-mode: $current-lang-color
+
+
+
+
+
+
+
+
+
+-- ftd.row footer: $footer
+caption footer:
+string link:
+string font:
+integer size:
+string footer-lang-color:
+width: fill
+padding-vertical: 10
+padding-top: 0
+padding-horizontal: 15
+padding-horizontal if $fpm.mobile: 10
+
+--- ftd.row:
+width: fill
+border-top: 1
+border-top if $fpm.mobile: 0
+border-color: #EBEBEB
+border-color if $fpm.dark-mode: #343434
+padding-top: 10
+
+--- ftd.text: $footer
+width: fill
+line-height: 16
+link: $link
+font: $font
+size: $size
+color: $footer-lang-color
+color if $fpm.dark-mode: $footer-lang-color
+
+

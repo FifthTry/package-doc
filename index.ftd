@@ -2,7 +2,7 @@
 -- import: fifthtry.github.io/package-doc/doc as pd
 -- import: fifthtry.github.io/package-doc/forest-theme as ft
 
--- fpm.theme-color: red
+/-- fpm.theme-color: red
 
 -- ft.toc:
 $processor$: toc
