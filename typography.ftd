@@ -219,3 +219,21 @@ if: $value is null
 
 
 
+
+-- ftd.column h2-text:
+caption title:
+optional body body:
+width: fill
+region: h2
+padding-bottom: 12
+boolean open: true
+
+--- ftd.text:
+caption $title:
+text: $title
+region: title
+role: $fpm.design.type.headline-small
+color: $fpm.design.color.brand.on-region
+padding-bottom: 8
+padding-top: 16
+$on-click$: toggle $open

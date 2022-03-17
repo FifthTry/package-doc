@@ -1,4 +1,5 @@
 -- import: fpm
+-- import: fifthtry.github.io/package-doc/code-block as cb
 
 
 
@@ -52,7 +53,7 @@ dark-icon-path: -/fifthtry.github.io/translation-components/static/translation-i
 
 $fpm.i18n.out-dated-body
 
---- code-block: The following changes has been made in English edition since last modification
+--- cb.code-block: The following changes has been made in English edition since last modification
 if: $fpm.translation-diff-open
 
 $fpm.diff
@@ -69,29 +70,6 @@ $fpm.diff
 
 
 
--- ftd.column code-block:
-caption title:
-body body:
-width: fill
-border-top: 1
-border-color: #5A6E75
-margin-top: 20
-boolean open: false
-
-
-
---- ftd.text: $title
-padding-vertical: 10
-font: apple-system
-size: 16
-color: #FFFFFF
-color $fpm.dark-mode: #FFFFFF
-
-
---- code:
-lang: diff
-
-$body
 
 
 
@@ -114,10 +92,6 @@ $body
 
 
 
-
-
-
-
 -- ftd.column header-sticky-title:
 caption title:
 boolean icon: true
@@ -125,8 +99,8 @@ optional body body:
 optional string button-text-main:
 optional string button-text-fallback:
 optional string green-title:
-optional string light-icon-path:
-optional string dark-icon-path:
+ftd.image-src light-icon-path:
+ftd.image-src dark-icon-path:
 optional string link-text:
 optional string code-body:
 width: fill
@@ -135,8 +109,7 @@ padding-horizontal: 50
 border-bottom-radius: 20
 margin-top: -20
 margin-bottom: 20
-background-color: #C5C5C5
-background-color if $fpm.dark-mode: #3B4B50
+background-color: $fpm.design.color.brand.region
 
 --- ftd.row:
 
@@ -159,11 +132,8 @@ margin-top: 4
 
 --- ftd.text: $title
 region: title
-color: #000000
-color if $fpm.dark-mode: #FFFFFF
-font: apple-system
-style: bold
-size: 30
+color: $fpm.design.color.brand.on-region
+role: $fpm.design.type.headline-medium
 
 --- container: ftd.main
 
@@ -179,12 +149,9 @@ body: $body
 --- container: ftd.main
 
 --- ftd.text: $green-title
-color: #3B4B50
-color if $fpm.dark-mode: #35CC00
 margin-top: -10
-size: 19
-line-height: 30
-font: apple-system
+color: $fpm.design.color.brand.on-region
+role: $fpm.design.type.headline-small
 
 
 --- container: ftd.main
@@ -202,17 +169,12 @@ $on-click$: stop-propagation
 $on-click$: prevent-default
 border-width: 1
 border-radius: 6
-border-color: #F09523
 padding-vertical: 10
 padding-horizontal: 25
-size: 19
-style: bold
-line-height: 22
-font: apple-system
-color: #FFFFFF
-color if $fpm.dark-mode: #FFFFFF
-background-color: #3B4B50
-background-color $fpm.dark-mode: #3B4B50
+border-color: $fpm.design.color.brand.primary-action
+role: $fpm.design.type.label-medium
+color: $fpm.design.color.brand.on-primary-action
+background-color: $fpm.design.color.brand.primary-action
 
 --- ftd.text: $button-text-fallback
 if: $fpm.is-fallback
@@ -221,27 +183,18 @@ $on-click$: stop-propagation
 $on-click$: prevent-default
 border-width: 1
 border-radius: 6
-border-color: #F09523
 padding-vertical: 10
 padding-horizontal: 25
-size: 19
-style: bold
-line-height: 22
-font: apple-system
-color: #FFFFFF
-color if $fpm.dark-mode: #FFFFFF
-background-color: #3B4B50
-background-color $fpm.dark-mode: #3B4B50
+border-color: $fpm.design.color.brand.secondary-action
+role: $fpm.design.type.label-medium
+color: $fpm.design.color.brand.on-secondary-action
+background-color: $fpm.design.color.brand.secondary-action
 
 
 --- ftd.text: $link-text
-size: 19
-style: bold
-line-height: 22
-font: apple-system
+role: $fpm.design.type.label-large
 padding-top: 10
-color: #000000
-color if $fpm.dark-mode: #F09523
+color: $fpm.design.color.brand.on-region
 $on-click$: message-host toggle-translation-diff
 
 
@@ -330,22 +283,18 @@ margin-bottom: 25
 spacing: 2
 
 --- ftd.text: $key
-color: #000000
-color if $fpm.dark-mode: #D0CFCF
-font: apple-system
+role: $fpm.design.type.body-medium
+color: $fpm.design.color.brand.on-region
 
 --- ftd.text: $value
 if: $value is not null
-color: #3EC5FF
-color if $fpm.dark-mode: #3EC5FF
-font: apple-system
-style: bold
+role: $fpm.design.type.body-medium
+color: $fpm.design.color.brand.on-region
 
 --- ftd.text: $default
 if: $value is null
-color: #3EC5FF
-color if $fpm.dark-mode: #3EC5FF
-font: apple-system
+role: $fpm.design.type.body-medium
+color: $fpm.design.color.brand.on-region
 
 
 
@@ -368,28 +317,21 @@ width: fill
 
 
 --- ftd.text: $key
-color: #000000
-color if $fpm.dark-mode: #D0CFCF
-font: apple-system
-size: 12
+role: $fpm.design.type.body-small
+color: $fpm.design.color.brand.on-region
 
 --- ftd.column:
 width: fill
 
 --- ftd.text: $value
 if: $value is not null
-color: #3EC5FF
-color if $fpm.dark-mode: #3EC5FF
-font: apple-system
-style: bold
-size: 14
+role: $fpm.design.type.body-small
+color: $fpm.design.color.brand.on-region
 
 --- ftd.text: $default
 if: $value is null
-color: #3EC5FF
-color if $fpm.dark-mode: #3EC5FF
-font: apple-system
-size: 14
+role: $fpm.design.type.body-small
+color: $fpm.design.color.brand.on-region
 
 
 
@@ -468,11 +410,10 @@ region: h0
 --- ftd.text:
 text: $title
 region: title
-size: 40
-color: black
-style: bold
+role: $fpm.design.type.headline-large
+text: $title
+color: $fpm.design.color.brand.on-region
 padding-bottom: 24
-font: apple-system
 
 --- container: ftd.main
 
@@ -630,8 +571,8 @@ data: $obj
 -- ftd.row icon-title-cell:
 boolean icon: true 
 caption title:
-optional string icon-path-light:
-optional string icon-path-dark:
+ftd.image-src icon-path-light:
+ftd.image-src icon-path-dark:
 optional integer font-size:
 optional integer margin-right:
 optional string column-width: fill
@@ -662,10 +603,8 @@ margin-right: $margin-right
 --- ftd.text: $title
 padding: 5
 text-align: left
-font: apple-system
-size: $font-size
-color: #153B46
-color if $fpm.dark-mode: #FFFFFF
+role: $fpm.design.type.body-small
+color: $fpm.design.color.brand.on-region
 
 
 
@@ -674,9 +613,8 @@ color if $fpm.dark-mode: #FFFFFF
 -- ftd.row icon-title-cell-home:
 boolean icon: true 
 caption title:
-optional string icon-path-light:
-optional string icon-path-dark:
-optional integer font-size:
+optional ftd.image-src icon-path-light:
+optional ftd.image-src icon-path-dark:
 optional integer margin-right:
 optional string column-width: fill
 width: $column-width
@@ -706,10 +644,8 @@ margin-right: $margin-right
 --- ftd.text: $title
 padding: 5
 text-align: left
-font: apple-system
-size: $font-size
-color: #FFFFFF
-color if $fpm.dark-mode: #FFFFFF
+role: $fpm.design.type.body-small
+color: $fpm.design.color.brand.on-region
 
 
 
@@ -727,9 +663,9 @@ optional string count:
 optional string icon-path:
 optional integer font-size:
 optional integer margin-right:
-optional string icon-path-light:
-optional string icon-path-dark:
-string title-color: #FA6C6C
+ftd.image-src icon-path-light:
+ftd.image-src icon-path-dark:
+ftd.color title-color: #FA6C6C
 boolean open: false
 width: fill
 
@@ -761,18 +697,14 @@ margin-right: $margin-right
 padding: 5
 padding if $count is not null: 0
 text-align: left
-font: apple-system
-size: $font-size
+role: $fpm.design.type.label-large
 color: $title-color
 
 --- ftd.text: $count
 if: $count is not null
-style: bold
 text-align: left
-font: apple-system
-size: $font-size
-color: #153B46
-color if $fpm.dark-mode: #D0CFCF
+role: $fpm.design.type.body-medium
+color: $fpm.design.color.brand.on-region
 margin-left: 15
 
 --- container: ftd.main
@@ -784,22 +716,18 @@ width: percent 20
 --- ftd.text: ﹀
 text-align: right
 width: fill
-size: 24
-style: bold
 margin-top: 5
 margin-right: 10
-color: #153B46
-color if $fpm.dark-mode: #FFFFFF
+role: $fpm.design.type.body-medium
+color: $fpm.design.color.brand.on-region
 
 /--- ftd.text: ︿
 text-align: right
 width: fill
-size: 24
-style: bold
 margin-top: 5
 margin-right: 10
-color: #153B46
-color if $fpm.dark-mode: #FFFFFF
+role: $fpm.design.type.body-medium
+color: $fpm.design.color.brand.on-region
 
 
 
@@ -819,10 +747,8 @@ width: fill
 padding-vertical: 10
 
 --- ftd.text: $title
-color: #153B46
-color if $fpm.dark-mode: #FFFFFF
-font: apple-system
-size: 14
+role: $fpm.design.type.body-medium
+color: $fpm.design.color.brand.on-region
 
 
 
@@ -1012,14 +938,10 @@ $loop$: $fpm.upto-date-files as $obj
 -- ftd.text markdown:
 body body:
 text: $body
-size: 19
-line-height: 30
-color: #000000
-color if $fpm.dark-mode: #E9E9E9
 padding-bottom: 10
 padding-top: 50
-font: apple-system
-
+role: $fpm.design.type.body-large
+color: $fpm.design.color.brand.on-region
 
 
 
@@ -1066,17 +988,15 @@ $body
 
 
 -- ftd.column language-status:
-background-color: #f3f3f3
+background-color: $fpm.design.color.brand.region
 width: fill
 max-width: 1000
 border-radius: 5
 
 --- ftd.row:
 width: fill
-background-color: #153B46
-background-color if $fpm.dark-mode: #153B46
-color: #FFFFFF
-color if $fpm.dark-mode: #FFFFFF
+background-color: $fpm.design.color.brand.region
+color: $fpm.design.color.brand.on-region
 padding: 10
 border-top-radius: 5
 
@@ -1145,43 +1065,42 @@ data: $obj
 fpm.all-language-status-data data:
 width: fill
 border-bottom: 1
-border-color: white
+border-color: $fpm.design.color.brand.on-region
 padding: 10
-color: #000000
-background-color: #D9DBDC
+color: $fpm.design.color.brand.on-region
+background-color: $fpm.design.color.brand.region
 
 
 --- ftd.text: $data.language
 link: $data.url
 width: percent 15
 padding: 5
-style: bold
 text-align: left
-font: apple-system
+role: $fpm.design.type.body-small
 
 --- ftd.integer:  $data.missing
 width: percent 15
 padding: 5
 text-align: center
-font: apple-system
+role: $fpm.design.type.body-small
 
 --- ftd.integer: $data.never-marked
 width: percent 22
 padding: 5
 text-align: center
-font: apple-system
+role: $fpm.design.type.body-small
 
 --- ftd.integer: $data.out-dated
 width: percent 20
 padding: 5
 text-align: center
-font: apple-system
+role: $fpm.design.type.body-small
 
 --- ftd.integer: $data.upto-date
 width: percent 20
 padding: 5
 text-align: center
-font: apple-system
+role: $fpm.design.type.body-small
 
 --- ftd.text: $data.last-modified-on
 if: $data.last-modified-on is not null
@@ -1189,16 +1108,14 @@ link: $data.url
 width: percent 20
 padding: 5
 text-align: center
-font: apple-system
-size: 12
+role: $fpm.design.type.body-small
 
 --- ftd.text: Never Synced
 if: $data.last-modified-on is null
 link: $data.url
 width: percent 20
 padding: 5
-text-align: center
-font: apple-system
+role: $fpm.design.type.body-small
 
 
 

@@ -1,6 +1,7 @@
 -- import: fpm
 -- import: fifthtry.github.io/package-doc/typography as tf
 -- import: fifthtry.github.io/package-doc/code-block as cb
+-- import: fifthtry.github.io/package-doc/assets
 
 
 
@@ -17,7 +18,6 @@ padding: 20
 
 --- tf.h2-text: $title
 
-
 --- ftd.text: Click To View Code
 if: not $open
 
@@ -27,6 +27,7 @@ $on-click$: toggle $open
 
 --- cb.code:
 if: $open
+lang: ftd
 
 $body
 
@@ -42,7 +43,7 @@ $body
 -- ftd.column output:
 caption caption:
 body body:
-optional string reference:
+ftd.image-src reference:
 optional string reference-width:
 width: fill
 open: true
@@ -58,6 +59,7 @@ padding-bottom: 10
 --- tf.h2-text: $caption
 
 --- cb.code:
+lang: ftd
 
 $body
 
@@ -185,6 +187,13 @@ $body
 
 
 
+
+
+
+
+
+
+
 -- ftd.row kv:
 caption title:
 string value:
@@ -217,14 +226,14 @@ move-down: 2
 
 --- ftd.image:
 if: not $fpm.dark-mode
-src: https://res.cloudinary.com/dphj6havg/image/upload/v1640938217/dark-mode_mfy9hd.svg
+src: $assets.files.static.icon.svg
 height: 18
 $on-click$: message-host enable-dark-mode
 align: center
 
 --- ftd.image:
 if:  $fpm.dark-mode
-src: https://res.cloudinary.com/dphj6havg/image/upload/v1641367492/light-mode_o0zne7.svg
+src: $assets.files.static.icon-dark.svg
 height: 18
 $on-click$: message-host enable-light-mode
 align: center

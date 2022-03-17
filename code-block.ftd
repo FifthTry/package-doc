@@ -1,5 +1,6 @@
 -- import: fpm
 -- import: fifthtry.github.io/package-doc/assets
+-- import: fifthtry.github.io/package-doc/typography as tf
 
 -- ftd.column:
 id: code-wrap
@@ -234,7 +235,6 @@ z-index: 99999999999999
 
 --- tf.h0: $title
 
-
 --- kv: Package Name
 value: $name
 
@@ -273,4 +273,24 @@ align: center
 
 
 
+
+
+-- ftd.row kv:
+caption title:
+string value:
+padding: 10
+border-width: 1
+border-color: $fpm.design.color.brand.on-region
+spacing: 7
+width: fill
+background-color: $fpm.design.color.brand.region
+border-radius: 4
+
+--- ftd.text: $title
+role: $fpm.design.type.body-medium
+
+--- ftd.text: $value
+color: $fpm.design.color.brand.on-region
+role: $fpm.design.type.body-medium
+move-down: 2
 
