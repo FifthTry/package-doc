@@ -43,7 +43,7 @@ $body
 -- ftd.column output:
 caption caption:
 body body:
-ftd.image-src reference:
+optional ftd.image-src reference:
 optional string reference-width:
 width: fill
 open: true

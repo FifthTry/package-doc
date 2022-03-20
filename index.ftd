@@ -27,11 +27,13 @@ This package can be used for documenting other packages.
 
 
 -- ft.code: Add this to your FPM.ftd
+lang: ftd
 
 \-- fpm.dependency: fifthtry.github.io/package-doc
 
 
 -- ft.code: Then use the component:
+lang: ftd
 
 \-- import: fifthtry.github.io/package-doc as pd
 
@@ -62,6 +64,7 @@ This is the title of the package being documented. This should be human readable
 name. This should be put in the caption.
 
 -- ft.code: How to specify component title
+lang: ftd
 
 \-- pd.package: Title Of The Package
 
@@ -74,6 +77,7 @@ The name of the package. This is the name that people use when importing the
 package:
 
 -- ft.code: How to specify component title
+lang: ftd
 
 \-- pd.package: Title Of The Component
 name: fifthtry.github.io/package-doc

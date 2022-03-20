@@ -115,7 +115,6 @@ text: $title
 region: title
 role: $fpm.design.type.headline-small
 color: $fpm.design.color.brand.on-region
-style: bold
 padding-bottom: 8
 padding-top: 16
 $on-click$: toggle $open
@@ -153,7 +152,6 @@ text: $title
 region: title
 role: $fpm.design.type.headline-small
 color: $fpm.design.color.brand.on-region
-style: bold
 padding-bottom: 8
 padding-top: 16
 $on-click$: toggle $open
