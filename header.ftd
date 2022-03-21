@@ -398,7 +398,7 @@ if: $include-dark-mode-switcher
 margin-right: 25
 margin-top: -6
 
-/--- dms.switcher:
+--- dms.switcher:
 if: $include-dark-mode-switcher
 background: $menu-bg 
 menu-bg: $menu-bg 
@@ -425,16 +425,14 @@ horizontal-position: -115
 text-color: $text-color
 background: $menu-bg
 
-/--- lang.switcher:
+--- lang.switcher:
 languages: $languages
 current: English
 switcher-text: EN
 size: 14
 horizontal-position: -115
 text-color: $text-color
-text-color-dark: $text-color
 background: $menu-bg
-background-dark-mode: $menu-bg
 
 
 --- container: ftd.main
@@ -699,7 +697,7 @@ spacing: 15
 width: auto
 
 
-/--- dms.switcher:
+--- dms.switcher:
 if: $include-dark-mode-switcher
 background: $menu-bg 
 menu-bg: $menu-bg 
@@ -883,7 +881,7 @@ size: 14
 text-color: $text-color
 background: $menu-bg
 
-/--- lang.switcher:
+--- lang.switcher:
 languages: $languages
 current: English
 switcher-text: EN
