@@ -3,7 +3,6 @@
 -- import: fifthtry.github.io/package-doc/assets
 
 
-
 -- header-sticky-title uptodate: $fpm.i18n.upto-date
 icon: true
 light-icon-path: $assets.files.static.translation-icons.large.translations-success.png
@@ -1093,3 +1092,79 @@ if: $fpm.translation-status == Outdated
 
 
 
+
+
+
+-- ftd.column translation-never-marked:
+width: fill
+max-width: 1000
+border-radius: 5
+border-color: $fpm.design.color.brand.on-region
+border-style: dashed
+border-width: 2
+padding: 15
+border-radius: 5
+margin-top: 20
+boolean open: false
+optional string group-type:
+if: $fpm.never-marked-files is not empty
+
+
+--- icon-title:
+/if: $group-type 'nevermarked'
+title: $fpm.i18n.never-marked
+title-color: $fpm.design.color.brand.on-region
+icon: true
+icon-path-light: $assets.files.static.translation-icons.35x26.translations-info.png
+margin-right: 20
+open: $open
+$on-click$: toggle $open
+/$on-click-outside$: $open = false
+
+--- ftd.column:
+width: fill
+if: $open
+
+--- key-item: $obj
+$loop$: $fpm.never-marked-files as $obj
+
+
+
+
+
+
+
+
+
+-- ftd.column translation-upto-date:
+width: fill
+max-width: 1000
+border-radius: 5
+border-color: $fpm.design.color.brand.on-region
+border-style: dashed
+border-width: 2
+padding: 15
+border-radius: 5
+margin-top: 20
+boolean open: false
+optional string group-type:
+if: $fpm.upto-date-files is not empty
+
+
+--- icon-title:
+/if: $group-type 'uptodate'
+title: $fpm.i18n.upto-date
+title-color: $fpm.design.color.brand.on-region
+icon: true
+icon-path-light: $assets.files.static.translation-icons.35x26.translations-success.png
+margin-right: 20
+open: $open
+$on-click$: toggle $open
+/$on-click-outside$: $open = false
+
+--- ftd.column:
+width: fill
+if: $open
+
+--- key-item: $obj
+$loop$: $fpm.upto-date-files as $obj
