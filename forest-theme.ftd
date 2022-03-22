@@ -7,23 +7,6 @@
 
 -- fpm.theme-color: #1F5E6B
 -- boolean sidebar-open: false
--- string neutral: #fff
-/-- string neutral-200: #e5e5e5
--- string neutral-200: #EDEDED
--- string neutral-300: #F9F9F9
--- string neutral-400: #E1E1E1
--- string neutral-500: #323546
--- string neutral-600: #3E4155
-/-- string neutral-700: #18191a
--- string neutral-700: #0A1A1F
-/-- string neutral-800: #000
--- string neutral-800: #0A1A1F
--- string header-dark-color: #11404a
--- string header-light-color: #1F5E6B
--- string sidebar-dark-color: #082b32
--- string sidebar-light-color: #FFFBEF
--- string code-bg-light: #0A1A1F
--- string code-bg-dark: #0A1A1F
 
 
 -- string toc-sidebar-width: 300
@@ -32,10 +15,6 @@
 -- integer max-width: 1000
 -- string github: NA
 -- optional string site-name:
-
-
-/-- ftd.image-src site-icon: $assets.files.static.forest-theme.ftd-logo-desktop.png
-/-- ftd.image-src site-icon-mobile: $assets.files.static.forest-theme.ftd-logo-mobile.png
 
 
 
@@ -47,6 +26,12 @@
 -- fpm.toc-item list header-right:
 -- fpm.toc-item list toc:
 -- fpm.toc-item list footer-toc:
+
+
+
+
+
+
 
 
 
@@ -141,7 +126,8 @@ id:  content-container
 
 
 
--- ftd.column doc-page:
+-- ftd.column page-with-toc:
+caption title:
 fpm.toc-item list toc: $toc
 fpm.toc-item list header-toc: $header-toc
 fpm.toc-item list header-left: $header-left
@@ -153,7 +139,7 @@ append-at: main-container
 
 --- container: ftd.main
 
---- doc-page-desktop:
+--- doc-page-desktop: $title
 if: not $fpm.mobile
 id: main-container
 toc: $toc
@@ -164,7 +150,7 @@ header-right: $header-right
 
 --- container: ftd.main
 
---- doc-page-mobile:
+--- doc-page-mobile: $title
 if: $fpm.mobile
 id: main-container
 toc: $toc
@@ -182,6 +168,7 @@ header-right: $header-right
 
 
 -- ftd.column doc-page-desktop:
+caption title:
 fpm.toc-item list toc: $toc
 fpm.toc-item list header-toc:
 fpm.toc-item list header-left:
@@ -229,6 +216,11 @@ padding-horizontal: 92
 padding-vertical: 20
 width: fill
 
+--- tf.h0: $title
+optional body body:
+
+$body
+
 --- doc.translation-banner:
 
 --- container: ftd.main
@@ -246,6 +238,7 @@ footer-toc: $footer-toc
 
 
 -- ftd.column doc-page-mobile:
+caption title:
 fpm.toc-item list toc: $toc
 fpm.toc-item list header-toc:
 fpm.toc-item list header-left:
@@ -287,6 +280,11 @@ width: fill
 align: top
 padding-horizontal: 20
 padding-vertical: 20
+
+--- tf.h0: $title
+optional body body:
+
+$body
 
 --- doc.translation-banner:
 
