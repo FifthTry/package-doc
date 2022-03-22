@@ -127,7 +127,7 @@ id:  content-container
 
 
 -- ftd.column page-with-toc:
-caption title:
+optional caption title:
 fpm.toc-item list toc: $toc
 fpm.toc-item list header-toc: $header-toc
 fpm.toc-item list header-left: $header-left
@@ -168,7 +168,7 @@ header-right: $header-right
 
 
 -- ftd.column doc-page-desktop:
-caption title:
+optional caption title:
 fpm.toc-item list toc: $toc
 fpm.toc-item list header-toc:
 fpm.toc-item list header-left:
@@ -217,6 +217,7 @@ padding-vertical: 20
 width: fill
 
 --- tf.h0: $title
+if: $title is not null
 
 --- doc.translation-banner:
 
@@ -235,7 +236,7 @@ footer-toc: $footer-toc
 
 
 -- ftd.column doc-page-mobile:
-caption title:
+optional caption title:
 fpm.toc-item list toc: $toc
 fpm.toc-item list header-toc:
 fpm.toc-item list header-left:
@@ -279,6 +280,7 @@ padding-horizontal: 20
 padding-vertical: 20
 
 --- tf.h0: $title
+if: $title is not null
 
 --- doc.translation-banner:
 
