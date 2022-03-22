@@ -217,9 +217,6 @@ padding-vertical: 20
 width: fill
 
 --- tf.h0: $title
-optional body body:
-
-$body
 
 --- doc.translation-banner:
 
@@ -282,9 +279,6 @@ padding-horizontal: 20
 padding-vertical: 20
 
 --- tf.h0: $title
-optional body body:
-
-$body
 
 --- doc.translation-banner:
 
