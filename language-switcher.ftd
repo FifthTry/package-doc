@@ -2,6 +2,13 @@
 -- import: fifthtry.github.io/package-doc/doc as pd
 -- import: fifthtry.github.io/package-doc/assets
 
+-- boolean is-mobile: false
+
+-- is-mobile: true
+if: $ftd.device == mobile
+
+
+
 -- ftd.column:
 padding-horizontal: 50
 padding-vertical: 20
@@ -109,7 +116,7 @@ integer size: 14
 if: $languages is not empty
 z-index: 99999
 optional string switcher-text: $fpm.language
-width if $fpm.mobile: fill
+width if $is-mobile: fill
 $on-click$: toggle $open
 $on-click-outside$: $open = false
 ftd.color background: $fpm.design.color.brand.region
@@ -129,7 +136,7 @@ right: -27
 top: -1
 
 --- ftd.row:
-if: not $fpm.dark-mode
+if: not $ftd.dark-mode
 
 --- ftd.image:
 src: $light-polygon-down
@@ -146,7 +153,7 @@ padding-right: 5
 color: $text-color
 
 --- ftd.column:
-if: not $fpm.mobile
+if: not $is-mobile
 margin-top: 0
 
 --- ftd.column:
@@ -161,7 +168,7 @@ src: $light-polygon-up
 --- container: ftd.main
 
 --- ftd.column:
-if: $fpm.mobile
+if: $is-mobile
 width: fill
 
 --- ftd.column:
@@ -176,7 +183,7 @@ src: $assets.files.static.lang-switcher-icons.mobile-menu-arrw-right.png
 --- container: ftd.main
 
 --- ftd.column:
-if: $fpm.mobile
+if: $is-mobile
 width: fill
 
 --- ftd.column:
@@ -191,7 +198,7 @@ src: $assets.files.static.lang-switcher-icons.mobile-menu-arrw-up.png
 --- container: ftd.main
 
 --- ftd.column:
-if: not $fpm.mobile
+if: not $is-mobile
 
 --- ftd.column:
 if: $open
@@ -217,7 +224,7 @@ url: /
 current-lang-color: $current-lang-color
 
 --- lang-list-desktop: $o.title
-if: not $fpm.mobile
+if: not $is-mobile
 $loop$: $languages as $o
 url: $o.url
 light-radio-default: $light-radio-default
@@ -234,7 +241,7 @@ footer-lang-color: $footer-lang-color
 --- container: ftd.main
 
 --- ftd.column:
-if: $fpm.mobile
+if: $is-mobile
 
 --- ftd.column:
 if: $open
@@ -246,7 +253,7 @@ url: /
 current-lang-color: $current-lang-color
 
 --- lang-list-desktop: $o.title
-if: not $fpm.mobile
+if: not $is-mobile
 $loop$: $languages as $o
 url: $o.url
 light-radio-default: $light-radio-default
@@ -255,7 +262,7 @@ text-color: $text-color
 menu-hover-color: $menu-hover-color
 
 --- lang-list-mobile: $o.title
-if: $fpm.mobile
+if: $is-mobile
 $loop$: $languages as $o
 url: $o.url
 text-color: $text-color
@@ -380,16 +387,16 @@ width: fill
 padding-vertical: 10
 padding-bottom: 0
 padding-horizontal: 15
-padding-horizontal if $fpm.mobile: 10
+padding-horizontal if $is-mobile: 10
 ftd.image-src light-radio-active:
 margin-bottom: 5
 
 
 --- ftd.row:
-if: not $fpm.mobile
+if: not $is-mobile
 width: fill
 border-bottom: 1
-border-bottom if $fpm.mobile: 0
+border-bottom if $is-mobile: 0
 border-color: $fpm.design.color.brand.on-region
 padding-bottom: 10
 
@@ -408,16 +415,16 @@ color: $current-lang-color
 --- container: ftd.main
 
 --- ftd.row:
-if: $fpm.mobile
+if: $is-mobile
 width: fill
 border-bottom: 1
-border-bottom if $fpm.mobile: 0
+border-bottom if $is-mobile: 0
 border-color: $fpm.design.color.brand.on-region
 padding-bottom: 10
 
 
 --- ftd.text: $text
-if: $fpm.mobile
+if: $is-mobile
 width: fill
 link: $url
 role: $fpm.design.type.label-large
@@ -441,12 +448,12 @@ width: fill
 padding-vertical: 10
 padding-top: 0
 padding-horizontal: 15
-padding-horizontal if $fpm.mobile: 10
+padding-horizontal if $is-mobile: 10
 
 --- ftd.row:
 width: fill
 border-top: 1
-border-top if $fpm.mobile: 0
+border-top if $is-mobile: 0
 border-color: $fpm.design.color.brand.on-region
 padding-top: 10
 

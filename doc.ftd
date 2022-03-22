@@ -225,14 +225,14 @@ move-down: 2
 -- ftd.row toggle:
 
 --- ftd.image:
-if: not $fpm.dark-mode
+if: not $ftd.dark-mode
 src: $assets.files.static.icon.svg
 height: 18
 $on-click$: message-host enable-dark-mode
 align: center
 
 --- ftd.image:
-if:  $fpm.dark-mode
+if:  $ftd.dark-mode
 src: $assets.files.static.icon-dark.svg
 height: 18
 $on-click$: message-host enable-light-mode
