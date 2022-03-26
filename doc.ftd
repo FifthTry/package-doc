@@ -226,14 +226,14 @@ move-down: 2
 
 --- ftd.image:
 if: not $ftd.dark-mode
-src: $assets.files.static.icon.svg
+src: $assets.files.static.switch-mode-icon.svg
 height: 18
 $on-click$: message-host enable-dark-mode
 align: center
 
 --- ftd.image:
 if:  $ftd.dark-mode
-src: $assets.files.static.icon-dark.svg
+src: $assets.files.static.switch-mode-icon-dark.svg
 height: 18
 $on-click$: message-host enable-light-mode
 align: center
