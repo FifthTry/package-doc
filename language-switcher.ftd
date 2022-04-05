@@ -13,7 +13,7 @@ if: $ftd.device == mobile
 padding-horizontal: 50
 padding-vertical: 20
 width: fill
-background-color: $fpm.design.color.brand.region
+background-color: $fpm.color.main.background.base
 
 
 -- pd.package: Language Switcher
@@ -51,7 +51,7 @@ reference-width: 200
 languages: $languages
 current: English
 switcher-text: EN
-text-color: $fpm.design.color.brand.region
+text-color: $fpm.color.main.background.base
 horizontal-position: -30
 
 
@@ -60,7 +60,7 @@ horizontal-position: -30
 languages: $languages
 current: English
 switcher-text: EN
-text-color: $fpm.design.color.brand.region
+text-color: $fpm.color.main.background.base
 horizontal-position: -30
 
 
@@ -119,12 +119,12 @@ optional string switcher-text: $fpm.language
 width if $is-mobile: fill
 $on-click$: toggle $open
 $on-click-outside$: $open = false
-ftd.color background: $fpm.design.color.brand.region
-ftd.color text-color: $fpm.design.color.brand.on-region
-ftd.color menu-border: $fpm.design.color.brand.on-region
-ftd.color menu-hover-color: $fpm.design.color.brand.on-region
-ftd.color current-lang-color: $fpm.design.color.brand.on-region
-ftd.color footer-lang-color: $fpm.design.color.brand.on-region
+ftd.color background: $fpm.color.main.background.base
+ftd.color text-color: $fpm.color.main.text
+ftd.color menu-border: $fpm.color.main.text
+ftd.color menu-hover-color: $fpm.color.main.text
+ftd.color current-lang-color: $fpm.color.main.text
+ftd.color footer-lang-color: $fpm.color.main.text
 
 --- ftd.column:
 spacing: 4
@@ -148,7 +148,7 @@ bottom: -18
 
 --- ftd.text: $switcher-text
 if: $switcher-text is not null
-role: $fpm.design.type.label-large
+role: $fpm.type.label-large
 padding-right: 5
 color: $text-color
 
@@ -309,7 +309,7 @@ padding-right: 10
 --- ftd.text: $text
 width: fill
 link: $url
-role: $fpm.design.type.label-large
+role: $fpm.type.label-large
 color: $text-color
 
 --- container: ftd.main
@@ -325,7 +325,7 @@ padding-right: 10
 --- ftd.text: $text
 width: fill
 link: $url
-role: $fpm.design.type.label-large
+role: $fpm.type.label-large
 color: $menu-hover-color
 
 
@@ -356,7 +356,7 @@ if: not $showactive
 --- ftd.text: $text
 width: fill
 link: $url
-role: $fpm.design.type.label-large
+role: $fpm.type.label-large
 color: $text-color
 
 --- container: ftd.main
@@ -368,7 +368,7 @@ if: $showactive
 width: fill
 link: $url
 color: $menu-hover-color
-role: $fpm.design.type.label-large
+role: $fpm.type.label-large
 
 
 
@@ -397,7 +397,7 @@ if: not $is-mobile
 width: fill
 border-bottom: 1
 border-bottom if $is-mobile: 0
-border-color: $fpm.design.color.brand.on-region
+border-color: $fpm.color.main.text
 padding-bottom: 10
 
 
@@ -409,7 +409,7 @@ padding-right: 10
 --- ftd.text: $text
 width: fill
 link: $url
-role: $fpm.design.type.label-large
+role: $fpm.type.label-large
 color: $current-lang-color
 
 --- container: ftd.main
@@ -419,7 +419,7 @@ if: $is-mobile
 width: fill
 border-bottom: 1
 border-bottom if $is-mobile: 0
-border-color: $fpm.design.color.brand.on-region
+border-color: $fpm.color.main.text
 padding-bottom: 10
 
 
@@ -427,7 +427,7 @@ padding-bottom: 10
 if: $is-mobile
 width: fill
 link: $url
-role: $fpm.design.type.label-large
+role: $fpm.type.label-large
 color: $current-lang-color
 
 
@@ -454,12 +454,12 @@ padding-horizontal if $is-mobile: 10
 width: fill
 border-top: 1
 border-top if $is-mobile: 0
-border-color: $fpm.design.color.brand.on-region
+border-color: $fpm.color.main.text
 padding-top: 10
 
 --- ftd.text: $footer
 width: fill
-role: $fpm.design.type.label-large
+role: $fpm.type.label-large
 link: $link
 color: $footer-lang-color
 

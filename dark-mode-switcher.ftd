@@ -51,7 +51,7 @@ menu-link: #6C7384
 menu-link-active: #7CC4FA
 
 --- switcher:
-colors: $fpm.design.color.brand
+colors: $fpm.color.main
 position-left: true
 
 
@@ -72,13 +72,13 @@ position-left: true
 
 -- ftd.column switcher:
 boolean open: false
-ftd.colors colors: $fpm.design.color.brand
-ftd.color background: $fpm.design.color.brand.region
-ftd.color text-color: $fpm.design.color.brand.on-region
-ftd.color menu-border: $fpm.design.color.brand.secondary-action
-ftd.color menu-bg:  $fpm.design.color.brand.region
-ftd.color menu-link: $fpm.design.color.brand.on-region
-ftd.color menu-link-active: $fpm.design.color.brand.on-region
+ftd.color-scheme colors: $fpm.color.main
+ftd.color background: $fpm.color.main.background.base
+ftd.color text-color: $fpm.color.main.text
+ftd.color menu-border: $fpm.color.main.cta-secondary.base
+ftd.color menu-bg:  $fpm.color.main.background.base
+ftd.color menu-link: $fpm.color.main.text
+ftd.color menu-link-active: $fpm.color.main.text
 $on-click$: toggle $open
 $on-click-outside$: $open=false
 ftd.image-src polygon-up: $assets.files.static.icon-polygon-up.png
@@ -133,7 +133,7 @@ anchor: parent
 z-index: 4
 top: 15
 left: 0
-background-color: $colors.region
+background-color: $colors.background.base
 width: 180
 border-radius: 4
 shadow-offset-x: 4
@@ -143,7 +143,7 @@ shadow-blur: 4
 /shadow-color: rgba (0, 0, 0, 0.25)
 padding: 5
 border-width: 1
-border-color: $colors.secondary-action
+border-color: $colors.cta-secondary.base
 border-radius: 6
 
 
@@ -151,8 +151,8 @@ border-radius: 6
 if: not $ftd.follow-system-dark-mode
 dark-mode-default: $dark-mode-default
 /dark-mode-active: $dark-mode-active
-menu-link: $colors.on-region 
-menu-link-active: $colors.on-region
+menu-link: $colors.text 
+menu-link-active: $colors.text
 $on-click$: message-host enable-dark-mode
 $on-click$: $open=false
 is-active: $ftd.dark-mode
@@ -162,8 +162,8 @@ is-active: $ftd.dark-mode
 if: $ftd.follow-system-dark-mode
 dark-mode-default: $dark-mode-default
 /dark-mode-active: $dark-mode-active
-menu-link: $colors.on-region 
-menu-link-active: $colors.on-region
+menu-link: $colors.text 
+menu-link-active: $colors.text
 $on-click$: message-host enable-dark-mode
 $on-click$: $open=false
 is-active: false
@@ -174,8 +174,8 @@ is-active: false
 if: $ftd.follow-system-dark-mode
 light-mode-default: $light-mode-default
 light-mode-active: $light-mode-active
-menu-link: $colors.on-region 
-menu-link-active: $colors.on-region
+menu-link: $colors.text 
+menu-link-active: $colors.text
 $on-click$: message-host enable-light-mode
 $on-click$: $open=false
 is-active: false
@@ -189,8 +189,8 @@ if: not $ftd.follow-system-dark-mode
 if: not $ftd.dark-mode
 light-mode-default: $light-mode-default
 light-mode-active: $light-mode-active
-menu-link: $colors.on-region 
-menu-link-active: $colors.on-region
+menu-link: $colors.text 
+menu-link-active: $colors.text
 $on-click$: message-host enable-light-mode
 $on-click$: $open=false
 is-active: true
@@ -200,8 +200,8 @@ is-active: true
 if: $ftd.dark-mode
 light-mode-default: $light-mode-default
 light-mode-active: $light-mode-active
-menu-link: $colors.on-region 
-menu-link-active: $colors.on-region
+menu-link: $colors.text 
+menu-link-active: $colors.text
 $on-click$: message-host enable-light-mode
 $on-click$: $open=false
 is-active: false
@@ -212,8 +212,8 @@ is-active: false
 --- t-system: Sync with System
 system-mode-default: $system-mode-default
 system-mode-active: $system-mode-active
-menu-link: $colors.on-region 
-menu-link-active: $colors.on-region
+menu-link: $colors.text 
+menu-link-active: $colors.text
 $on-click$: message-host enable-system-mode
 $on-click$: $open=false
 is-active: $ftd.follow-system-dark-mode
@@ -230,7 +230,7 @@ anchor: parent
 z-index: 4
 right: -15
 top: 15
-background-color: $colors.region
+background-color: $colors.background.base
 width: 180
 border-radius: 4
 shadow-offset-x: 4
@@ -240,15 +240,15 @@ shadow-blur: 4
 /shadow-color: rgba (0, 0, 0, 0.25)
 padding: 5
 border-width: 1
-border-color: $colors.secondary-action
+border-color: $colors.cta-secondary.base
 border-radius: 6
 
 --- t-dark: Dark mode
 if: not $ftd.follow-system-dark-mode
 dark-mode-default: $dark-mode-default
 /dark-mode-active: $dark-mode-active
-menu-link: $colors.on-region 
-menu-link-active: $colors.on-region
+menu-link: $colors.text 
+menu-link-active: $colors.text
 $on-click$: message-host enable-dark-mode
 $on-click$: $open=false
 is-active: $ftd.dark-mode
@@ -258,8 +258,8 @@ is-active: $ftd.dark-mode
 if: $ftd.follow-system-dark-mode
 dark-mode-default: $dark-mode-default
 /dark-mode-active: $dark-mode-active
-menu-link: $colors.on-region 
-menu-link-active: $colors.on-region
+menu-link: $colors.text 
+menu-link-active: $colors.text
 $on-click$: message-host enable-dark-mode
 $on-click$: $open=false
 is-active: false
@@ -270,8 +270,8 @@ is-active: false
 if: $ftd.follow-system-dark-mode
 light-mode-default: $light-mode-default
 light-mode-active: $light-mode-active
-menu-link: $colors.on-region 
-menu-link-active: $colors.on-region
+menu-link: $colors.text 
+menu-link-active: $colors.text
 $on-click$: message-host enable-light-mode
 $on-click$: $open=false
 is-active: false
@@ -285,8 +285,8 @@ if: not $ftd.follow-system-dark-mode
 if: not $ftd.dark-mode
 light-mode-default: $light-mode-default
 light-mode-active: $light-mode-active
-menu-link: $colors.on-region 
-menu-link-active: $colors.on-region
+menu-link: $colors.text 
+menu-link-active: $colors.text
 $on-click$: message-host enable-light-mode
 $on-click$: $open=false
 is-active: true
@@ -296,8 +296,8 @@ is-active: true
 if: $ftd.dark-mode
 light-mode-default: $light-mode-default
 light-mode-active: $light-mode-active
-menu-link: $colors.on-region 
-menu-link-active: $colors.on-region
+menu-link: $colors.text 
+menu-link-active: $colors.text
 $on-click$: message-host enable-light-mode
 $on-click$: $open=false
 is-active: false
@@ -308,8 +308,8 @@ is-active: false
 --- t-system: Sync with System
 system-mode-default: $system-mode-default
 system-mode-active: $system-mode-active
-menu-link: $colors.on-region 
-menu-link-active: $colors.on-region
+menu-link: $colors.text 
+menu-link-active: $colors.text
 $on-click$: message-host enable-system-mode
 $on-click$: $open=false
 is-active: $ftd.follow-system-dark-mode
@@ -346,7 +346,7 @@ src: $light-mode-default
 
 
 --- ftd.text: $text 
-role: $fpm.design.type.body-medium
+role: $fpm.type.body-medium
 width: fill
 color: $menu-link
 /color if $MOUSE-IN: $menu-link-active
@@ -362,7 +362,7 @@ width: fill
 src: $light-mode-active
 
 --- ftd.text: $text 
-role: $fpm.design.type.body-medium
+role: $fpm.type.body-medium
 width: fill
 color: $menu-link-active
 padding-left: 10
@@ -378,8 +378,8 @@ padding-left: 10
 
 -- ftd.row t-dark: 
 caption text:
-ftd.color menu-link: $fpm.design.color.brand.on-region
-ftd.color menu-link-active: $fpm.design.color.brand.on-region
+ftd.color menu-link: $fpm.color.main.text
+ftd.color menu-link-active: $fpm.color.main.text
 ftd.image-src dark-mode-default: $assets.files.static.dark-mode-default.png
 /ftd.image-src dark-mode-active: $assets.files.static.dark-mode-active.png
 boolean mouse-in: false
@@ -397,7 +397,7 @@ width: fill
 src: $dark-mode-default
 
 --- ftd.text: $text 
-role: $fpm.design.type.body-medium
+role: $fpm.type.body-medium
 width: fill
 color: $menu-link
 /color if $MOUSE-IN: $menu-link-active
@@ -414,7 +414,7 @@ width: fill
 src: $dark-mode-default
 
 --- ftd.text: $text
-role: $fpm.design.type.body-medium 
+role: $fpm.type.body-medium 
 width: fill
 color: $menu-link-active
 padding-left: 10
@@ -451,7 +451,7 @@ width: fill
 src: $system-mode-default
 
 --- ftd.text: $text 
-role: $fpm.design.type.body-medium 
+role: $fpm.type.body-medium 
 width: fill
 color: $menu-link
 /color if $MOUSE-IN: $menu-link-active
@@ -467,7 +467,7 @@ width: fill
 src: $system-mode-active
 
 --- ftd.text: $text 
-role: $fpm.design.type.body-medium 
+role: $fpm.type.body-medium 
 width: fill
 color: $menu-link-active
 padding-left: 10
