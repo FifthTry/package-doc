@@ -56,8 +56,8 @@ fpm.toc-item list header-toc: $header-toc
 --- container: ftd.main
 
 --- h.header:
-section: $header-toc
-sub-section: $header-left
+sections: $header-toc
+sub-sections: $header-left
 extra: $header-right
 site-logo: $assets.files.static.forest-theme.ftd-logo-desktop.png
 site-url: $site-url
@@ -187,8 +187,8 @@ append-at: main-container
 background-color: $fpm.color.main.background.base
 
 --- h.header:
-section: $header-toc
-sub-section: $header-left
+sections: $header-toc
+sub-sections: $header-left
 extra: $header-right
 site-logo: $assets.files.static.forest-theme.ftd-logo-desktop.png
 site-url: $site-url
@@ -256,8 +256,8 @@ append-at: main-container
 background-color: $fpm.color.main.background.base
 
 --- h.header:
-section: $header-toc
-sub-section: $header-left
+sections: $header-toc
+sub-sections: $header-left
 extra: $header-right
 site-logo: $assets.files.static.forest-theme.ftd-logo-mobile.png
 site-url: $site-url

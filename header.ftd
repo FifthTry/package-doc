@@ -35,7 +35,7 @@ This is the main header.
 
 \-- fpm.toc-item list empty-toc:
 
-\-- fpm.toc-item list section:
+\-- fpm.toc-item list sections:
 $processor$: toc
 
 - Roadmap: /roadmap/
@@ -45,7 +45,7 @@ $processor$: toc
   - Articles: /index/
   - Home Pictures: /index/
 
-\-- fpm.toc-item list sub-section:
+\-- fpm.toc-item list sub-sections:
 $processor$: toc
 
 - Home: 
@@ -79,8 +79,8 @@ reference-width: fill
 \-- header:
 site-logo: $assets.files.static.header.logo-text.png
 site-url: /
-section: $section
-sub-section: $sub-section
+sections: $sections
+sub-sections: $sub-sections
 extra: $extra
 menu-right: 0
 menu-left: -88
@@ -89,8 +89,8 @@ toc: ftd.text: Table of Contents
 --- header:
 site-logo: $assets.files.static.header.logo-text.png
 site-url: /
-section: $section
-sub-section: $sub-section
+sections: $sections
+sub-sections: $sub-sections
 extra: $extra
 menu-right: 0
 menu-left: -88
@@ -108,8 +108,8 @@ active-text-color: $fpm.color.main.text
 site-logo: $assets.files.static.header.site-logo.png
 site-url: /
 current-url: /payments/
-section: $section
-sub-section: $sub-section
+sections: $sections
+sub-sections: $sub-sections
 extra: $extra
 logo-width: auto
 width: fill
@@ -129,8 +129,8 @@ active-text-color: $fpm.color.main.text
 site-logo: $assets.files.static.header.site-logo.png
 site-url: /
 current-url: /payments/
-section: $section
-sub-section: $sub-section
+sections: $sections
+sub-sections: $sub-sections
 extra: $extra
 logo-width: auto
 width: fill
@@ -152,7 +152,7 @@ toc: ftd.text: Table of Contents
 \-- header:
 site-logo: $assets.files.static.header.site-logo.png
 site-url: /
-section: $section
+sections: $sections
 current-url: /
 link-style: bold
 toc: ftd.text: Table of Contents 
@@ -160,7 +160,7 @@ toc: ftd.text: Table of Contents
 --- header:
 site-logo: $assets.files.static.header.site-logo.png
 site-url: /
-section: $section
+sections: $sections
 link-style: bold
 menu-right: 0
 toc: ftd.text: Table of Contents 
@@ -171,7 +171,7 @@ toc: ftd.text: Table of Contents
 \-- header:
 site-logo: $assets.files.static.header.site-logo.png
 site-url: /
-sub-section: $sub-section
+sub-sections: $sub-sections
 current-url: /
 link-style: bold
 include-dark-mode-switcher: false
@@ -181,7 +181,7 @@ toc: ftd.text: Table of Contents
 --- header:
 site-logo: $assets.files.static.header.logo-text.png
 site-url: /
-sub-section: $sub-section
+sub-sections: $sub-sections
 link-style: bold
 menu-left: -88
 menu-right: 0
@@ -206,8 +206,8 @@ optional ftd.image-src site-logo:
 string site-url: /
 ftd.image-src menu-icon: $assets.files.static.header.hamburger.png
 string current-url: /payments/
-fpm.toc-item list section: $empty-toc
-fpm.toc-item list sub-section: $empty-toc
+fpm.toc-item list sections: $empty-toc
+fpm.toc-item list sub-sections: $empty-toc
 fpm.toc-item list extra: $empty-toc
 integer menu-left: 10
 integer menu-right: 10
@@ -247,8 +247,8 @@ site-logo: $site-logo
 menu-icon: $menu-icon
 site-url: $site-url 
 current-url: $current-url
-section: $section
-sub-section: $sub-section 
+sections: $sections
+sub-sections: $sub-sections 
 extra: $extra
 menu-left: $menu-left 
 menu-right: $menu-right
@@ -272,8 +272,8 @@ if: not $is-mobile
 site-logo: $site-logo
 site-url: $site-url 
 current-url: $current-url
-section: $section
-sub-section: $sub-section 
+sections: $sections
+sub-sections: $sub-sections 
 extra: $extra
 include-dark-mode-switcher: $include-dark-mode-switcher
 include-language-switcher: $include-language-switcher
@@ -299,8 +299,8 @@ site-logo: $site-logo
 menu-icon: $menu-icon
 site-url: $site-url 
 current-url: $current-url
-section: $section
-sub-section: $sub-section 
+sections: $sections
+sub-sections: $sub-sections 
 extra: $extra
 include-dark-mode-switcher: $include-dark-mode-switcher
 include-language-switcher: $include-language-switcher
@@ -337,8 +337,8 @@ width: $width
 optional ftd.image-src site-logo:
 string site-url: 
 string current-url:
-fpm.toc-item list section:
-fpm.toc-item list sub-section:
+fpm.toc-item list sections:
+fpm.toc-item list sub-sections:
 fpm.toc-item list extra:
 boolean include-dark-mode-switcher:
 boolean include-language-switcher:
@@ -383,7 +383,7 @@ id: right-side-top
 /spacing: 10
 
 --- header-item: $obj.title
-$loop$: $section as $obj
+$loop$: $sections as $obj
 children: $obj.children 
 link: $obj.url
 text-color: $text-color
@@ -457,7 +457,7 @@ width: auto
 /spacing: 12
 
 --- header-item: $obj.title
-$loop$: $sub-section as $obj
+$loop$: $sub-sections as $obj
 children: $obj.children 
 link: $obj.url
 text-color: $text-color
@@ -639,8 +639,8 @@ ftd.image-src menu-icon:
 ftd.image-src site-logo:
 string site-url: 
 string current-url:
-fpm.toc-item list section:
-fpm.toc-item list sub-section:
+fpm.toc-item list sections:
+fpm.toc-item list sub-sections:
 fpm.toc-item list extra:
 boolean include-dark-mode-switcher:
 boolean include-language-switcher:
@@ -748,8 +748,8 @@ optional ftd.image-src site-logo:
 ftd.image-src menu-icon:
 string site-url: 
 string current-url:
-fpm.toc-item list section:
-fpm.toc-item list sub-section:
+fpm.toc-item list sections:
+fpm.toc-item list sub-sections:
 fpm.toc-item list extra:
 ftd.ui toc:
 integer menu-left: 
@@ -800,7 +800,7 @@ padding-bottom: 10
 
 
 --- header-item-mobile: $obj.title
-$loop$: $sub-section as $obj
+$loop$: $sub-sections as $obj
 children: $obj.children 
 link: $obj.url
 text-color: $text-color
@@ -852,7 +852,7 @@ padding-bottom: 10
 
 
 --- header-item-mobile: $obj.title
-$loop$: $section as $obj
+$loop$: $sections as $obj
 children: $obj.children 
 link: $obj.url
 text-color: $text-color
@@ -1154,7 +1154,7 @@ border-radius: 4
 -- fpm.toc-item list empty-toc:
 
 
--- fpm.toc-item list section:
+-- fpm.toc-item list sections:
 $processor$: toc
 
 - Roadmap: /roadmap/
@@ -1164,7 +1164,7 @@ $processor$: toc
   - Articles: /index/
   - Home Pictures: /index/  
 
--- fpm.toc-item list sub-section:
+-- fpm.toc-item list sub-sections:
 $processor$: toc
 
 - Home: 
