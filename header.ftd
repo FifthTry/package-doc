@@ -500,7 +500,7 @@ menu-hover-bg: $menu-hover-bg
 
 -- ftd.text site-url: $title
 caption title:
-role: $fpm.type.label-large
+role: $fpm.type.label-big
 align: center
 white-space: nowrap
 
@@ -521,7 +521,7 @@ optional ftd.color active-text-color:
 optional string current-url:
 integer link-height: 16
 optional string link-style:
-role: $fpm.type.label-large
+role: $fpm.type.label-big
 link: $link
 align: center
 white-space: nowrap
@@ -562,7 +562,7 @@ $on-click-outside$: $open = false
 
 --- ftd.text: $title
 if: $link is not null
-role: $fpm.type.label-large
+role: $fpm.type.label-big
 link: $link
 padding-bottom: 15
 white-space: nowrap
@@ -576,7 +576,7 @@ move-left: 22
 
 --- ftd.text: $title
 if: $link is null
-role: $fpm.type.label-large
+role: $fpm.type.label-big
 padding-bottom: 15
 white-space: nowrap
 padding-horizontal: 10
@@ -590,7 +590,7 @@ move-left: 22
 if: $children is not empty
 color: $text-color
 position: center
-role: $fpm.type.label-large
+role: $fpm.type.label-big
 move-up: 2
 move-left: 30
 
@@ -927,7 +927,7 @@ color: $fpm.color.main.text
 -- ftd.text site-link: $title
 caption title:
 optional string font-family:
-role: $fpm.type.label-large
+role: $fpm.type.label-big
 color: $fpm.color.main.text
 align: center
 
@@ -975,7 +975,7 @@ $on-click-outside$: $open = false
 
 --- ftd.text: $title
 if: $link is not null
-role: $fpm.type.label-large
+role: $fpm.type.label-big
 link: $link
 white-space: nowrap
 padding-horizontal: 10
@@ -986,7 +986,7 @@ color if $current-url == $link: $active-text-color
 
 --- ftd.text: $title
 if: $link is null
-role: $fpm.type.label-large
+role: $fpm.type.label-big
 white-space: nowrap
 padding-horizontal: 10
 color: $text-color
@@ -1087,7 +1087,7 @@ background-color if $MOUSE-IN: $menu-hover-bg
 white-space: nowrap
 padding-vertical: 8
 padding-horizontal: 10
-role: $fpm.type.label-large
+role: $fpm.type.label-big
 width: fill
 border-radius: 4
 
@@ -1099,7 +1099,7 @@ background-color if $MOUSE-IN: $menu-hover-bg
 white-space: nowrap
 padding-vertical: 8
 padding-horizontal: 10
-role: $fpm.type.label-large
+role: $fpm.type.label-big
 width: fill
 border-radius: 4
 
@@ -1124,7 +1124,7 @@ color if $MOUSE-IN: $menu-link-active
 white-space: nowrap
 padding-vertical: 8
 padding-horizontal: 10
-role: $fpm.type.label-large
+role: $fpm.type.label-big
 width: fill
 border-radius: 4
 
@@ -1135,7 +1135,7 @@ color if $MOUSE-IN: $menu-link-active
 white-space: nowrap
 padding-vertical: 8
 padding-horizontal: 10
-role: $fpm.type.label-large
+role: $fpm.type.label-big
 width: fill
 border-radius: 4
 
