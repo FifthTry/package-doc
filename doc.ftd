@@ -178,8 +178,7 @@ z-index: 99999999999999
 
 --- tf.h0: $title
 
-
---- kv: Package Name
+--- kv: Package Name: 
 value: $name
 
 --- tf.markdown:
@@ -205,6 +204,7 @@ spacing: 7
 width: fill
 background-color: $fpm.color.main.background.base
 border-radius: 4
+margin-bottom: 15
 
 --- ftd.text: $title
 role: $fpm.type.copy-relaxed
