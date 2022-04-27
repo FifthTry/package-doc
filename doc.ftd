@@ -157,6 +157,7 @@ caption title:
 string name:
 body body:
 width: fill
+color: $fpm.color.main.text
 spacing: 20
 open: true
 
