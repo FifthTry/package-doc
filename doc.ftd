@@ -136,7 +136,7 @@ width: fill
 
 --- tf.h2-text: $title
 
---- kv: Component Name
+--- kv: Component Name: 
 value: $name
 
 --- tf.markdown:
