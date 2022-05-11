@@ -20,8 +20,6 @@ padding: 20
 
 --- ftd.text: Click To View Code
 if: not $open
-color: $fpm.color.main.text
-role: $fpm.type.label-big
 
 --- ftd.column:
 width: fill
@@ -178,7 +176,16 @@ z-index: 99999999999999
 
 --- container: ftd.main
 
+--- ftd.row:
+width: fill
+
+--- ftd.image:
+src: $assets.files.static.ftd-logo.png
+margin-right: 30
+
 --- tf.h0: $title
+
+--- container: ftd.main
 
 --- kv: Package Name: 
 value: $name
@@ -210,7 +217,6 @@ margin-bottom: 15
 
 --- ftd.text: $title
 role: $fpm.type.copy-relaxed
-color: $fpm.color.main.text
 
 --- ftd.text: $value
 color: $fpm.color.main.text

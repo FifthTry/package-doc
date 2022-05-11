@@ -8,7 +8,6 @@
 $processor$: toc
 
 - Home: index.html
-- Docs: docs/
 
 -- ft.header-toc:
 $processor$: toc
