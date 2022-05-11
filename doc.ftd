@@ -20,6 +20,8 @@ padding: 20
 
 --- ftd.text: Click To View Code
 if: not $open
+color: $fpm.color.main.text
+role: $fpm.type.label-big
 
 --- ftd.column:
 width: fill
@@ -208,6 +210,7 @@ margin-bottom: 15
 
 --- ftd.text: $title
 role: $fpm.type.copy-relaxed
+color: $fpm.color.main.text
 
 --- ftd.text: $value
 color: $fpm.color.main.text
