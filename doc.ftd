@@ -181,9 +181,11 @@ width: fill
 
 --- ftd.image:
 src: $assets.files.static.ftd-logo.png
-margin-right: 30
+margin-right: 28
+height: 64
 
 --- tf.h0: $title
+align: center
 
 --- container: ftd.main
 
@@ -221,7 +223,6 @@ role: $fpm.type.copy-relaxed
 --- ftd.text: $value
 color: $fpm.color.main.text
 role: $fpm.type.copy-relaxed
-move-down: 2
 
 
 

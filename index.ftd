@@ -46,7 +46,7 @@ This should be the first element in the page.
 
 
 -- pd.attribute: Title Of The Package
-name: title
+name: : Package Title
 
 
 This is the title of the package being documented. This should be human readable
@@ -60,7 +60,7 @@ lang: ftd
 
 
 -- pd.attribute: Name Of The Package
-name: name
+name: : Package Name
 
 The name of the package. This is the name that people use when importing the
 package:
