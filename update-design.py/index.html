@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
         <title>update-design.py.ftd</title>
         <script type="ftd" id="ftd-data">{
-  "fifthtry.github.io/package-doc/update-design.py#content@0": {
+  "fifthtry.github.io/package-doc/update-design.py/#content@0": {
     "value": "import os\n\ndirectory = os.getcwd()\n\nfor filename in os.listdir(directory):\n    print(filename)\n    if not filename.endswith(\".ftd\"):\n        continue\n    f = open(os.path.join(directory, filename), 'r')\n    text = f.read()\n    t = text.replace(\"$fpm.design.type.\", \"$fpm.type.\")\\\n        .replace(\"$fpm.design.color.brand.on-region\", \"$fpm.color.main.text\")\\\n        .replace(\"$fpm.design.color.brand.region\", \"$fpm.color.main.background.base\")\\\n        .replace(\"$fpm.design.color.brand.primary-action\", \"$fpm.color.main.cta-primary.base\")\\\n        .replace(\"$fpm.design.color.brand.on-primary-action\", \"$fpm.color.main.cta-primary.text\")\\\n        .replace(\"$fpm.design.color.brand.secondary-action\", \"$fpm.color.main.cta-secondary.base\")\\\n        .replace(\"$fpm.design.color.brand.on-secondary-action\", \"$fpm.color.main.cta-secondary.text\")\\\n        .replace(\"$fpm.design.color.brand.error\", \"$fpm.color.main.error.base\")\\\n        .replace(\"$fpm.design.color.brand.on-error\", \"$fpm.color.main.error.text\") \\\n        .replace(\"$fpm.design.color.brand.success\", \"$fpm.color.main.success.base\") \\\n        .replace(\"$fpm.design.color.brand.on-success\", \"$fpm.color.main.success.text\") \\\n        .replace(\"$fpm.design.color.brand.warning\", \"$fpm.color.main.warning.base\") \\\n        .replace(\"ftd.colors\", \"ftd.color-scheme\") \\\n        .replace(\"$colors.primary-action\", \"$colors.cta-primary.base\") \\\n        .replace(\"$colors.on-primary-action\", \"$colors.cta-primary.text\") \\\n        .replace(\"$colors.secondary-action\", \"$colors.cta-secondary.base\") \\\n        .replace(\"$colors.region\", \"$colors.background.base\") \\\n        .replace(\"$colors.on-region\", \"$colors.text\") \\\n        .replace(\"$fpm.design.color.brand\", \"$fpm.color.main.background.base\") \\\n        .replace(\"$fpm.design.color.brand.on-warning\", \"$fpm.color.main.warning.text\")\n    f.close()\n    f = open(os.path.join(directory, filename), 'w')\n    f.write(t)\n    f.close()",
     "dependencies": {
       "0": [
@@ -88,15 +88,37 @@ ul {
     margin: 10px 0;
 }
 
-.ft_md h1,
-.ft_md h2,
-.ft_md h3,
-.ft_md h4,
+.ft_md h1 {
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 52px;
+    color: #ffffff;
+}
+
+.ft_md h2 {
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 48px;
+    color: #ffffff;
+}
+
+.ft_md h3 {
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 44px;
+    color: #ffffff;
+}
+
+.ft_md h4 {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 36px;
+    color: #ffffff;
+}
+
 .ft_md h5 {
-    margin-top: 34px;
-    margin-bottom: 0;
     line-height: 1.2em;
-    color: #000000;
+    color: #ffffff;
 }
 
 .ft_md ul ul,
