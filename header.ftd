@@ -1077,6 +1077,7 @@ src: $menu-icon
 width: 24
 height: auto
 $on-click$: toggle $sidebar-open
+align: center
 
 --- ftd.row:
 spacing: 4
@@ -1232,13 +1233,14 @@ white-space: nowrap
 
 --- ftd.row:
 align: right
-padding-vertical: $fpm.space.space-3
+padding-vertical: $fpm.space.space-5
 
 --- ftd.image: 
 if: not $show-section 
 src: $assets.files.static.down-arrow.svg
 height: auto
 width: 12
+align: center
 
 --- ftd.image: 
 if:  $show-section 
