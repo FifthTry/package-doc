@@ -1,4 +1,3 @@
-
 -- import: fifthtry.github.io/package-doc/doc as pd
 -- import: fpm
 -- import: fifthtry.github.io/package-doc/dark-mode-switcher as dms
@@ -1070,7 +1069,7 @@ width: fill
 --- ftd.row:
 width: fill
 id: sidelogo-container
-spacing: 24
+spacing: 16
 
 --- ftd.image:
 src: $menu-icon
@@ -1080,7 +1079,7 @@ $on-click$: toggle $sidebar-open
 align: center
 
 --- ftd.row:
-spacing: 4
+spacing: 8
 if: $parent-brand
 link: $site-url
 
@@ -1093,7 +1092,7 @@ position: center
 
 --- ftd.text: $site-name
 if: $site-name is not null
-role: $fpm.type.heading-large
+role: $fpm.type.heading-medium
 color: $fpm.color.main.text-strong
 position: center
 
