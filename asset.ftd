@@ -8,6 +8,5 @@ dark: https://blog.ipleaders.in/wp-content/uploads/2021/07/751589-mickey-mouse.j
 
 -- ftd.image:
 src: $src 
-/src: $assets.files.static.icon.svg
 
 
