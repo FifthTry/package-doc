@@ -438,7 +438,7 @@ color: $current-lang-color
 
 
 
--- ftd.row footer: $footer
+-- ftd.row footer:
 caption footer:
 string link:
 string font:
