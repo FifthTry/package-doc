@@ -207,8 +207,6 @@ border-radius: 4
 border-width: 1
 border-color: $menu-border
 width: 180
-border-width: 1
-border-radius: 6
 anchor: parent
 top: $vertical-position
 left: $horizontal-position

@@ -16,7 +16,6 @@ text: $title
 caption $title:
 region: title
 role: $fpm.type.heading-large
-text: $title
 color: $fpm.color.main.text
 padding-bottom: 16
 padding-top: 8

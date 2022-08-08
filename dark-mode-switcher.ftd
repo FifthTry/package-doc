@@ -144,7 +144,6 @@ shadow-blur: 4
 padding: 5
 border-width: 1
 border-color: $colors.cta-secondary.base
-border-radius: 6
 
 
 --- t-dark: Dark mode
@@ -241,7 +240,6 @@ shadow-blur: 4
 padding: 5
 border-width: 1
 border-color: $colors.cta-secondary.base
-border-radius: 6
 
 --- t-dark: Dark mode
 if: not $ftd.follow-system-dark-mode
