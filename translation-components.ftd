@@ -396,7 +396,6 @@ region: h0
 text: $title
 region: title
 role: $fpm.type.heading-large
-text: $title
 color: $fpm.color.main.text
 padding-bottom: 24
 
@@ -488,7 +487,6 @@ max-width: 1000
 border-radius: 5
 color: $fpm.color.main.text
 padding: 10
-border-radius: 5
 
 --- ftd.row:
 width: fill
@@ -724,7 +722,6 @@ border-color: $fpm.color.main.text
 border-style: dashed
 border-width: 2
 padding: 15
-border-radius: 5
 margin-top: 20
 boolean open: false
 optional string group-type:
@@ -765,7 +762,6 @@ border-color: $fpm.color.main.text
 border-style: dashed
 border-width: 2
 padding: 15
-border-radius: 5
 margin-top: 20
 boolean open: false
 optional string group-type:
@@ -805,7 +801,6 @@ border-color: $fpm.color.main.text
 border-style: dashed
 border-width: 2
 padding: 15
-border-radius: 5
 margin-top: 20
 boolean open: false
 optional string group-type:
@@ -848,7 +843,6 @@ border-color: $fpm.color.main.text
 border-style: dashed
 border-width: 2
 padding: 15
-border-radius: 5
 margin-top: 20
 boolean open: false
 optional string group-type:
@@ -1099,7 +1093,6 @@ border-color: $fpm.color.main.text
 border-style: dashed
 border-width: 2
 padding: 15
-border-radius: 5
 margin-top: 20
 boolean open: false
 optional string group-type:
@@ -1140,7 +1133,6 @@ border-color: $fpm.color.main.text
 border-style: dashed
 border-width: 2
 padding: 15
-border-radius: 5
 margin-top: 20
 boolean open: false
 optional string group-type:
