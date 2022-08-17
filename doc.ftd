@@ -26,7 +26,7 @@ width: fill
 $on-click$: toggle $open
 
 --- cb.code:
-if: $open
+if: not $open
 lang: ftd
 
 $body
