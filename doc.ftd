@@ -20,8 +20,13 @@ padding: 10
 role: $fpm.type.copy-large
 color: $fpm.color.main.text
 
---- ftd.text: Click here to View Code
+--- ftd.text: Show code
 if: not $open-block
+role: $fpm.type.fine-print
+color: $fpm.color.main.text-strong
+
+--- ftd.text: Hide code
+if: $open-block
 role: $fpm.type.fine-print
 color: $fpm.color.main.text-strong
 
