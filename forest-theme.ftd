@@ -225,11 +225,11 @@ width: fill
 /append-at: main-container
 
 ;; todo: ganesh or arpita
--- container: ftd.main
+/-- container: ftd.main
 
 -- doc-page-desktop: $title
 ;; error: todo: ganesh
-if: not $is-mobile
+/if: not $is-mobile
 /id: main-container
 toc: $toc
 login-button: $login-button
