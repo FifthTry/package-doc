@@ -4,60 +4,64 @@
 -- import: fifthtry.github.io/package-doc/assets
 
 
-
--- ftd.column hidden-code:
+-- component hidden-code:
 caption title:
-boolean open-block: false
 body body:
-spacing: 10
+boolean open-block: false
+
+-- ftd.column:
 $on-click$: toggle $open-block
+spacing: 10
 width: fill
 border-left: 5
 border-color: $fpm.color.main.border
 padding: 10
 
---- ftd.text: $title
+-- ftd.text: $title
 role: $fpm.type.copy-large
 color: $fpm.color.main.text
 
---- ftd.text: Show code
+-- ftd.text: Show code
 if: not $open-block
 role: $fpm.type.fine-print
 color: $fpm.color.main.text-strong
 
---- ftd.text: Hide code
+-- ftd.text: Hide code
 if: $open-block
 role: $fpm.type.fine-print
 color: $fpm.color.main.text-strong
 
---- ftd.column:
+-- ftd.column:
 if: $open-block
 width: fill
 $on-click$: toggle $open-block
 
---- cb.code:
+-- end: ftd.column
+
+-- cb.code:
 lang: ftd
 
 $body
 
+-- end: ftd.column
+
+-- end: hidden-code
 
 
 
 
 
-
-
-
-
--- ftd.column output:
+-- component output:
 caption caption:
 body body:
 optional ftd.image-src reference:
 optional string reference-width:
+boolean reference-open: false
+
+-- ftd.column:
 width: fill
 open: true
 append-at: output-container
-boolean reference-open: false
 padding-left: 20
 border-left: 5
 border-color: $fpm.color.main.border
@@ -65,14 +69,14 @@ margin-top: 30
 margin-bottom: 20
 padding-bottom: 10
 
---- tf.h2-text: $caption
+-- tf.h2-text: $caption
 
---- cb.code:
+-- cb.code:
 lang: ftd
 
 $body
 
---- ftd.text: Output
+-- ftd.text: Output
 color: $fpm.color.main.text
 background-color: $fpm.color.main.background.base
 border-top-radius: 2
@@ -81,14 +85,16 @@ padding-horizontal: 20
 role: $fpm.type.copy-large
 $on-click$: toggle $reference-open
 
---- ftd.column:
+-- ftd.column:
 width: fill
 background-color: $fpm.color.main.background.base
 border-radius: 2
 border-width: 1
 border-color: $fpm.color.main.border
 
---- ftd.image:
+-- end: ftd.column
+
+-- ftd.image:
 if: $reference-open
 src: $reference
 if: $reference is not null
@@ -98,12 +104,17 @@ padding-vertical: 30
 padding-horizontal: 20
 margin-bottom: 10
 
---- ftd.column:
+-- ftd.column:
 width: fill
-id: output-container
+/id: output-container
 padding-vertical: 30
 padding-horizontal: 20
 
+-- end: ftd.column
+
+-- end: ftd.column
+
+-- end: output
 
 
 
@@ -111,23 +122,26 @@ padding-horizontal: 20
 
 
 
-
-
--- ftd.column attribute:
+-- component attribute:
 caption title:
 string name:
 body body:
+
+-- ftd.column:
 width: fill
 
---- tf.h3: $title
+-- tf.h3: $title
 
---- kv: Attribute Name
+-- kv: Attribute Name
 value: $name
 
---- tf.markdown:
+-- tf.markdown:
 
 $body
 
+-- end: ftd.column
+
+-- end: attribute
 
 
 
@@ -135,42 +149,43 @@ $body
 
 
 
-
-
--- ftd.column component:
+-- component component:
 caption title:
 string name:
 body body:
+
+-- ftd.column:
 width: fill
 
---- tf.h2-text: $title
+-- tf.h2-text: $title
 
---- kv: Component Name: 
+-- kv: Component Name:
 value: $name
 
---- tf.markdown:
+-- tf.markdown:
 
 $body
 
+-- end: ftd.column
+-- end: component
 
 
 
 
 
 
-
-
-
--- ftd.column package:
+-- component package:
 caption title:
 string name:
 body body:
+
+-- ftd.column:
 width: fill
 color: $fpm.color.main.text
 spacing: 20
 open: true
 
---- ftd.row:
+-- ftd.row:
 anchor: window
 right: 50
 bottom: 100
@@ -181,42 +196,46 @@ border-color: $fpm.color.main.border
 border-radius: 4
 z-index: 99999999999999
 
---- toggle:
+-- end: ftd.row
 
---- container: ftd.main
+-- toggle:
 
---- ftd.row:
+-- container: ftd.main
+
+-- ftd.row:
 width: fill
 
---- ftd.image:
+-- ftd.image:
 src: $assets.files.static.ftd-logo.png
 margin-right: 28
 height: 64
 
---- tf.h0: $title
+-- tf.h0: $title
 align: center
 
---- container: ftd.main
+-- container: ftd.main
 
---- kv: Package Name: 
+-- kv: Package Name:
 value: $name
 
---- tf.markdown:
+-- tf.markdown:
 
 $body
 
 
+-- end: ftd.column
+-- end: package
 
 
 
 
 
 
-
-
--- ftd.row kv:
+-- component kv:
 caption title:
 string value:
+
+-- ftd.row:
 padding: 10
 border-width: 1
 border-color: $fpm.color.main.border
@@ -226,32 +245,37 @@ background-color: $fpm.color.main.background.base
 border-radius: 4
 margin-bottom: 15
 
---- ftd.text: $title
+-- ftd.text: $title
 role: $fpm.type.copy-relaxed
 
---- ftd.text: $value
+-- ftd.text: $value
 color: $fpm.color.main.text
 role: $fpm.type.copy-relaxed
 
 
+-- end: ftd.row
+-- end: kv
 
 
 
 
+-- component toggle:
 
+-- ftd.row:
 
--- ftd.row toggle:
-
---- ftd.image:
+-- ftd.image:
 if: not $ftd.dark-mode
 src: $assets.files.static.switch-mode-icon.svg
 height: 18
 $on-click$: message-host enable-dark-mode
 align: center
 
---- ftd.image:
+-- ftd.image:
 if:  $ftd.dark-mode
 src: $assets.files.static.switch-mode-icon-dark.svg
 height: 18
 $on-click$: message-host enable-light-mode
 align: center
+
+-- end: ftd.row
+-- end: toggle
