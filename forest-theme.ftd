@@ -75,26 +75,7 @@ data representation in memory looks like Figure 4-2.
 src: $assets.files.static.Information_example_page_300px.jpg
 width: 400
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-- end: page
 
 
 
@@ -105,16 +86,20 @@ line-height: 16
 size: 14
 letter-spacing: 0
 
+-- end: cta-txt
+
+
 -- ftd.type cta: $fpm.font-display
 desktop: $cta-txt
 mobile: $cta-txt
 xl: $cta-txt
 weight: 700
 
+-- end: cta
+
 
 -- fpm.theme-color: #1F5E6B
 -- boolean sidebar-open: false
-
 
 -- string toc-sidebar-width: 300
 -- string toc-mobile-sidebar-width: percent 70
@@ -150,55 +135,6 @@ weight: 700
 if: $ftd.device == mobile
 
 
-
-/-- ftd.column page_:
-optional caption title:
-optional body body:
-width: fill
-background-color: $fpm.color.main.background.base
-open: true
-append-at: content-container
-fpm.toc-item list sections: $sitemap.sections
-fpm.toc-item list sub-sections: $sitemap.subsections
-fpm.toc-item list extra: $extra
-fpm.toc-item list toc: $sitemap.toc
-optional string nav-title: 
-optional string nav-title-url:
-optional string nav-sub-title:
-optional string nav-sub-title-url:
-boolean login-button: $login-button
-optional string login-btn-txt: Login
-optional string sign-in-txt: 
-
---- container: ftd.main
-
-/--- h.header:
-login-button: $login-button
-sections: $sections
-sub-sections: $sub-sections
-extra: $extra
-site-logo: $site-logo
-site-url: $site-url
-site-name: $site-name
-background: $header-bg
-text-color: $fpm.color.main.cta-primary.base
-active-text-color: $fpm.color.main.cta-primary.base
-menu-right: 0
-menu-left: -88
-menu-bg: $fpm.color.main.background.step-1
-menu-hover-bg: $fpm.color.main.background.step-2
-menu-link: $fpm.color.main.text
-menu-link-active: $fpm.color.main.text
-logo-height: 38
-current-url: /home/
-toc: $toc
-nav-title: $nav-title
-nav-title-url: $nav-title-url
-nav-sub-title: $nav-sub-title
-nav-sub-title-url: $nav-sub-title-url
-login-btn-txt: $login-btn-txt
-sign-in-txt: $sign-in-txt
-
 --- container: ftd.main
 
 --- ftd.column:
@@ -228,15 +164,6 @@ footer-toc: $footer-toc
 
 
 
-
-
-
-
-
-
-
-
-
 -- ftd.column content:
 width: fill
 open: true
@@ -261,252 +188,271 @@ id:  content-container
 
 
 
+/-- component page:
+
+    -- ftd.column:
+    optional caption title:
+    optional body body:
+    fpm.toc-item list toc: $sitemap.toc
+    boolean login-button: $login-button
+    boolean pricing-cta: $pricing-cta
+    fpm.toc-item list sections: $sitemap.sections
+    fpm.toc-item list sub-sections: $sitemap.subsections
+    optional fpm.toc-item current-section: $sitemap.current-section
+    optional fpm.toc-item current-subsection: $sitemap.current-subsection
+    optional fpm.toc-item current-page: $sitemap.current-page
+    fpm.toc-item list extra: $extra
+    fpm.toc-item list footer-toc: $footer-toc
+    optional string nav-title:
+    optional string nav-title-url:
+    optional string nav-sub-title:
+    optional string nav-sub-title-url:
+    width: fill
+    open: true
+    boolean widthfill: false
+    append-at: main-container
+
+    -- end: ftd.column
+
+    -- container: ftd.main
+
+    -- doc-page-desktop: $title
+    if: not $is-mobile
+    /id: main-container
+    toc: $toc
+    login-button: $login-button
+    footer-toc: $footer-toc
+    pricing-cta: $pricing-cta
+    sections: $sections
+    current-section: $current-section
+    current-subsection: $current-subsection
+    current-page: $current-page
+    sub-sections: $sub-sections
+    nav-title: $nav-title
+    nav-title-url: $nav-title-url
+    nav-sub-title: $nav-sub-title
+    nav-sub-title-url: $nav-sub-title-url
+    extra: $extra
+    body: $body
+    widthfill: $widthfill
+
+    -- end: doc-page-desktop
+
+    -- container: ftd.main
+
+    -- doc-page-mobile: $title
+    if: $is-mobile
+    /id: main-container
+    toc: $toc
+    footer-toc: $footer-toc
+    sections: $sections
+    toc: $toc
+    sub-sections: $sub-sections
+    current-section: $current-section
+    current-subsection: $current-subsection
+    current-page: $current-page
+    extra: $extra
+    body: $body
+
+    -- end: doc-page-mobile
+
+-- end: page
 
 
 
 
+/-- component doc-page-desktop:
+
+    -- ftd.column:
+    optional caption title:
+    optional body body:
+    fpm.toc-item list toc: $toc
+    fpm.toc-item list sections:
+    fpm.toc-item list sub-sections:
+    fpm.toc-item list extra:
+    fpm.toc-item list footer-toc:
+    optional fpm.toc-item current-section:
+    optional fpm.toc-item current-page:
+    optional fpm.toc-item current-subsection:
+    optional string nav-title:
+    optional string nav-title-url:
+    optional string nav-sub-title:
+    optional string nav-sub-title-url:
+    optional string login-btn-txt: Login
+    boolean pricing-cta:
+    optional string sign-in-txt:
+    boolean widthfill:
+    boolean login-button:
+    width: fill
+    open: true
+    append-at: main-container
+    background-color: $fpm.color.main.background.base
+    -- end: ftd.column
+
+    -- h.header:
+    login-button: $login-button
+    pricing-cta: $pricing-cta
+    login-btn-txt: $login-btn-txt
+    sign-in-txt: $sign-in-txt
+    sections: $sections
+    sub-sections: $sub-sections
+    current-section: $current-section
+    current-subsection: $current-subsection
+    current-page: $current-page
+    extra: $extra
+    site-logo: $assets.files.static.ftd-logo.png
+    site-url: $site-url
+    site-name: $site-name
+    logo-height: 48
+    menu-right: 0
+    menu-left: -88
+    current-url: /home/
+    menu-icon: $assets.files.static.header.hamburger.svg
+
+    -- end: h.header
 
 
+    -- ftd.row:
+    width: fill
+    /id: main-row
+    spacing: 48
+
+    -- end: ftd.row
+
+    -- render-toc:
+    if: $toc is not empty
+    toc-obj: $toc
+
+    -- end: render-toc
+
+    -- container: main-row
+
+    -- ftd.column:
+    width: fill
+    height: fill
+
+    -- end: ftd.column
+
+    -- ftd.column:
+    /id: main-container
+    max-width if $toc is empty: 800
+    max-width if $widthfill: fill
+    max-width: 800
+    align if $toc is empty: center
+    align: top
+    min-height: calc 100vh
+    padding-horizontal if not $widthfill: 34
+    padding-vertical if not $widthfill: 25
+    width: fill
+
+    -- end: ftd.column
+
+    -- tf.h0: $title
+    if: $title is not null
+
+    -- end: tf.h0
+
+    -- tf.markdown:
+    if: $body is not null
+
+    $body
+
+    -- end: tf.markdown
+
+    -- container: ftd.main
+
+    -- footer:
+    if: $footer-toc is not empty
+    footer-toc: $footer-toc
+
+    -- end: footer
+
+-- end: doc-page-desktop
+
+/-- component doc-page-mobile:
+
+    -- ftd.column:
+    optional caption title:
+    optional body body:
+    fpm.toc-item list toc: $toc
+    fpm.toc-item list sections:
+    fpm.toc-item list sub-sections:
+    fpm.toc-item list extra:
+    fpm.toc-item list footer-toc: $footer-toc
+    optional fpm.toc-item current-section:
+    optional fpm.toc-item current-page:
+    optional fpm.toc-item current-subsection:
+    width: fill
+    open: true
+    append-at: main-container
+    background-color: $fpm.color.main.background.base
+
+    -- end: ftd.column
+
+    -- h.header:
+    sections: $sections
+    sub-sections: $sub-sections
+    extra: $extra
+    toc: $toc
+    current-section: $current-section
+    current-subsection: $current-subsection
+    current-page: $current-page
+    site-logo: $assets.files.static.ftd-logo.png
+    site-url: $site-url
+    brand-site-url: $brand-site-url
+    brand-site-logo: $brand-site-logo
+    brand-site-name: $brand-site-name
+    brand-caption: $brand-caption
+    site-name: $site-name
+    logo-height: 38
+    menu-right: 0
+    menu-left: -88
+    current-url: /home/
+    menu-icon: $assets.files.static.header.hamburger.svg
+    parent-brand: $parent-brand
+
+    -- end: h.header
+
+    -- container: ftd.main
+
+    -- ftd.row:
+    width: fill
+    /id: main-row
+
+    -- end: ftd.row
+
+    -- ftd.column:
+    /id: main-container
+    width: fill
+    align: top
+    min-height: calc 100vh
+    padding-horizontal: 20
+    padding-vertical: 20
+
+    -- end: ftd.column
+
+    -- tf.h0: $title
+    if: $title is not null
+
+    -- end: tf.h0
+
+    --- tf.markdown:
+    if: $body is not null
+
+    $body
+
+    -- end: tf.h0
 
 
+    -- container: ftd.main
 
--- ftd.column page:
-optional caption title:
-optional body body:
-fpm.toc-item list toc: $sitemap.toc
-boolean login-button: $login-button
-boolean pricing-cta: $pricing-cta
-fpm.toc-item list sections: $sitemap.sections
-fpm.toc-item list sub-sections: $sitemap.subsections
-optional fpm.toc-item current-section: $sitemap.current-section
-optional fpm.toc-item current-subsection: $sitemap.current-subsection
-optional fpm.toc-item current-page: $sitemap.current-page
-fpm.toc-item list extra: $extra
-fpm.toc-item list footer-toc: $footer-toc
-optional string nav-title: 
-optional string nav-title-url:
-optional string nav-sub-title:
-optional string nav-sub-title-url:
-width: fill
-open: true
-boolean widthfill: false
-append-at: main-container
+    -- footer:
+    if: $footer-toc is not empty
+    footer-toc: $footer-toc
 
+    -- end: footer
 
---- container: ftd.main
-
---- doc-page-desktop: $title
-if: not $is-mobile
-id: main-container
-toc: $toc
-login-button: $login-button
-footer-toc: $footer-toc
-pricing-cta: $pricing-cta
-sections: $sections
-current-section: $current-section
-current-subsection: $current-subsection
-current-page: $current-page
-sub-sections: $sub-sections
-nav-title: $nav-title 
-nav-title-url: $nav-title-url
-nav-sub-title: $nav-sub-title
-nav-sub-title-url: $nav-sub-title-url
-extra: $extra
-body: $body
-widthfill: $widthfill
-
-
---- container: ftd.main
-
---- doc-page-mobile: $title
-if: $is-mobile
-id: main-container
-toc: $toc
-footer-toc: $footer-toc
-sections: $sections
-toc: $toc
-sub-sections: $sub-sections
-current-section: $current-section
-current-subsection: $current-subsection
-current-page: $current-page
-extra: $extra
-body: $body
-
-
-
-
-
-
-
-
-
--- ftd.column doc-page-desktop:
-optional caption title:
-optional body body:
-fpm.toc-item list toc: $toc
-fpm.toc-item list sections:
-fpm.toc-item list sub-sections:
-fpm.toc-item list extra:
-fpm.toc-item list footer-toc:
-optional fpm.toc-item current-section:
-optional fpm.toc-item current-page:
-optional fpm.toc-item current-subsection:
-optional string nav-title: 
-optional string nav-title-url:
-optional string nav-sub-title:
-optional string nav-sub-title-url:
-optional string login-btn-txt: Login
-boolean pricing-cta: 
-optional string sign-in-txt:
-boolean widthfill: 
-boolean login-button:
-width: fill
-open: true
-append-at: main-container
-background-color: $fpm.color.main.background.base
-
---- h.header:
-login-button: $login-button
-pricing-cta: $pricing-cta
-login-btn-txt: $login-btn-txt
-sign-in-txt: $sign-in-txt 
-sections: $sections
-sub-sections: $sub-sections
-current-section: $current-section
-current-subsection: $current-subsection
-current-page: $current-page
-extra: $extra
-site-logo: $assets.files.static.ftd-logo.png
-site-url: $site-url
-site-name: $site-name
-logo-height: 48
-menu-right: 0
-menu-left: -88
-current-url: /home/
-menu-icon: $assets.files.static.header.hamburger.svg
-
-
-
---- ftd.row:
-width: fill
-id: main-row
-spacing: 48
-
---- render-toc:
-if: $toc is not empty
-toc-obj: $toc
-
---- container: main-row
-
---- ftd.column:
-width: fill
-height: fill
-
---- ftd.column:
-id: main-container
-max-width if $toc is empty: 800
-max-width if $widthfill: fill
-max-width: 800
-align if $toc is empty: center
-align: top
-min-height: calc 100vh
-padding-horizontal if not $widthfill: 34
-padding-vertical if not $widthfill: 25
-width: fill
-
---- tf.h0: $title
-if: $title is not null
-
-
---- tf.markdown:
-if: $body is not null
-
-$body
-
-
---- container: ftd.main
-
---- footer:
-if: $footer-toc is not empty
-footer-toc: $footer-toc
-
-
-
-
-
-
-
-
--- ftd.column doc-page-mobile:
-optional caption title:
-optional body body:
-fpm.toc-item list toc: $toc
-fpm.toc-item list sections:
-fpm.toc-item list sub-sections:
-fpm.toc-item list extra:
-fpm.toc-item list footer-toc: $footer-toc
-optional fpm.toc-item current-section:
-optional fpm.toc-item current-page:
-optional fpm.toc-item current-subsection:
-width: fill
-open: true
-append-at: main-container
-background-color: $fpm.color.main.background.base
-
---- h.header:
-sections: $sections
-sub-sections: $sub-sections
-extra: $extra
-toc: $toc
-current-section: $current-section
-current-subsection: $current-subsection
-current-page: $current-page
-site-logo: $assets.files.static.ftd-logo.png
-site-url: $site-url
-brand-site-url: $brand-site-url
-brand-site-logo: $brand-site-logo
-brand-site-name: $brand-site-name
-brand-caption: $brand-caption
-site-name: $site-name
-logo-height: 38
-menu-right: 0
-menu-left: -88
-current-url: /home/
-menu-icon: $assets.files.static.header.hamburger.svg
-parent-brand: $parent-brand
-
-
---- container: ftd.main
-
---- ftd.row:
-width: fill
-id: main-row
-
---- ftd.column:
-id: main-container
-width: fill
-align: top
-min-height: calc 100vh
-padding-horizontal: 20
-padding-vertical: 20
-
---- tf.h0: $title
-if: $title is not null
-
-
---- tf.markdown:
-if: $body is not null
-
-$body
-
-
-
---- container: ftd.main
-
---- footer:
-if: $footer-toc is not empty
-footer-toc: $footer-toc
-
+-- end: doc-page-mobile
 
 
 
@@ -529,83 +475,101 @@ color: $fpm.color.main.text
 
 
 
+/-- component footer-instance:
+
+    -- ftd.column:
+    fpm.toc-item footer-toc:
+    min-width: portion 1
+
+    -- end: ftd.column
+
+    -- ftd.text: $footer-toc.title
+    min-width: fit-content
+    padding-left: 10
+    padding-top: 3
+    padding-bottom: 8
+    color: $fpm.color.main.text
+    role: $fpm.type.label-big
+
+    -- end: ftd.text
+
+    -- footer-link: $obj.title
+    $loop$: $footer-toc.children as $obj
+    url: $obj.url
+
+    -- end: footer-link
+
+-- end: footer-instance
 
 
--- ftd.column footer-instance:
-fpm.toc-item footer-toc:
-min-width: portion 1
+/-- component footer:
 
---- ftd.text: $footer-toc.title
-min-width: fit-content
-padding-left: 10
-padding-top: 3
-padding-bottom: 8
-color: $fpm.color.main.text
-role: $fpm.type.label-big
+    -- ftd.row:
+    fpm.toc-item list footer-toc:
+    width: fill
 
---- footer-link: $obj.title
-$loop$: $footer-toc.children as $obj
-url: $obj.url
+    -- end: ftd.row
 
+    -- footer-desktop:
+    if: not $is-mobile
+    footer-toc: $footer-toc
 
--- ftd.row footer:
-fpm.toc-item list footer-toc:
-width: fill
+    -- end: footer-desktop
 
---- footer-desktop:
-if: not $is-mobile
-footer-toc: $footer-toc
+    -- container: ftd.main
 
---- container: ftd.main
+    -- footer-mobile:
+    if: $is-mobile
+    footer-toc: $footer-toc
 
---- footer-mobile:
-if: $is-mobile
-footer-toc: $footer-toc
+    -- end: footer-mobile
 
-
-
-
-
-
-
-
--- ftd.row footer-desktop:
-fpm.toc-item list footer-toc:
-width: fill
-background-color: $fpm.color.main.background.base
-padding-horizontal: 150
-padding-vertical: 50
-spacing: space-between
-
---- footer-instance:
-$loop$: $footer-toc as $obj
-footer-toc: $obj
-
-
-
-
-
-
--- ftd.column footer-mobile:
-fpm.toc-item list footer-toc:
-width: fill
-background-color: $fpm.color.main.background.base
-padding-horizontal: 20
-padding-vertical: 50
-position: left
-
---- footer-instance:
-$loop$: $footer-toc as $obj
-footer-toc: $obj
+-- end: footer
 
 
 
 
 
+/-- component footer-desktop:
+
+    -- ftd.row:
+    fpm.toc-item list footer-toc:
+    width: fill
+    background-color: $fpm.color.main.background.base
+    padding-horizontal: 150
+    padding-vertical: 50
+    spacing: space-between
+
+    -- footer-instance:
+    $loop$: $footer-toc as $obj
+    footer-toc: $obj
+
+    -- end: footer-instance
+
+    -- end: ftd.row
+
+-- end: footer-desktop
 
 
+/-- component footer-mobile:
 
+    -- ftd.column:
+    fpm.toc-item list footer-toc:
+    width: fill
+    background-color: $fpm.color.main.background.base
+    padding-horizontal: 20
+    padding-vertical: 50
+    position: left
 
+    -- footer-instance:
+    $loop$: $footer-toc as $obj
+    footer-toc: $obj
+
+    -- end: footer-instance
+
+    -- end: ftd.column
+
+-- end: footer-mobile
 
 
 
