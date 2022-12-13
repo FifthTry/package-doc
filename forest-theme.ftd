@@ -95,8 +95,6 @@ mobile: $cta-txt
 xl: $cta-txt
 weight: 700
 
--- end: cta
-
 
 -- fpm.theme-color: #1F5E6B
 -- boolean sidebar-open: false
@@ -135,10 +133,10 @@ weight: 700
 if: $ftd.device == mobile
 
 
---- container: ftd.main
+-- container: ftd.main
 
---- ftd.column:
-id: content-container
+-- ftd.column:
+/id: content-container
 width: fill
 max-width: 800
 align: center
@@ -146,46 +144,58 @@ min-height: calc 100vh
 padding-vertical: 40
 padding-horizontal if $is-mobile: 20
 
---- tf.h0: $title
+-- tf.h0: $title
 if: $title is not null
 
 
---- tf.markdown:
+-- tf.markdown:
 if: $body is not null
 
 $body
 
+-- end: ftd.column
 
---- container: ftd.main
+-- container: ftd.main
 
---- footer:
+-- footer:
 if: $footer-toc is not empty
 footer-toc: $footer-toc
 
 
 
--- ftd.column content:
+-- component content:
+
+-- ftd.row:
+
+-- ftd.column:
 width: fill
 open: true
 append-at: content-container
 padding-vertical: 30
+-- end: ftd.column
 
---- ftd.column:
+-- ftd.column:
 if: not $is-mobile
 max-width: 800
 width: fill
 align: center
-id:  content-container
+/id:  content-container
+-- end: ftd.column
 
---- container: ftd.main
+-- container: ftd.main
 
---- ftd.column:
+-- ftd.column:
 if: $is-mobile
 width: fill
 align: center
 padding-horizontal: 20
-id:  content-container
+/id:  content-container
 
+-- end: ftd.column
+
+-- end: ftd.row
+
+-- end: content
 
 
 /-- component page:
@@ -573,74 +583,80 @@ color: $fpm.color.main.text
 
 
 
+/-- component toc-instance:
 
--- ftd.column toc-instance:
-fpm.toc-item toc:
-id: toc-instance
-
-
---- ftd.text:
-if: $toc.url is not null
-link: $toc.url
-text: $toc.title
-role: $cta
-min-width: fit-content
-margin-bottom: 16
-color: $fpm.color.main.text
-color if $toc.is-active: $fpm.color.main.cta-primary.base
-
---- ftd.text:
-if: $toc.url is null
-text: $toc.title
-role: $cta
-min-width: fit-content
-margin-bottom: 16
-color: $fpm.color.main.text
-color if $toc.is-active: $fpm.color.main.cta-primary.base
-padding-left: 10
+    -- ftd.column:
+    fpm.toc-item toc:
+    id: toc-instance
 
 
---- childrens:
-$loop$: $toc.children as $obj
-toc: $obj
+    -- ftd.text:
+    if: $toc.url is not null
+    link: $toc.url
+    text: $toc.title
+    role: $cta
+    min-width: fit-content
+    margin-bottom: 16
+    color: $fpm.color.main.text
+    color if $toc.is-active: $fpm.color.main.cta-primary.base
+
+    -- ftd.text:
+    if: $toc.url is null
+    text: $toc.title
+    role: $cta
+    min-width: fit-content
+    margin-bottom: 16
+    color: $fpm.color.main.text
+    color if $toc.is-active: $fpm.color.main.cta-primary.base
+    padding-left: 10
 
 
+    -- childrens:
+    $loop$: $toc.children as $obj
+    toc: $obj
 
+    -- end: ftd.column
 
-
-
-
--- ftd.column childrens:
-fpm.toc-item toc:
-
-
---- ftd.text: 
-link: $toc.url
-text: $toc.title
-role: $cta
-min-width: fit-content
-margin-bottom: 16
-color: $fpm.color.main.text
-margin-left: $fpm.space.space-3
-color if $toc.is-active: $fpm.color.main.cta-primary.base
-
---- ftd.column:
-margin-left: $fpm.space.space-3
-
---- childrens:
-$loop$: $toc.children as $obj
-toc: $obj
+-- end: toc-instance
 
 
 
 
+/-- component childrens:
+
+    -- ftd.column:
+    fpm.toc-item toc:
+
+
+    -- ftd.text:
+    link: $toc.url
+    text: $toc.title
+    role: $cta
+    min-width: fit-content
+    margin-bottom: 16
+    color: $fpm.color.main.text
+    margin-left: $fpm.space.space-3
+    color if $toc.is-active: $fpm.color.main.cta-primary.base
+
+    -- ftd.column:
+    margin-left: $fpm.space.space-3
+
+    -- childrens:
+    $loop$: $toc.children as $obj
+    toc: $obj
+
+    -- end: ftd.column
+
+-- end: childrens
 
 
 
 
 
--- ftd.column render-toc:
+-- component render-toc:
 fpm.toc-item list toc-obj:
+
+-- ftd.column:
 sticky: true
 top: 0
 left: 24
@@ -657,29 +673,33 @@ padding-bottom: 32
 margin-top: 25
 margin-bottom: 25
 
---- toc-instance:
+-- toc-instance:
 $loop$: $toc-obj as $obj
 toc: $obj
 
+-- end: ftd.column
+
+-- end: render-toc
 
 
 
 
-
-
-
-
--- ftd.column sub-title:
+-- component sub-title:
 caption title:
 optional body body:
+
+-- ftd.row:
+
+-- ftd.column:
 width: fill
 region: h1
 padding-bottom: 12
-boolean open: true
+/boolean open: true
 append-at: inner
 
---- ftd.text:
-caption $title:
+-- ftd.text:
+;; TODO: Error
+/caption title:
 region: title
 text: $title
 role: $fpm.type.heading-medium
@@ -688,16 +708,20 @@ padding-bottom: 8
 padding-top: 16
 $on-click$: toggle $open
 
---- ftd.column:
+-- ftd.column:
 id: inner
 if: $open
 width: fill
 
---- markdown:
+-- markdown:
 if: $body is not null
 body: $body
 
+-- end: ftd.column
 
+-- end: ftd.row
+
+-- end: sub-title
 
 
 
@@ -814,97 +838,97 @@ align: top
 
 
 
+-- component output:
 
+    -- ftd.column:
+    caption caption: Output
+    width: fill
+    open: true
+    append-at: output-container
+    padding-top: 12
 
--- ftd.column output:
-caption caption: Output
-width: fill
-open: true
-append-at: output-container
-padding-top: 12
+    -- ftd.text: $caption
+    color: $fpm.color.main.text
+    background-color: $fpm.color.main.background.base
+    border-top-radius: 2
+    padding-top: 3
+    padding-bottom: 3
+    padding-left: 10
+    padding-right: 10
+    role: $fpm.type.label-big
 
---- ftd.text: $caption
-color: $fpm.color.main.text
-background-color: $fpm.color.main.background.base
-border-top-radius: 2
-padding-top: 3
-padding-bottom: 3
-padding-left: 10
-padding-right: 10
-role: $fpm.type.label-big
+    -- end: ftd.column
 
---- ftd.column:
-border-width: 1
-border-color: $fpm.color.main.text
-width: fill
-id: output-container
-padding-top: 30
-padding-bottom: 30
-padding-left: 20
-padding-right: 20
-border-radius: 2
-background-color: $fpm.color.main.background.base
+    -- ftd.column:
+    border-width: 1
+    border-color: $fpm.color.main.text
+    width: fill
+    id: output-container
+    padding-top: 30
+    padding-bottom: 30
+    padding-left: 20
+    padding-right: 20
+    border-radius: 2
+    background-color: $fpm.color.main.background.base
 
-
-
-
-
-
-
-
--- ftd.column image:
-optional caption caption:
-optional body body:
-optional string link:
-optional string width:
-optional string height:
-ftd.image-src src:
-width if $width is not null: fill
-height: fill
-align if $width is null: center
-
---- ftd.image:
-src: $src
-width: $width
-height: $height
-align: $align
-
---- ftd.text:
-if: $caption is not null
-text: $caption
-color: $fpm.color.main.text
-align: center
-width if $width is not null: $width
-width if $width is null: fill
-role: $fpm.type.label-big
-border-bottom-radius: 5
-background-color: $fpm.color.main.background.step-1
-padding-vertical: 8
-padding-horizontal: 20
-text-align: center
-
---- ftd.column:
-if: $body is not null
-margin-top: 20
-
---- markdown:
-body: $body
-
---- container: ftd.main
-
---- ftd.column:
-if: $body is null
-margin-top: 20
+    -- end: ftd.column
+-- end: output
 
 
 
+-- component image:
 
+    -- ftd.column:
+    optional caption caption:
+    optional body body:
+    optional string link:
+    optional string width:
+    optional string height:
+    ftd.image-src src:
+    width if $width is not null: fill
+    height: fill
+    align if $width is null: center
 
+    -- ftd.image:
+    src: $src
+    width: $width
+    height: $height
+    align: $align
 
+    -- ftd.text:
+    if: $caption is not null
+    text: $caption
+    color: $fpm.color.main.text
+    align: center
+    width if $width is not null: $width
+    width if $width is null: fill
+    role: $fpm.type.label-big
+    border-bottom-radius: 5
+    background-color: $fpm.color.main.background.step-1
+    padding-vertical: 8
+    padding-horizontal: 20
+    text-align: center
 
+    -- end: ftd.column
 
+    -- ftd.column:
+    if: $body is not null
+    margin-top: 20
 
+    -- markdown:
+    body: $body
 
+    -- end: ftd.column
+
+    -- container: ftd.main
+
+    -- ftd.column:
+    if: $body is null
+    margin-top: 20
+
+    -- end: ftd.column
+
+-- end: image
 
 
 
@@ -920,42 +944,48 @@ border-radius: 3
 
 
 
+-- component tip:
 
+    -- ftd.row:
+    optional caption title:
+    optional body body:
+    border-radius: 3
+    width: fill
+    background-color: $fpm.color.main.background.base
+    color: $fpm.color.main.text
 
--- ftd.row tip:
-optional caption title:
-optional body body:
-border-radius: 3
-width: fill
-background-color: $fpm.color.main.background.base
-color: $fpm.color.main.text
+    -- ftd.column:
+    width: 5
+    height: percent 100
+    open: false
+    background-color: $fpm.color.main.background.base
 
---- ftd.column:
-width: 5
-height: percent 100
-open: false
-background-color: $fpm.color.main.background.base
+    -- end: ftd.column
 
---- ftd.column:
-width: fill
-padding: 10
-id: m
-spacing: 10
+    -- ftd.column:
+    width: fill
+    padding: 10
+    id: m
+    spacing: 10
 
---- ftd.row:
-spacing: 5
+    -- ftd.row:
+    spacing: 5
 
---- ftd.text: Tip
-role: $fpm.type.label-big
+    -- ftd.text: Tip
+    role: $fpm.type.label-big
 
---- ftd.text: $title
-if: $title is not null
-role: $fpm.type.label-big
+    -- ftd.text: $title
+    if: $title is not null
+    role: $fpm.type.label-big
 
---- container: m
+    -- end: ftd.column
 
---- ftd.text:
-if: $body is not null
-role: $fpm.type.copy-large
+    -- container: m
 
-$body
+    -- ftd.text:
+    if: $body is not null
+    role: $fpm.type.copy-large
+
+    $body
+
+-- end: tip
