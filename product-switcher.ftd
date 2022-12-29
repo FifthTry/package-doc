@@ -8,7 +8,7 @@
 
 
 -- ftd.column:
-id: code-wrap
+id: doc-wrap
 width: fill
 align: center
 padding-horizontal: 50
@@ -110,7 +110,7 @@ products: $example-product
 
 
 
--- container: code-wrap
+-- container: doc-wrap
 
 
 -- pd.output: Basic usage example - brand dropdown at right position
