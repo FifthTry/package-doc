@@ -6,7 +6,7 @@
         <title>update-design.py.ftd</title>
         <script type="ftd" id="ftd-data">{
   "fifthtry.github.io/package-doc/update-design.py/#content@0": {
-    "value": "import os\n\ndirectory = os.getcwd()\n\nfor filename in os.listdir(directory):\nprint(filename)\nif not filename.endswith(\".ftd\"):\ncontinue\nf = open(os.path.join(directory, filename), 'r')\ntext = f.read()\nt = text.replace(\"$fpm.design.type.\", \"$fpm.type.\")\\\n.replace(\"$fpm.design.color.brand.on-region\", \"$fpm.color.main.text\")\\\n.replace(\"$fpm.design.color.brand.region\", \"$fpm.color.main.background.base\")\\\n.replace(\"$fpm.design.color.brand.primary-action\", \"$fpm.color.main.cta-primary.base\")\\\n.replace(\"$fpm.design.color.brand.on-primary-action\", \"$fpm.color.main.cta-primary.text\")\\\n.replace(\"$fpm.design.color.brand.secondary-action\", \"$fpm.color.main.cta-secondary.base\")\\\n.replace(\"$fpm.design.color.brand.on-secondary-action\", \"$fpm.color.main.cta-secondary.text\")\\\n.replace(\"$fpm.design.color.brand.error\", \"$fpm.color.main.error.base\")\\\n.replace(\"$fpm.design.color.brand.on-error\", \"$fpm.color.main.error.text\") \\\n.replace(\"$fpm.design.color.brand.success\", \"$fpm.color.main.success.base\") \\\n.replace(\"$fpm.design.color.brand.on-success\", \"$fpm.color.main.success.text\") \\\n.replace(\"$fpm.design.color.brand.warning\", \"$fpm.color.main.warning.base\") \\\n.replace(\"ftd.colors\", \"ftd.color-scheme\") \\\n.replace(\"$colors.primary-action\", \"$colors.cta-primary.base\") \\\n.replace(\"$colors.on-primary-action\", \"$colors.cta-primary.text\") \\\n.replace(\"$colors.secondary-action\", \"$colors.cta-secondary.base\") \\\n.replace(\"$colors.region\", \"$colors.background.base\") \\\n.replace(\"$colors.on-region\", \"$colors.text\") \\\n.replace(\"$fpm.design.color.brand\", \"$fpm.color.main.background.base\") \\\n.replace(\"$fpm.design.color.brand.on-warning\", \"$fpm.color.main.warning.text\")\nf.close()\nf = open(os.path.join(directory, filename), 'w')\nf.write(t)\nf.close()",
+    "value": "import os\n\ndirectory = os.getcwd()\n\nfor filename in os.listdir(directory):\n    print(filename)\n    if not filename.endswith(\".ftd\"):\n        continue\n    f = open(os.path.join(directory, filename), 'r')\n    text = f.read()\n    t = text.replace(\"$fpm.design.type.\", \"$fpm.type.\")\\\n        .replace(\"$fpm.design.color.brand.on-region\", \"$fpm.color.main.text\")\\\n        .replace(\"$fpm.design.color.brand.region\", \"$fpm.color.main.background.base\")\\\n        .replace(\"$fpm.design.color.brand.primary-action\", \"$fpm.color.main.cta-primary.base\")\\\n        .replace(\"$fpm.design.color.brand.on-primary-action\", \"$fpm.color.main.cta-primary.text\")\\\n        .replace(\"$fpm.design.color.brand.secondary-action\", \"$fpm.color.main.cta-secondary.base\")\\\n        .replace(\"$fpm.design.color.brand.on-secondary-action\", \"$fpm.color.main.cta-secondary.text\")\\\n        .replace(\"$fpm.design.color.brand.error\", \"$fpm.color.main.error.base\")\\\n        .replace(\"$fpm.design.color.brand.on-error\", \"$fpm.color.main.error.text\") \\\n        .replace(\"$fpm.design.color.brand.success\", \"$fpm.color.main.success.base\") \\\n        .replace(\"$fpm.design.color.brand.on-success\", \"$fpm.color.main.success.text\") \\\n        .replace(\"$fpm.design.color.brand.warning\", \"$fpm.color.main.warning.base\") \\\n        .replace(\"ftd.colors\", \"ftd.color-scheme\") \\\n        .replace(\"$colors.primary-action\", \"$colors.cta-primary.base\") \\\n        .replace(\"$colors.on-primary-action\", \"$colors.cta-primary.text\") \\\n        .replace(\"$colors.secondary-action\", \"$colors.cta-secondary.base\") \\\n        .replace(\"$colors.region\", \"$colors.background.base\") \\\n        .replace(\"$colors.on-region\", \"$colors.text\") \\\n        .replace(\"$fpm.design.color.brand\", \"$fpm.color.main.background.base\") \\\n        .replace(\"$fpm.design.color.brand.on-warning\", \"$fpm.color.main.warning.text\")\n    f.close()\n    f = open(os.path.join(directory, filename), 'w')\n    f.write(t)\n    f.close()",
     "dependencies": {
       "0": [
         {
@@ -295,37 +295,37 @@
       "blockquote": {
         "$kind$": "light",
         "dark": "#f0f0f0",
-        "light": "#f6f7f8"
+        "light": "#f0f0f0"
       },
       "code": {
         "$kind$": "light",
-        "dark": "#ffffff",
-        "light": "#f6f7f8"
+        "dark": "#9f9b9b45",
+        "light": "#9f9b9b45"
       },
       "link": {
         "$kind$": "light",
-        "dark": "#25c19f",
-        "light": "#136351"
+        "dark": "#18181b",
+        "light": "#18181b"
       },
       "link-code": {
         "$kind$": "light",
-        "dark": "#25c19f",
-        "light": "#136351"
+        "dark": "#9f9b9b45",
+        "light": "#9f9b9b45"
       },
       "link-visited": {
         "$kind$": "light",
-        "dark": "#0f5750",
-        "light": "#7b3ee8"
+        "dark": "#18181b",
+        "light": "#18181b"
       },
       "link-visited-code": {
         "$kind$": "light",
-        "dark": "#0f5750",
-        "light": "#136351"
+        "dark": "#18181b",
+        "light": "#18181b"
       },
       "ul-ol-li-before": {
         "$kind$": "light",
-        "dark": "#ffffff",
-        "light": "#000000"
+        "dark": "#18181b",
+        "light": "#18181b"
       }
     },
     "dependencies": {}
@@ -334,28 +334,28 @@
     "value": {
       "code": {
         "$kind$": "light",
-        "dark": "#25c19f",
-        "light": "#000000"
+        "dark": "#f6f7f8",
+        "light": "#f6f7f8"
       },
       "link": {
         "$kind$": "light",
-        "dark": "#25c19f",
-        "light": "#136351"
+        "dark": "#58a6ff",
+        "light": "#6a89b8"
       },
       "link-code": {
         "$kind$": "light",
-        "dark": "#25c19f",
-        "light": "#136351"
+        "dark": "#58a6ff",
+        "light": "#6a89b8"
       },
       "link-visited": {
         "$kind$": "light",
-        "dark": "#0f5750",
-        "light": "#7b3ee8"
+        "dark": "#a27de7",
+        "light": "#9475cb"
       },
       "link-visited-code": {
         "$kind$": "light",
-        "dark": "#0f5750",
-        "light": "#136351"
+        "dark": "#a27de7",
+        "light": "#6a89b8"
       },
       "ul-ol-li-before": {
         "$kind$": "light",
@@ -508,40 +508,40 @@ body.fpm-dark .ft_md a {
 }</style>
     </head>
     <body>
-        <div data-id="main:root" style="align-items: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: column; flex-wrap: nowrap; height: 100%; justify-content: flex-start; text-decoration: none; white-space: initial; width: 100%" ><div data-id="0:main" style="border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; line-height: 26px; text-align: left; text-decoration: none; white-space: initial" ><pre style="background-color:#2b303b;"><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">os
+        <div data-id="main:root" style="align-items: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: column; flex-wrap: nowrap; height: 100%; justify-content: flex-start; text-decoration: none; white-space: initial; width: 100%" class=""><div data-id="0:main" style="border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; line-height: 26px; text-align: left; text-decoration: none; white-space: initial" class=""><pre style="background-color:#2b303b;"><span style="color:#b48ead;">import </span><span style="color:#c0c5ce;">os
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">directory = os.</span><span style="color:#8fa1b3;">getcwd</span><span style="color:#c0c5ce;">()
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">filename </span><span style="color:#b48ead;">in </span><span style="color:#c0c5ce;">os.</span><span style="color:#8fa1b3;">listdir</span><span style="color:#c0c5ce;">(directory):
-</span><span style="color:#96b5b4;">print</span><span style="color:#c0c5ce;">(filename)
-</span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">not filename.</span><span style="color:#8fa1b3;">endswith</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">.ftd</span><span style="color:#c0c5ce;">&quot;):
-</span><span style="color:#b48ead;">continue
-</span><span style="color:#c0c5ce;">f = </span><span style="color:#96b5b4;">open</span><span style="color:#c0c5ce;">(os.path.</span><span style="color:#8fa1b3;">join</span><span style="color:#c0c5ce;">(directory, filename), &#39;</span><span style="color:#a3be8c;">r</span><span style="color:#c0c5ce;">&#39;)
-</span><span style="color:#c0c5ce;">text = f.</span><span style="color:#8fa1b3;">read</span><span style="color:#c0c5ce;">()
-</span><span style="color:#c0c5ce;">t = text.</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.type.</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.type.</span><span style="color:#c0c5ce;">&quot;)\
-</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.color.brand.on-region</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.color.main.text</span><span style="color:#c0c5ce;">&quot;)\
-</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.color.brand.region</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.color.main.background.base</span><span style="color:#c0c5ce;">&quot;)\
-</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.color.brand.primary-action</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.color.main.cta-primary.base</span><span style="color:#c0c5ce;">&quot;)\
-</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.color.brand.on-primary-action</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.color.main.cta-primary.text</span><span style="color:#c0c5ce;">&quot;)\
-</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.color.brand.secondary-action</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.color.main.cta-secondary.base</span><span style="color:#c0c5ce;">&quot;)\
-</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.color.brand.on-secondary-action</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.color.main.cta-secondary.text</span><span style="color:#c0c5ce;">&quot;)\
-</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.color.brand.error</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.color.main.error.base</span><span style="color:#c0c5ce;">&quot;)\
-</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.color.brand.on-error</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.color.main.error.text</span><span style="color:#c0c5ce;">&quot;) \
-</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.color.brand.success</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.color.main.success.base</span><span style="color:#c0c5ce;">&quot;) \
-</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.color.brand.on-success</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.color.main.success.text</span><span style="color:#c0c5ce;">&quot;) \
-</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.color.brand.warning</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.color.main.warning.base</span><span style="color:#c0c5ce;">&quot;) \
-</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">ftd.colors</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">ftd.color-scheme</span><span style="color:#c0c5ce;">&quot;) \
-</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$colors.primary-action</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$colors.cta-primary.base</span><span style="color:#c0c5ce;">&quot;) \
-</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$colors.on-primary-action</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$colors.cta-primary.text</span><span style="color:#c0c5ce;">&quot;) \
-</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$colors.secondary-action</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$colors.cta-secondary.base</span><span style="color:#c0c5ce;">&quot;) \
-</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$colors.region</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$colors.background.base</span><span style="color:#c0c5ce;">&quot;) \
-</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$colors.on-region</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$colors.text</span><span style="color:#c0c5ce;">&quot;) \
-</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.color.brand</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.color.main.background.base</span><span style="color:#c0c5ce;">&quot;) \
-</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.color.brand.on-warning</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.color.main.warning.text</span><span style="color:#c0c5ce;">&quot;)
-</span><span style="color:#c0c5ce;">f.</span><span style="color:#8fa1b3;">close</span><span style="color:#c0c5ce;">()
-</span><span style="color:#c0c5ce;">f = </span><span style="color:#96b5b4;">open</span><span style="color:#c0c5ce;">(os.path.</span><span style="color:#8fa1b3;">join</span><span style="color:#c0c5ce;">(directory, filename), &#39;</span><span style="color:#a3be8c;">w</span><span style="color:#c0c5ce;">&#39;)
-</span><span style="color:#c0c5ce;">f.</span><span style="color:#8fa1b3;">write</span><span style="color:#c0c5ce;">(t)
-</span><span style="color:#c0c5ce;">f.</span><span style="color:#8fa1b3;">close</span><span style="color:#c0c5ce;">()
+</span><span style="color:#c0c5ce;">    </span><span style="color:#96b5b4;">print</span><span style="color:#c0c5ce;">(filename)
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">not filename.</span><span style="color:#8fa1b3;">endswith</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">.ftd</span><span style="color:#c0c5ce;">&quot;):
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">continue
+</span><span style="color:#c0c5ce;">    f = </span><span style="color:#96b5b4;">open</span><span style="color:#c0c5ce;">(os.path.</span><span style="color:#8fa1b3;">join</span><span style="color:#c0c5ce;">(directory, filename), &#39;</span><span style="color:#a3be8c;">r</span><span style="color:#c0c5ce;">&#39;)
+</span><span style="color:#c0c5ce;">    text = f.</span><span style="color:#8fa1b3;">read</span><span style="color:#c0c5ce;">()
+</span><span style="color:#c0c5ce;">    t = text.</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.type.</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.type.</span><span style="color:#c0c5ce;">&quot;)\
+</span><span style="color:#c0c5ce;">        .</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.color.brand.on-region</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.color.main.text</span><span style="color:#c0c5ce;">&quot;)\
+</span><span style="color:#c0c5ce;">        .</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.color.brand.region</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.color.main.background.base</span><span style="color:#c0c5ce;">&quot;)\
+</span><span style="color:#c0c5ce;">        .</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.color.brand.primary-action</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.color.main.cta-primary.base</span><span style="color:#c0c5ce;">&quot;)\
+</span><span style="color:#c0c5ce;">        .</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.color.brand.on-primary-action</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.color.main.cta-primary.text</span><span style="color:#c0c5ce;">&quot;)\
+</span><span style="color:#c0c5ce;">        .</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.color.brand.secondary-action</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.color.main.cta-secondary.base</span><span style="color:#c0c5ce;">&quot;)\
+</span><span style="color:#c0c5ce;">        .</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.color.brand.on-secondary-action</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.color.main.cta-secondary.text</span><span style="color:#c0c5ce;">&quot;)\
+</span><span style="color:#c0c5ce;">        .</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.color.brand.error</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.color.main.error.base</span><span style="color:#c0c5ce;">&quot;)\
+</span><span style="color:#c0c5ce;">        .</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.color.brand.on-error</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.color.main.error.text</span><span style="color:#c0c5ce;">&quot;) \
+</span><span style="color:#c0c5ce;">        .</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.color.brand.success</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.color.main.success.base</span><span style="color:#c0c5ce;">&quot;) \
+</span><span style="color:#c0c5ce;">        .</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.color.brand.on-success</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.color.main.success.text</span><span style="color:#c0c5ce;">&quot;) \
+</span><span style="color:#c0c5ce;">        .</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.color.brand.warning</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.color.main.warning.base</span><span style="color:#c0c5ce;">&quot;) \
+</span><span style="color:#c0c5ce;">        .</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">ftd.colors</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">ftd.color-scheme</span><span style="color:#c0c5ce;">&quot;) \
+</span><span style="color:#c0c5ce;">        .</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$colors.primary-action</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$colors.cta-primary.base</span><span style="color:#c0c5ce;">&quot;) \
+</span><span style="color:#c0c5ce;">        .</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$colors.on-primary-action</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$colors.cta-primary.text</span><span style="color:#c0c5ce;">&quot;) \
+</span><span style="color:#c0c5ce;">        .</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$colors.secondary-action</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$colors.cta-secondary.base</span><span style="color:#c0c5ce;">&quot;) \
+</span><span style="color:#c0c5ce;">        .</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$colors.region</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$colors.background.base</span><span style="color:#c0c5ce;">&quot;) \
+</span><span style="color:#c0c5ce;">        .</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$colors.on-region</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$colors.text</span><span style="color:#c0c5ce;">&quot;) \
+</span><span style="color:#c0c5ce;">        .</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.color.brand</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.color.main.background.base</span><span style="color:#c0c5ce;">&quot;) \
+</span><span style="color:#c0c5ce;">        .</span><span style="color:#8fa1b3;">replace</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">$fpm.design.color.brand.on-warning</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">$fpm.color.main.warning.text</span><span style="color:#c0c5ce;">&quot;)
+</span><span style="color:#c0c5ce;">    f.</span><span style="color:#8fa1b3;">close</span><span style="color:#c0c5ce;">()
+</span><span style="color:#c0c5ce;">    f = </span><span style="color:#96b5b4;">open</span><span style="color:#c0c5ce;">(os.path.</span><span style="color:#8fa1b3;">join</span><span style="color:#c0c5ce;">(directory, filename), &#39;</span><span style="color:#a3be8c;">w</span><span style="color:#c0c5ce;">&#39;)
+</span><span style="color:#c0c5ce;">    f.</span><span style="color:#8fa1b3;">write</span><span style="color:#c0c5ce;">(t)
+</span><span style="color:#c0c5ce;">    f.</span><span style="color:#8fa1b3;">close</span><span style="color:#c0c5ce;">()
 </span></pre>
 </div></div>
         <script>
@@ -867,7 +867,7 @@ let ftd_utils = {
     },
 
     is_equal_condition: function (value, condition) {
-        let val = value.toString().replaceAll("\"", "");
+        let val = value === null ? "" : value.toString().replaceAll("\"", "");
         return ((value === condition)
             || (condition === "$IsNull$" && (val.trim().length === 0 || value === null))
             || (condition === "$IsNotNull$" && (val.trim().length !== 0 && value !== null))
@@ -1328,10 +1328,10 @@ window.ftd = (function () {
             if (action["parameters"].data !== undefined) {
                 let value = action["parameters"].data[0].value;
                 let reference = JSON.parse(action["parameters"].data[0].reference);
-                let resolved_data = ftd_utils.resolve_reference(value, reference, data, obj);
+                let filtered_data = filter_keys(reference, (key) => !key.startsWith("$"));
+                let resolved_data = ftd_utils.resolve_reference(value, filtered_data, data, obj);
                 let func = resolved_data.function? resolved_data.function.trim().replaceAll("-", "_").toLowerCase(): "http";
-                let method = resolved_data.method? resolved_data.method.trim().toUpperCase(): "GET";
-                window[func](id, method, resolved_data, reference);
+                window[func](id, resolved_data, reference);
             } else {
                 let target = action["target"].trim().replaceAll("-", "_");
                 window[target](id);
@@ -1590,37 +1590,99 @@ window.ftd = (function () {
     return exports;
 })();
 
-function console_print(id, data) {
-    console.log("console_print",data);
-}
+function filter_keys(data, filter_fn) {
+    if (!(data instanceof Object)) {
+        throw "data is not an object";
+    }
 
-function http(id, method="GET", data, reference) {
+    let o = {};
+
+    for(const key of Object.keys(data)) {
+        if (filter_fn(key)) {
+            o[key] = data[key];
+        }
+    }
+
+    return o;
+}
+function http(id, request_data, referenced_data) {
+    let method = request_data.method? request_data.method.trim().toUpperCase(): "GET";
+
+    if (method == "GET") {
+        let query_parameters = new URLSearchParams();
+        for (let [header, value] of Object.entries(request_data)) {
+            if (header != "url" && header != "function" && header != "method")
+            {
+                query_parameters.set(header, value);
+            }
+       }
+       let query_string = query_parameters.toString();
+       if (query_string) {
+           let get_url = request_data.url + "?" + query_parameters.toString();
+           window.location.href = get_url;
+       }
+       else{
+           window.location.href = request_data.url;
+       }
+       return;
+    }
+
     let xhr = new XMLHttpRequest();
-    xhr.open(method.toUpperCase(), data.url);
+    xhr.open(method, request_data.url);
     xhr.setRequestHeader("Accept", "application/json");
     xhr.setRequestHeader("Content-Type", "application/json");
 
     xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status !== 200) {
-            console.log("Error in calling url: ", data.url, xhr.responseText);
-            return;
-        }
         if (xhr.readyState !== 4) {
+            // this means request is still underway
+            // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState
             return;
         }
+
+        if (xhr.status > 500) {
+            console.log("Error in calling url: ", request_data.url, xhr.responseText);
+            return;
+        }
+
         let response = JSON.parse(xhr.response);
-        console_log("API response", data.url, xhr.response)
-        if (!!response.data && !!response.data.url) {
-            window.location.href = response.data.url;
-        } else if (!!response.data && !!response.data.reload) {
+        if (!!response && !!response.redirect) {
+            // Warning: we don't handle header location redirect
+            window.location.href = response.redirect;
+        } else if (!!response && !!response.reload) {
             window.location.reload();
         } else {
-            for (const key of Object.keys(response.data)) {
-                ftd.set_value(id, key, response.data[key])
+            let data = {};
+
+            if (!!response.errors) {
+                for (key of Object.keys(response.errors)) {
+                    let value = response.errors[key];
+                    if (Array.isArray(value)) {
+                        // django returns a list of strings
+                        value = value.join(" ");
+                        // also django does not append `-error`
+                        key = key + "-error";
+                    }
+                    data[key] = value;
+                }
+            }
+
+            if (!!response.data) {
+                if (!!data) {
+                    console_log("both .errrors and .data are present in response, ignoring .data");
+                } else {
+                    data = response.data;
+                }
+            }
+
+            for (ftd_variable of Object.keys(data)) {
+                if (referenced_data["$" + ftd_variable]) {
+                    ftd_variable = referenced_data["$" + ftd_variable];
+                }
+                ftd.set_value(id, ftd_variable, data[key])
             }
         }
     };
-    xhr.send(JSON.stringify(data));
+    xhr.send(JSON.stringify(request_data));
 }
 
 function redirect(id, data) {
@@ -1850,6 +1912,66 @@ window.ftd.post_init = function () {
         update_theme_color();
     }
 
+
+    window.ftd_warnings_delivered = {};
+
+    window["ls.set_boolean"] = function(_id, resolved_data, reference) {
+        // TODO: we need a better way to detect absence of localStorage
+        if (!isLocalStorageAvailable()) {
+            // we are doing this business so we only show the warning once in console
+            if (window.ftd_warnings_delivered["ls.set_boolean"]) {
+                return;
+            }
+            window.ftd_warnings_delivered["ls.set_boolean"] = true;
+
+            // TODO: we should have `ftd.localStorage-present` or some such, so we can
+            //       show a warning in UI as well, instead of just in console.
+
+            console.warn("localStorage not available, but ls.set-boolean was used");
+            return;
+        }
+
+        // TODO: we are not using id yet.
+        console.log("ls.set-boolean", reference["variable"], resolved_data["variable"]);
+        window.localStorage.setItem(reference["variable"], resolved_data["variable"]);
+    }
+
+    // source: https://stackoverflow.com/questions/16427636/check-if-localstorage-is-available
+    function isLocalStorageAvailable(){
+        if (!window.localStorage) {
+            return false;
+        }
+
+        var test = 'test';
+        try {
+            localStorage.setItem(test, test);
+            localStorage.removeItem(test);
+            return true;
+        } catch(e) {
+            return false;
+        }
+    }
+
+    function scan_local_store() {
+        if (!isLocalStorageAvailable()) {
+            return;
+        }
+
+        Object.keys(window.localStorage).forEach(function(key){
+            let value = window.localStorage.getItem(key);
+            // value would be def string or null
+            // we want to set a boolean variable using `value`
+            // we want to only do if everything is alright
+            if (value === "true" || value === "false") {
+                // TODO: how do we handle id? we are hard-coding main here, which is wrong
+                window.ftd.set_value("main", key,  value === "true");
+            } else {
+                console.log("contract violation, expected boolean", key, "found", value);
+                // TODO: use key prefixes so we can delete the keys safely
+            }
+        });
+    }
+
     function update_theme_color() {
         let theme_color = window.ftd.get_value("main", FTD_THEME_COLOR);
         if (!!theme_color) {
@@ -1927,7 +2049,9 @@ window.ftd.post_init = function () {
     initialise_dark_mode();
     initialise_device();
     update_markdown_colors();
+    scan_local_store();
 };
+
 
             window.ftd.init("main", "ftd-data", "ftd-external-children");
 
