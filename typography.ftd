@@ -29,7 +29,6 @@ This is used to add third-level heading in hierarchy of content.
 It expects a title in caption, optional string type data in body and
 afterwards add any number of components.
 
-
 -- pd.hidden-code: How to use
 
 /-- h2: Heading Medium
@@ -38,15 +37,12 @@ afterwards add any number of components.
 
 /-- <other-components>:
 
-
-
 -- pd.component: h1
 name: fifthtry.github.io/typography.h1
 
 This is used to add second-level heading in hierarchy of content i.e. the big title.
 It expects a title in caption, optional string type data in body and
 afterwards add any number of components.
-
 
 -- pd.hidden-code: How to use
 
@@ -56,15 +52,12 @@ afterwards add any number of components.
 
 /-- <other-components>:
 
-
-
 -- pd.component: h0
 name: fifthtry.github.io/typography.h0
 
 This is used to add the most prominent heading i.e. the Heading Hero.
 It expects a title in caption, optional string type data in body and
 afterwards add any number of components.
-
 
 -- pd.hidden-code: How to use
 
@@ -78,23 +71,17 @@ afterwards add any number of components.
 
 Body text here in h0
 
-
 /-- h1: Heading Large
 
 Body text here in h1
-
 
 /-- h2: Heading Medium
 
 Body text here in h2
 
-
 /-- h3: Heading Small
 
 Body text here in h3
-
-
-
 
 -- pd.output: Basic usage example of Typography
 
@@ -102,25 +89,13 @@ Body text here in h3
 
 Body text is here in h1
 
-
-
-
-
 -- h2: Heading Large
 
 Body text is here in h2
 
-
-
-
-
 -- h3: Heading Medium
 
 Body text is here in h3
-
-
-
-
 
 -- h4: Heading Small
 
