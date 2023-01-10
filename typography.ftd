@@ -1,4 +1,5 @@
 -- import: fpm
+-- import: fifthtry.github.io/package-doc/doc as pd
 
 
 
@@ -11,22 +12,17 @@ padding-horizontal.px if { ftd.device == "mobile" }: 20
 padding-bottom.px: 200
 background.solid: $inherited.colors.background.base
 
-
-
-/-- pd.package: Typography
+-- pd.package: Typography
 name: fifthtry.github.io/typography
 
 This component can be used to add heading. It has various heading namely h0, h1 and h2.Somewhat similar to heading tag in html. The variation of the numbers (0, 1 and 2) directly relates to the relevance that the content has in the interface. The lower the number, more prominence, and the importance it will have. So it helps creating the hierarchy of information.
-
-
 
 /-- ft.code: Add this to your FPM.ftd
 lang: ftd
 
 /-- fpm.dependency: fifthtry.github.io/typography
 
-
-/-- pd.component: h2
+-- pd.component: h2
 name: fifthtry.github.io/typography.h2
 
 This is used to add third-level heading in hierarchy of content.
@@ -34,7 +30,7 @@ It expects a title in caption, optional string type data in body and
 afterwards add any number of components.
 
 
-/-- pd.hidden-code: How to use
+-- pd.hidden-code: How to use
 
 /-- h2: Heading Medium
 
@@ -44,7 +40,7 @@ afterwards add any number of components.
 
 
 
-/-- pd.component: h1
+-- pd.component: h1
 name: fifthtry.github.io/typography.h1
 
 This is used to add second-level heading in hierarchy of content i.e. the big title.
@@ -52,7 +48,7 @@ It expects a title in caption, optional string type data in body and
 afterwards add any number of components.
 
 
-/-- pd.hidden-code: How to use
+-- pd.hidden-code: How to use
 
 /-- h1: Heading Large
 
@@ -62,7 +58,7 @@ afterwards add any number of components.
 
 
 
-/-- pd.component: h0
+-- pd.component: h0
 name: fifthtry.github.io/typography.h0
 
 This is used to add the most prominent heading i.e. the Heading Hero.
@@ -70,17 +66,13 @@ It expects a title in caption, optional string type data in body and
 afterwards add any number of components.
 
 
-/-- pd.hidden-code: How to use
+-- pd.hidden-code: How to use
 
 /-- h0: Heading Hero
 
 /<Body text here> // This is optional
 
 /-- <other-components>:
-
-
-
-/-- pd.output: Basic usage example of Typography
 
 /-- h0: Heading Hero
 
@@ -104,7 +96,7 @@ Body text here in h3
 
 
 
-
+-- pd.output: Basic usage example of Typography
 
 -- h1: Heading Hero
 

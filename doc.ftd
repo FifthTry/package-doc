@@ -51,7 +51,7 @@ Package body.
 
 -- component hidden-code:
 caption title:
-body body:
+optional body body:
 boolean open-block: false
 
 -- ftd.column:
@@ -103,7 +103,7 @@ $body
 
 -- component output:
 caption caption:
-body body:
+optional body body:
 optional ftd.image-src reference:
 boolean reference-open: false
 
@@ -253,7 +253,7 @@ border-radius.px: 4
 
 -- end: ftd.row
 
--- ftd.row:
+-- ftd.column:
 
 -- ftd.image:
 src: $assets.files.static.ftd-logo.png
@@ -269,7 +269,7 @@ value: $package.name
 
 $package.body
 
--- end: ftd.row
+-- end: ftd.column
 
 -- end: ftd.column
 
