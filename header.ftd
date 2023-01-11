@@ -16,7 +16,7 @@ dark: https://www.fifthtry.com/-/fifthtry.com/assets/images/logo-fifthtry-dark.s
 
 -- boolean $show-section: false
 
--- boolean $sidebar-open: true
+-- boolean $sidebar-open: false
 
 -- boolean login-button: false
 
