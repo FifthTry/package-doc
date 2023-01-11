@@ -137,11 +137,25 @@ margin-bottom.px if {h0.body != NULL}: -26
 if: {h0.body != NULL}
 body: $h0.body
 
+
+
+
+
+-- markdown:
+
+This is markdown body.
+
+
+-- h2: Heading after markdown
+
+Heading body after markdown block.
+
 -- end: ftd.column
 
 -- end: ftd.column
 
 -- end: h0
+
 
 
 

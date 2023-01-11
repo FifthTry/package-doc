@@ -127,7 +127,7 @@ $body
 
 -- ftd.text: Output
 color: $inherited.colors.text
-background-color: $inherited.colors.background.base
+background.solid: $inherited.colors.background.base
 padding-vertical.px: 10
 padding-horizontal.px: 20
 border-top-left-radius.px: 2
@@ -137,7 +137,7 @@ role: $inherited.types.copy-large
 
 -- ftd.column:
 width: fill-container
-background-color: $inherited.colors.background.base
+background.solid: $inherited.colors.background.base
 border-radius.px: 2
 border-width.px: 1
 border-color: $inherited.colors.border
@@ -243,7 +243,7 @@ anchor: window
 right.px: 50
 bottom.px: 100
 padding.px: 10
-background-color: $inherited.colors.background.base
+background.solid: $inherited.colors.background.base
 border-width.px: 1
 border-color: $inherited.colors.border
 border-radius.px: 4
@@ -294,7 +294,7 @@ border-width.px: 1
 border-color: $inherited.colors.border
 spacing.px: 7
 width: fill-container
-background-color: $inherited.colors.background.base
+background.solid: $inherited.colors.background.base
 border-radius.px: 4
 margin-bottom.px: 15
 
