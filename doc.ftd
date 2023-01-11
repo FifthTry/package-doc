@@ -1,7 +1,7 @@
 -- import: fpm
 -- import: fifthtry.github.io/package-doc/typography as tf
 -- import: fifthtry.github.io/package-doc/assets
-;;-- import: fifthtry.github.io/package-doc/code-block as cb
+-- import: fifthtry.github.io/package-doc/code-block as cb
 ;;-- ftd.boolean: $ftd.dark-mode
 
 
@@ -81,7 +81,7 @@ if: { $hidden-code.open-block }
 width: fill-container
 ;;$on-click$: toggle(a = $hidden-code.open-block)
 
-/--- cb.code:
+/-- cb.code:
 lang: ftd
 
 $body
@@ -120,12 +120,10 @@ padding-bottom.px: 10
 
 -- tf.h2-text: $output.caption
 
-/-- cb.code:
+-- cb.code:
 lang: ftd
 
-$body
-
--- ftd.text: Output
+\-- ftd.text: Output
 color: $inherited.colors.text
 background.solid: $inherited.colors.background.base
 padding-vertical.px: 10
