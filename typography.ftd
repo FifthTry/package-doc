@@ -236,7 +236,7 @@ width: fill-container
 margin-bottom.px if {$h2.body != NULL}: -26
 
 -- markdown:
-if: {$h2.body != NULL}
+if: { h2.body != NULL }
 body: $h2.body
 
 -- end: ftd.column
@@ -277,7 +277,7 @@ width: fill-container
 margin-bottom.px if {$h3.body != NULL}: -26
 
 -- markdown:
-if: {$h3.body != NULL}
+if: { h3.body != NULL }
 body: $h3.body
 
 -- end: ftd.column
@@ -301,7 +301,8 @@ optional boolean collapsed:
 optional caption title:
 optional boolean two_columns:
 
--- ftd.text: $markdown.body
+-- ftd.text: 
+text: $markdown.body
 role: $inherited.types.copy-relaxed
 color: $inherited.colors.text
 margin-bottom.px: 26
