@@ -275,7 +275,7 @@ text-color: $switcher-desktop.text-color
 padding-top.px: 10
 
 -- ftd.image: 
-src: $assets.files.assets.static.down-arrow.svg
+src: $assets.files.static.ps.down-arrow.svg
 height: fill-container
 width.fixed.px: 12
 
@@ -724,8 +724,8 @@ optional string button-text:
 
 -- product-data: cDoc
 index: 1
-mobile-logo: $assets.files.assets.static.logo-brand.svg
-logo: $assets.files.assets.static.doc-framework.png
+mobile-logo: $assets.files.static.ps.logo-brand.svg
+logo: $assets.files.static.ps.doc-framework.png
 url: https://fifthtry.github.io/cdoc-doc/
 sub-title: Continuous Documentation
 
@@ -737,8 +737,8 @@ sub-title: Continuous Documentation
 
 -- product-data: FTD
 index: 2
-mobile-logo: $assets.files.assets.static.logo-brand.svg
-logo: $assets.files.assets.static.ftd.png
+mobile-logo: $assets.files.static.ps.logo-brand.svg
+logo: $assets.files.static.ps.ftd.png
 url: https://ftd.dev/
 sub-title: FifthTry Document
 
@@ -750,8 +750,8 @@ FTD gives you a lot of power over your presentation, and yet it is quite easy to
 
 -- product-data: FPM
 index: 3
-mobile-logo: $assets.files.assets.static.logo-brand.svg
-logo: $assets.files.assets.static.fpm.png
+mobile-logo: $assets.files.static.ps.logo-brand.svg
+logo: $assets.files.static.ps.fpm.png
 url: https://fpm.dev/
 sub-title: `ftd` package manager
 
@@ -763,8 +763,8 @@ sub-title: `ftd` package manager
 
 -- product-data: ftd-py
 index: 4
-mobile-logo: $assets.files.assets.static.logo-brand.svg
-logo: $assets.files.assets.static.home.png
+mobile-logo: $assets.files.static.ps.logo-brand.svg
+logo: $assets.files.static.ps.home.png
 url: https://fifthtry.github.io/python.ftd.dev/
 sub-title: `ftd-py` Documentation
 
