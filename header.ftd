@@ -8,7 +8,6 @@
 -- import: fifthtry.github.io/package-doc/code-block as cb
 
 
-
 -- ftd.image-src site-logo: 
 light: https://www.fifthtry.com/-/fifthtry.com/assets/images/logo-fifthtry-dark.svg
 dark: https://www.fifthtry.com/-/fifthtry.com/assets/images/logo-fifthtry-dark.svg
@@ -25,7 +24,6 @@ dark: https://www.fifthtry.com/-/fifthtry.com/assets/images/logo-fifthtry-dark.s
 
 -- fpm.sitemap-data sitemap:
 $processor$: pr.sitemap
-
 
 -- fpm.toc-item list sections:
 
@@ -98,7 +96,7 @@ boolean $show-section: false
 fpm.toc-item list extra: 
 ps.product-data list products: 
 integer logo-width: 120
-integer logo-height: 38
+integer logo-height: 44
 string link-style: regular
 ftd.color background: $inherited.colors.background.base
 ftd.color text-color: $inherited.colors.text-strong
@@ -303,7 +301,7 @@ boolean $show-section:
 fpm.toc-item list footer-nav:
 fpm.toc-item list sub-sections:
 integer logo-width: 120
-integer logo-height: 38
+integer logo-height: 44
 string link-style: 
 ftd.color background:  
 ftd.color text-color:
@@ -332,14 +330,12 @@ z-index: 14
 
 -- ftd.row:
 width: fill-container
-;; id: first-container -- TODO FTD 0.3
 
 -- ftd.column:
 if: { !menu-mobile.parent-brand }
 width: fill-container
 border-bottom-width.px: 1
 border-color: $inherited.colors.border
-;; id: logo-container -- TODO FTD 0.3
 padding-bottom.px: 24
 
 -- ftd.column:
@@ -449,7 +445,7 @@ boolean include-dark-mode-switcher:
 boolean include-language-switcher:
 fpm.toc-item list extra:
 integer logo-width: 120
-integer logo-height: 38
+integer logo-height: 44
 string link-style:
 optional string login-btn-txt:
 optional string sign-in-txt: 
@@ -479,13 +475,11 @@ padding-vertical.px: 24
 padding-horizontal.px: 48
 
 -- ftd.row:
-;; id: left-side-top -- TODO FTD 0.3
 align-self: start
 width: fill-container
 
 -- ftd.column:
 if: { !header-desktop.parent-brand }
-;; id: iddd -- TODO FTD 0.3
 
 -- ftd.text:
 if: { header-desktop.brand-caption != NULL }
@@ -503,16 +497,15 @@ if: { header-desktop.site-logo != NULL }
 src: $header-desktop.site-logo
 width.fixed.px: $header-desktop.logo-width
 height.fixed.px: $header-desktop.logo-height
-margin-top.px: 8
 align-self: center
 
 -- ftd.text: $site-name
 if: { header-desktop.site-name != NULL }
 role: $inherited.types.heading-medium
 color: $inherited.colors.text-strong
-align-self: center
 margin-left.px if { header-desktop.site-logo != NULL }: 16
 white-space: nowrap
+margin-top.px: 10
 
 -- fallback-title:
 if: { header-desktop.site-logo == NULL }
@@ -536,9 +529,8 @@ products: $header-desktop.products
 -- end: ftd.row
 
 -- ftd.row:
-;; id: right-side-top -- TODO FTD 0.3
-align-self: end
-padding-top.px: 12
+align-self: center
+padding-top.px: 6
 z-index: 1000
 
 -- header-item: $obj.title
@@ -580,7 +572,6 @@ padding-horizontal.px: 48
 -- ftd.row:
 width: fill-container
 align-self: start
-;; id: bottom-row -- TODO FTD 0.3
 
 -- ftd.column:
 if: { header-desktop.current-section != NULL }
@@ -593,10 +584,8 @@ color: $inherited.colors.text-strong
 link: $header-desktop.current-section.url
 padding-bottom.px: 8
 
-
 -- ftd.row:
 width: fill-container
-;; id: selection-container -- TODO FTD 0.3
 
 -- ftd.text: $header-desktop.current-subsection.title
 if: { header-desktop.current-subsection != NULL }
@@ -636,13 +625,11 @@ margin-right.px: 8
 
 -- end: ftd.row
 
-
 -- ftd.row:
 width: hug-content
-align-self: end
+align-self: center
 
 -- ftd.row:
-;; id: left-side -- TODO FTD 0.3
 width: fill-container
 align-self: end
 
@@ -699,7 +686,7 @@ optional fpm.toc-item current-page:
 boolean include-dark-mode-switcher:
 boolean include-language-switcher:
 integer logo-width: 120
-integer logo-height: 38
+integer logo-height: 44
 string link-style: 
 ftd.color background:  
 ftd.color text-color: 
@@ -717,7 +704,6 @@ background.solid: $inherited.colors.background.step-1
 $on-click-outside$: $ftd.set-bool($a = $header-mobile.show-section, v = false)
 
 -- ftd.row:
-;; id: left-side -- TODO FTD 0.3
 padding-horizontal.px: 16
 padding-vertical.px: 16
 width: fill-container
@@ -726,7 +712,6 @@ width: fill-container
 
 -- ftd.row:
 width: fill-container
-;; id: sidelogo-container -- TODO FTD 0.3
 spacing.px: 16
 
 -- ftd.image:
@@ -790,7 +775,6 @@ if: { header-mobile.pricing-cta }
 ;; if: { header-mobile.current-section != NULL }
 width: fill-container
 background.solid: $inherited.colors.background.step-1
-;; id: bottom-row -- TODO FTD 0.3
 
 -- ftd.row:
 width: fill-container
@@ -838,7 +822,6 @@ menu-hover-bg: $header-mobile.menu-hover-bg
 -- ftd.row:
 width: fill-container
 background.solid: $inherited.colors.background.step-2
-;; id: change-container -- TODO FTD 0.3
 padding-horizontal.px: 20
 $on-click$: $ftd.toggle($a = $header-mobile.show-section, v=true)
 
@@ -846,8 +829,6 @@ $on-click$: $ftd.toggle($a = $header-mobile.show-section, v=true)
 width: fill-container
 padding-vertical.px: 16
 spacing.px: 4
-;; id: selection-container -- TODO FTD 0.3
-
 
 -- ftd.text: $header-mobile.current-subsection.title
 if: { header-mobile.current-subsection != NULL }
@@ -875,7 +856,6 @@ if:  { header-mobile.current-page != NULL }
 role: $inherited.types.label-small
 color: $inherited.colors.text-strong
 white-space: nowrap
-
 
 -- end: ftd.row
 
