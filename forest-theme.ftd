@@ -2211,15 +2211,18 @@ $h3.body
 
 
 
--- cb.code code:
+-- component code:
 optional caption caption:
 body body:
 string lang:
-caption: $caption
-lang: $lang
 
-$body
+-- cb.code:
+caption: $code.caption
+lang: $code.lang
 
+$code.body
+
+-- end: code
 
 
 

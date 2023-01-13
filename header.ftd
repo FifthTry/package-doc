@@ -17,8 +17,6 @@ dark: https://www.fifthtry.com/-/fifthtry.com/assets/images/logo-fifthtry-dark.s
 
 -- boolean $show-section: false
 
--- boolean $sidebar-open: false
-
 -- boolean login-button: false
 
 -- boolean pricing-cta: false
@@ -91,6 +89,7 @@ boolean pricing-cta: false
 ftd.image-src menu-icon: $assets.files.static.header.hamburger-dark.svg
 string current-url: /header3/
 fpm.toc-item list sections: 
+boolean $sidebar-open: false
 fpm.toc-item list sub-sections: 
 fpm.toc-item list toc: 
 optional fpm.toc-item current-section: 
@@ -128,19 +127,20 @@ optional string brand-caption:
 width: fill-container
 
 -- ftd.column:
-if: { $sidebar-open }
+if: { header.sidebar-open }
 width: fill-container
 background.solid: $inherited.colors.background.overlay
 height.fixed.calc: 100vh
 ;; z-index: 10 -- TODO FTD 0.3
 
 -- mobile-sidebar:
-if: { $sidebar-open }
+if: { header.sidebar-open }
+$sidebar-open: $header.sidebar-open
 
 -- end: ftd.column
 
 -- menu-mobile:
-if: { $sidebar-open }
+if: { header.sidebar-open }
 parent-brand: $header.parent-brand
 site-logo: $header.site-logo
 menu-icon: $header.menu-icon
@@ -209,6 +209,7 @@ products: $header.products
 -- header-mobile:
 if: { ftd.device == "mobile" }
 site-logo: $header.site-logo
+$sidebar-open: $header.sidebar-open
 pricing-cta: $header.pricing-cta
 brand-site-logo: $header.brand-site-logo
 brand-site-name: $header.brand-site-name
@@ -253,6 +254,7 @@ products: $header.products
 
 
 -- component mobile-sidebar:
+boolean $sidebar-open:
 
 -- ftd.column:
 anchor: window
@@ -262,7 +264,7 @@ left.px: 0
 right.px: 0
 background.solid:  $inherited.colors.background.overlay
 ;; z-index: 1 -- TODO FTD 0.3
-$on-click$: $ftd.toggle($a = $sidebar-open)
+$on-click$: $ftd.toggle($a = $mobile-sidebar.sidebar-open)
 
 -- ftd.image:
 src: $assets.files.static.header.cross.svg
@@ -635,7 +637,7 @@ margin-right.px: 8
 width: hug-content
 align-self: end
 
--- ftd.column:
+-- ftd.row:
 ;; id: left-side -- TODO FTD 0.3
 width: fill-container
 align-self: end
@@ -654,7 +656,7 @@ menu-border: $header-desktop.menu-border
 menu-hover-bg: $header-desktop.menu-hover-bg
 ;; icon: $obj.font-icon -- TODO FTD 0.3
 
--- end: ftd.column
+-- end: ftd.row
 
 -- end: ftd.row
 
@@ -674,6 +676,7 @@ menu-hover-bg: $header-desktop.menu-hover-bg
 -- component header-mobile:
 ps.product-data list products: 
 ftd.image-src menu-icon:
+boolean $sidebar-open: false
 optional ftd.image-src site-logo:
 optional ftd.image-src brand-site-logo:
 optional string brand-site-name:
@@ -725,7 +728,7 @@ spacing.px: 16
 src: $header-mobile.menu-icon
 width.fixed.px: 24
 align-self: center
-;; $on-click$: $ftd.toggle($a = $sidebar-open) -- TODO FTD 0.3 
+$on-click$: $ftd.toggle($a = $header-mobile.sidebar-open) 
 
 -- ftd.image:
 ;; if: { header-mobile.site-logo != NULL } -- TODO FTD 0.3
@@ -785,7 +788,7 @@ background.solid: $inherited.colors.background.step-1
 ;; id: bottom-row -- TODO FTD 0.3
 
 -- ftd.row:
-width: hug-content
+width: fill-container
 
 -- ftd.row:
 align-self: start
