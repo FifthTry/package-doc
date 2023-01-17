@@ -499,7 +499,7 @@ width.fixed.px: $header-desktop.logo-width
 height.fixed.px: $header-desktop.logo-height
 align-self: center
 
--- ftd.text: $site-name
+-- ftd.text: $header-desktop.site-name
 if: { header-desktop.site-name != NULL }
 role: $inherited.types.heading-medium
 color: $inherited.colors.text-strong
@@ -721,7 +721,7 @@ align-self: center
 $on-click$: $ftd.toggle($a = $header-mobile.sidebar-open) 
 
 -- ftd.image:
-;; if: { header-mobile.site-logo != NULL } -- TODO FTD 0.3
+if: { header-mobile.site-logo != NULL } 
 src: $header-mobile.site-logo
 width.fixed.px: $header-mobile.logo-width
 height.fixed.px: $header-mobile.logo-height
@@ -804,7 +804,7 @@ overflow-x: auto
 -- header-item-mobile-view: $obj.title
 $loop$: $header-mobile.sub-sections as $obj
 children: $obj.children 
-;; is-active: $obj.is-active -- TODO FTD 0.3
+is-active: $obj.is-active 
 link: $obj.url
 text-color: $header-mobile.text-color
 active-text-color: $header-mobile.active-text-color
@@ -992,7 +992,7 @@ white-space: nowrap
 padding-horizontal.px: 10
 color: $header-top-right-item.text-color
 color if { header-top-right-item.current-url == header-top-right-item.link }: $header-top-right-item.active-text-color
-border-bottom-width.px if { header-top-right-item.current-url == header-top-right-item.link }: 2
+;;border-bottom-width.px if { header-top-right-item.current-url == header-top-right-item.link }: 2
 border-color if { header-top-right-item.current-url == header-top-right-item.link }: $header-top-right-item.active-text-color
 
 -- end: header-top-right-item
@@ -1039,9 +1039,9 @@ link: $header-item.link
 white-space: nowrap
 padding-left.px: 10
 color: $header-item.text-color
-;; color if { header-item.is-active }: $inherited.colors.text -- TODO FTD 0.3
-border-bottom-width.px if { header-item.current-url == header-item.link }: 2
-border-color if { header-item.current-url == header-item.link }: $header-item.active-text-color
+color if { header-item.is-active }: $inherited.colors.cta-primary.base
+;;border-bottom-width.px if { header-item.current-url == header-item.link }: 2
+;;border-color if { header-item.current-url == header-item.link }: $header-item.active-text-color
 margin-left.px: 10
 
 -- ftd.text: $header-item.title
@@ -1050,7 +1050,7 @@ role: $inherited.types.copy-large
 white-space: nowrap
 padding-left.px: 10
 color: $header-item.text-color
-;; color if { header-item.is-active }: $inherited.colors.text -- TODO FTD 0.3
+color if { header-item.is-active }: $inherited.colors.cta-primary.base
 margin-left.px: 20
 
 -- end: ftd.row
@@ -1105,8 +1105,8 @@ white-space: nowrap
 padding-left.px: 10
 color: $inherited.colors.text
 color if { header-toc-item-mobile-view.is-active }: $inherited.colors.cta-primary.base
-border-bottom-width.px if { header-toc-item-mobile-view.current-url == header-toc-item-mobile-view.link }: 2
-border-color if { header-toc-item-mobile-view.current-url == header-toc-item-mobile-view.link }: $header-toc-item-mobile-view.active-text-color
+;;border-bottom-width.px if { header-toc-item-mobile-view.current-url == header-toc-item-mobile-view.link }: 2
+;;border-color if { header-toc-item-mobile-view.current-url == header-toc-item-mobile-view.link }: $header-toc-item-mobile-view.active-text-color
 margin-left.px: 10
 
 -- end: ftd.row
@@ -1128,7 +1128,7 @@ role: $inherited.types.copy-relaxed
 white-space: nowrap
 padding-left.px: 10
 color: $inherited.colors.text
-;;color if { header-toc-item-mobile-view.is-active }: $inherited.colors.cta-primary.base -- TODO FTD 0.3
+color if { header-toc-item-mobile-view.is-active }: $inherited.colors.cta-primary.base 
 
 -- end: ftd.row
 
@@ -1164,7 +1164,7 @@ caption title:
 optional string link:
 ftd.color text-color:
 fpm.toc-item list children:
-;; boolean is-active: 
+boolean is-active: 
 ftd.color active-text-color:
 optional string current-url:
 ftd.color menu-bg: 
@@ -1184,8 +1184,8 @@ link: $header-item-mobile-view.link
 white-space: nowrap
 padding-left.px: 10
 color: $header-item-mobile-view.text-color
-;; color if { header-item-mobile-view.is-active }: $inherited.colors.cta-primary.base
-border-bottom-width.px if { header-item-mobile-view.current-url == header-item-mobile-view.link }: 2
+color if { header-item-mobile-view.is-active }: $inherited.colors.cta-primary.base
+;;border-bottom-width.px if { header-item-mobile-view.current-url == header-item-mobile-view.link }: 2
 border-color if { header-item-mobile-view.current-url == header-item-mobile-view.link }: $header-item-mobile-view.active-text-color
 margin-left.px: 10
 
@@ -1412,7 +1412,7 @@ width: fill-container
 if: $obj.url is not null
 link: $links.obj.url
 color: $links.menu-link
-;; color if { links.obj.is-active }: $inherited.colors.cta-primary.base -- TODO FTD 0.3
+color if { links.obj.is-active }: $inherited.colors.cta-primary.base 
 background.solid if $MOUSE-IN: $links.menu-hover-bg
 white-space: nowrap
 padding-vertical.px: 4
@@ -1424,7 +1424,7 @@ border-radius.px: 4
 -- ftd.text: $links.obj.title
 if: { links.obj.url == NULL }
 color: $inherited.colors.background.step-2
-;; color if { links.obj.is-active }: $inherited.colors.cta-primary.base -- TODO FTD 0.3
+color if { links.obj.is-active }: $inherited.colors.cta-primary.base 
 background.solid if $MOUSE-IN: $links.menu-hover-bg
 white-space: nowrap
 padding-vertical.px: 4
@@ -1500,7 +1500,7 @@ align-self: center
 -- ftd.text: $links-mobile.obj.title
 link: $links-mobile.obj.url
 color: $links-mobile.menu-link
-;; color if { links-mobile.obj.is-active }: $inherited.colors.cta-primary.base -- TODO FTD 0.3
+color if { links-mobile.obj.is-active }: $inherited.colors.cta-primary.base 
 padding-vertical.px: 8
 padding-horizontal.px: 10
 role: $inherited.types.copy-relaxed
