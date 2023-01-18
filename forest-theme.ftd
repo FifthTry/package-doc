@@ -5,7 +5,7 @@
 -- import: fpm
 -- import: fifthtry.github.io/package-doc/assets
 -- import: fpm/processors as pr
-;;-- import: fifthtry.github.io/app-switcher as apps-switcher
+-- import: fifthtry.github.io/app-switcher as apps-switcher
 
 -- boolean login-button: false
 
@@ -438,7 +438,7 @@ width: fill-container
 
 -- ftd.column:
 
-/-- apps-switcher.app-switcher:
+-- apps-switcher.app-switcher:
 apps: $apps
 
 -- end: ftd.column
@@ -567,7 +567,7 @@ background.solid:$inherited.colors.background.base
 
 -- ftd.column:
 
-/-- apps-switcher.app-switcher:
+-- apps-switcher.app-switcher:
 apps: $apps
 
 -- end: ftd.column
