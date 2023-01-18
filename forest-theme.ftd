@@ -153,10 +153,11 @@ this is markdown body
 -- component page:
 optional caption title: 
 optional body body: 
+optional string site-name: $site-name
 fpm.toc-item list toc: $sitemap.toc
 boolean login-button: $login-button
 boolean pricing-cta: $pricing-cta
-;;fpm.app-ui apps: $apps
+fpm.app-ui apps: $apps
 boolean $open-right-sidebar-info: false
 fpm.toc-item list sections: $sitemap.sections
 fpm.toc-item list sub-sections: $sitemap.subsections
@@ -174,8 +175,9 @@ string about-text-url: /
 string edit-text: Edit This Page
 string edit-text-url: /
 ;;item list itemlist: $itemlist
-boolean sidebar: false
+boolean $sidebar: false
 children wrapper: 
+ftd.ui list extra-headers:
 boolean widthfill: false
 
 -- ftd.column:
@@ -215,7 +217,9 @@ sub-sections: $page.sub-sections
 body: $page.body
 widthfill: $page.widthfill
 right-sidebar: $page.sidebar
-;;apps: $page.apps
+extra-headers: $page.extra-headers
+site-name: $page.site-name 
+apps: $page.apps
 
 -- doc-page-mobile: $page.title
 if: {ftd.device == "mobile"}
@@ -231,8 +235,10 @@ current-subsection: $page.current-subsection
 current-page: $page.current-page
 sub-sections: $page.sub-sections
 body: $page.body
+site-name: $page.site-name 
 right-sidebar: $page.sidebar
-;;apps: $page.apps
+apps: $page.apps
+extra-headers: $page.extra-headers
 
 -- end: ftd.column
 
@@ -266,7 +272,7 @@ top.px: 0
 right.px: 0
 height: fill-container
 max-height.fixed.calc: 100vh - 0px
-;;z-index: 1000
+z-index: 1000
 align-content: center
 
 -- ftd.image:
@@ -407,9 +413,11 @@ $loop$: $floater.itemlist as $obj
 optional caption title:
 optional body body:
 fpm.toc-item list toc: 
+optional string site-name: 
 fpm.toc-item list sections:
 fpm.toc-item list sub-sections:
-;;fpm.app-ui apps:
+fpm.app-ui apps:
+ftd.ui list extra-headers:
 boolean $open-right-sidebar-info: 
 fpm.toc-item list footer-toc:
 optional fpm.toc-item current-section:
@@ -423,8 +431,16 @@ boolean login-button:
 boolean right-sidebar: false
 children wrapper:
 
+
 -- ftd.column:
 width: fill-container
+
+-- ftd.column:
+
+-- apps-switcher.app-switcher:
+apps: $apps
+
+-- end: ftd.column
 
 -- h.header:
 login-button: $doc-page-desktop.login-button
@@ -436,27 +452,29 @@ sub-sections: $doc-page-desktop.sub-sections
 current-section: $doc-page-desktop.current-section
 current-subsection: $doc-page-desktop.current-subsection
 current-page: $doc-page-desktop.current-page
+toc: $doc-page-desktop.toc
 site-logo: $site-logo
 site-url: $site-url
-site-name: $site-name
+site-name: $doc-page-desktop.site-name
 logo-height: 38
-current-url: /home/
-menu-icon: $assets.files.static.header.hamburger.svg
+current-url: /
+menu-icon: $assets.files.static.header.hamburger-dark.svg
 
 -- ftd.row:
 width: fill-container
 spacing.px: 48
 padding-horizontal.px: 25
+align-content if { is_empty(doc-page-desktop.toc) }: center
 
 -- render-toc:
 if: { !is_empty(doc-page-desktop.toc) }
 toc-obj: $doc-page-desktop.toc
 
 -- ftd.column:
+width.fixed.percent: 70
 max-width.fixed.px if { is_empty(doc-page-desktop.toc) }: 800
 max-width if {doc-page-desktop.widthfill}: fill-container
 max-width.fixed.px: 800
-align-self if { is_empty(doc-page-desktop.toc) }: center
 align-content: top-left
 min-height.fixed.calc: 100vh
 padding-horizontal.px if { !doc-page-desktop.widthfill }: 34
@@ -466,7 +484,7 @@ padding-top.px if { doc-page-desktop.widthfill }: 9
 -- ftd.column:
 width: fill-container
 
--- tf.h1: $doc-page-desktop.title
+-- tf.h0: $doc-page-desktop.title
 if: { doc-page-desktop.title != NULL }
 
 -- wall-box:
@@ -495,25 +513,11 @@ width.fixed.percent: 100
 -- end: ftd.column
 
 -- ftd.column:
-if: { doc-page-desktop.right-sidebar }
-;;id:right-sidebar
-width.fixed.px: $toc-sidebar-width
-;;z-index: 999
-background.solid:$inherited.colors.background.overlay
-;;sticky: true
-top.px: 0
-right.px: 48
-height.fixed.calc: 100vh - 0px
-overflow-y: auto
-align-content: top-right
-margin-right.px: 48
-padding-left.px: 24
-padding-top.px: 4
-padding-right.px: 16
-padding-bottom.px: 32
-margin-top.px: 25
-margin-bottom.px: 25
-border-radius.px: 8
+height.fixed.percent: 100
+if: {doc-page-desktop.right-sidebar}
+
+-- right-sidebar:
+extra-headers: $doc-page-desktop.extra-headers
 
 -- end: ftd.column
 
@@ -539,11 +543,13 @@ footer-toc: $doc-page-desktop.footer-toc
 -- component doc-page-mobile:
 optional caption title:
 optional body body:
+optional string site-name:
 fpm.toc-item list toc: $toc
 fpm.toc-item list sections:
 fpm.toc-item list sub-sections:
 fpm.toc-item list extra:
-;; fpm.app-ui apps:
+fpm.app-ui apps:
+ftd.ui list extra-headers:
 boolean $open-right-sidebar-info: false
 fpm.toc-item list footer-toc: $footer-toc
 optional fpm.toc-item current-section:
@@ -558,6 +564,13 @@ boolean login-button:
 width: fill-container
 background.solid:$inherited.colors.background.base
 
+-- ftd.column:
+
+-- apps-switcher.app-switcher:
+apps: $apps
+
+-- end: ftd.column
+
 -- h.header:
 sections: $doc-page-mobile.sections
 sub-sections: $doc-page-mobile.sub-sections
@@ -571,21 +584,17 @@ brand-site-url: $brand-site-url
 brand-site-logo: $brand-site-logo
 brand-site-name: $brand-site-name
 brand-caption: $brand-caption
-site-name: $site-name
+site-name: $doc-page-mobile.site-name
 logo-height: 38
-current-url: /home/
+current-url: /
 menu-icon: $assets.files.static.header.hamburger.svg
 parent-brand: $parent-brand
 
-/-- apps-swiitemher.app-swiitemher:
-apps: $apps
-
 -- ftd.column:
 width: fill-container
-align-content: top-left
-min-height.fixed.calc: 100vh
-padding-horizontal.px: 20
-padding-vertical.px: 20
+padding-horizontal.px: 24
+padding-vertical.px: 24
+min-height.fixed.calc: 100vh 
 
 -- ftd.column:
 width: fill-container
@@ -616,13 +625,20 @@ if: {is-reader}
 -- end: ftd.column
 
 -- ftd.column:
-if: {!is-reader}
+if: { !is-reader }
 width: fill-container
  
 -- tf.markdown:
 if: {doc-page-mobile.body != NULL}
 
 $doc-page-mobile.body
+
+-- ftd.column: 
+children: $doc-page-mobile.wrapper
+spacing.px: 32
+width.fixed.percent: 100
+
+-- end: ftd.column
 
 -- end: ftd.column
 
@@ -634,7 +650,7 @@ bottom.px: 0
 left.px: 0
 right.px: 0
 background.solid: $inherited.colors.background.overlay
-;;z-index: 1
+z-index: 1
 width: fill-container
 $on-click$: $ftd.set-bool($a = $doc-page-mobile.open-right-sidebar-info, v = false)
 
@@ -644,7 +660,7 @@ width: fill-container
 -- ftd.image:
 src: $assets.files.static.cross.svg
 height.fixed.px: 16
-width: fill-container
+width: auto
 margin-top.px: 30
 margin-left.px: 16
 $on-click$: $ftd.toggle($a=$doc-page-mobile.open-right-sidebar-info)
@@ -663,15 +679,16 @@ anchor: parent
 right.px: 0
 top.px: 0
 background.solid:$inherited.colors.background.step-1
-;;z-index: 1
+z-index: 1
+
 
 -- ftd.column:
-;;id:right-sidebar-mobile
-width: fill-container
-padding-vertical.px: 24
 padding-horizontal.px: 24
+width: fill-container
+children: $doc-page-mobile.extra-headers
 
 -- end: ftd.column
+
 
 -- end: ftd.column
 
@@ -873,11 +890,10 @@ width: auto
 
 -- ftd.text: 
 text: $toc-instance.toc.title
-;;role: $inherited.types.label-small
+role: $inherited.types.label-small
 min-width: hug-content
 margin-bottom.px: 16
 color: $inherited.colors.text
-margin-left.px: 12
 color if {toc-instance.toc.is-active}: $inherited.colors.cta-primary.base
 
 -- end: ftd.row
@@ -945,7 +961,7 @@ width: fill-container
 
 -- ftd.text: 
 text: $childrens.toc.title
-;;role: $inherited.types.label-small
+role: $inherited.types.label-small
 min-width: hug-content
 margin-bottom.px: 16
 color: $inherited.colors.text
@@ -978,7 +994,9 @@ fpm.toc-item list toc-obj:
 ;; sticky: true
 top.px: 0
 left.px: 24
-height.fixed.calc: 100vh - 0px
+min-width.fixed.px: 320
+min-height.fixed.calc: 100vh - 0px
+height.fixed.calc: 100% - 52px
 overflow-y: auto
 width.fixed.px: $toc-sidebar-width
 align-content: top-left
@@ -1214,17 +1232,30 @@ height: hug-content
 
 
 -- component posts:
+children container:
 
 -- ftd.column:
 
 -- ftd.row:
+children: $posts.container
 if: {ftd.device != "mobile"}
 wrap: true
 spacing.px: 16
 
+-- end: ftd.row
+
+
+-- ftd.column:
+children: $posts.container
+if: {ftd.device == "mobile"}
+spacing.px: 16
+
+-- end: ftd.column
+
 -- end: ftd.column
 
 -- end: posts
+
 
 
 
@@ -1538,7 +1569,7 @@ border-width.px: 1
 border-color: $inherited.colors.border
 padding-vertical.px: 24
 width: fill-container
-max-width.px if {ftd.device != "mobile"}: 344
+max-width.fixed.px if {ftd.device != "mobile"}: 344
 max-height.fixed.px: 500
 padding-horizontal.px:24
 color: $inherited.colors.text
@@ -1706,8 +1737,6 @@ margin-left.px: 12
 margin-right.px: 12
 
 -- ftd.row:
-width: fill-container
-;;;;id:auth-container
 spacing.px: 24
 
 -- ftd.column:
@@ -1723,7 +1752,7 @@ border-radius.px: 500
 
 -- ftd.column:
 width: fill-container
-align-content: center
+align-content: left
 
 -- ftd.text: $author-bio-desktop.title
 role: $inherited.types.heading-large
@@ -1739,11 +1768,13 @@ role: $inherited.types.copy-tight
 
 -- end: ftd.column
 
+-- end: ftd.row
+
 -- ftd.text:
 text: $author-bio-desktop.body
 role: $inherited.types.copy-relaxed
 
--- end: ftd.row
+
 
 -- end: ftd.column
 
@@ -1870,7 +1901,7 @@ margin-right.px: 4
 -- ftd.text: text
 color: $inherited.colors.background.step-1
 background.solid:$inherited.colors.success.text
-padding-horizontal: 2
+padding-horizontal.px: 2
 margin-right: 4
 
 
@@ -2125,6 +2156,7 @@ color: $inherited.colors.cta-primary.border
 
 
 
+
 -- component markdown:
 body body:
 
@@ -2231,6 +2263,45 @@ $code.body
 
 
 
+
+-- component iframe:
+string src:
+
+-- ftd.iframe:
+src: $iframe.src
+height.fixed.px: 400
+width: fill-container
+margin-bottom.px: 34
+
+-- end: iframe
+
+
+
+
+
+
+
+
+-- component youtube:
+caption v:
+
+-- ftd.iframe:
+youtube: $youtube.v
+height.fixed.px: 400
+width: fill-container
+margin-bottom.px: 34
+
+-- end: youtube
+
+
+
+
+
+
+
+
+
+
 -- component output:
 caption title: Output
 children output-container:
@@ -2239,7 +2310,11 @@ children output-container:
 padding-top.px: 12
 width: fill-container
 
--- ftd.text: $output.caption
+
+-- ftd.column:
+width: fill-container
+
+-- ftd.text: $output.title
 color: $inherited.colors.text
 background.solid: $inherited.colors.background.base
 border-top-left-radius.px: 2
@@ -2248,13 +2323,15 @@ padding-vertical.px: 3
 padding-horizontal.px: 10
 role: $inherited.types.label-big
 
+-- end: ftd.column
+
 -- ftd.column:
 border-width.px: 1
 border-color: $inherited.colors.text
 width: fill-container
-children: output-container
-padding-vertical: 30
-padding-horizontal: 20
+children: $output.output-container
+padding-vertical.px: 30
+padding-horizontal.px: 20
 border-radius.px: 2
 background.solid: $inherited.colors.background.base
 
@@ -2301,13 +2378,13 @@ optional body body:
 -- ftd.column:
 border-radius.px: 3
 width: fill-container
-background-color: $inherited.colors.background.base
+background.solid: $inherited.colors.background.base
 color: $inherited.colors.text
 
 -- ftd.column:
 width.fixed.px: 5
-height.fixed.percent:  100
-background-color: $inherited.colors.background.base
+height:  fill-container
+background.solid: $inherited.colors.background.base
 
 -- ftd.column:
 width: fill-container
@@ -2315,7 +2392,7 @@ padding.px: 10
 spacing.px: 10
 
 -- ftd.row:
-spacing.PX: 5
+spacing.px: 5
 
 -- ftd.text: Tip
 role: $inherited.types.label-big
@@ -2347,6 +2424,38 @@ $tip.body
 
 
 
+
+
+
+-- component right-sidebar:
+ftd.ui list extra-headers:
+
+
+-- ftd.column:
+children: $right-sidebar.extra-headers
+width.fixed.px: $toc-sidebar-width
+;;z-index: 999
+background.solid: $inherited.colors.background.overlay
+;;anchor: parent
+;;sticky: true
+top.px: 0
+right.px: 0
+min-height.fixed.calc: 100vh - 0px
+height.fixed.calc: 100% 
+overflow-y: auto
+align-content: top-right
+margin-right.px: 12
+padding-left.px: 24
+padding-top.px: 4
+padding-right.px: 16
+padding-bottom.px: 32
+margin-top.px: 25
+margin-bottom.px: 25
+border-radius.px: 8
+
+-- end: ftd.column
+
+-- end: right-sidebar
 
 
 
