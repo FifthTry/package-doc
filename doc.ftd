@@ -52,11 +52,11 @@ Package body.
 -- component hidden-code:
 caption title:
 optional body body:
-boolean open-block: false
+boolean $open-block: false
 
 -- ftd.column:
 spacing.px: 10
-;;$on-click$: toggle(a = $hidden-code.open-block)
+$on-click$: $ftd.toggle($a = $hidden-code.open-block)
 width: fill-container
 border-left-width.px: 5
 border-color: $inherited.colors.border
@@ -79,12 +79,12 @@ color: $inherited.colors.text-strong
 -- ftd.column:
 if: { $hidden-code.open-block }
 width: fill-container
-;;$on-click$: toggle(a = $hidden-code.open-block)
+$on-click$: $ftd.toggle($a = $hidden-code.open-block)
 
-/-- cb.code:
+-- cb.code:
 lang: ftd
 
-$body
+$hidden-code.body
 
 -- end: ftd.column
 
