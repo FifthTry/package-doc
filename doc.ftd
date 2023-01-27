@@ -55,7 +55,7 @@ optional body body:
 boolean $open-block: false
 
 -- ftd.column:
-spacing.px: 10
+spacing.fixed.px: 10
 $on-click$: $ftd.toggle($a = $hidden-code.open-block)
 width: fill-container
 border-left-width.px: 5
@@ -233,7 +233,7 @@ optional body body:
 -- ftd.column:
 width: fill-container
 color: $inherited.colors.text
-spacing.px: 20
+spacing.fixed.px: 20
 ;;open: true
 
 -- ftd.row:
@@ -290,7 +290,7 @@ string value:
 padding.px: 10
 border-width.px: 1
 border-color: $inherited.colors.border
-spacing.px: 7
+spacing.fixed.px: 7
 width: fill-container
 background.solid: $inherited.colors.background.base
 border-radius.px: 4

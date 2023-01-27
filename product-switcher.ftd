@@ -208,7 +208,7 @@ boolean $on-left: true
 $on-mouse-enter$: $set($value=$switcher.mouse-events, v = true)
 align-content if { switcher.on-left }: left
 align-content if { !switcher.on-left }: right
-if:{!is_empty(switcher.products)}
+if:{!ftd.is_empty(switcher.products)}
 
 -- switcher-desktop:
 if: { ftd.device != "mobile" }
@@ -264,7 +264,7 @@ padding-vertical.px: 8
 $on-mouse-enter$: $set($value=$switcher-desktop.mouse-events,v=true)
 align-content if {switcher-desktop.on-left}: left
 align-content if {!switcher-desktop.on-left}: right
-spacing.px: 8
+spacing.fixed.px: 8
 
 -- brand-title: $obj.title
 $loop$: $switcher-desktop.brand as $obj
@@ -537,7 +537,7 @@ ftd.color text-color:
 
 -- ftd.row:
 if: {brand-title.index == current-product}
-spacing.px: 4
+spacing.fixed.px: 4
 
 /-- ftd.image:
 src: $brand-title.logo
@@ -581,7 +581,7 @@ padding-top.px: 12
 
 -- ftd.row:
 width: fill-container
-spacing.px: 4
+spacing.fixed.px: 4
 border-top-width.px: 1
 border-color: $inherited.colors.border
 padding-vertical.px: 8
