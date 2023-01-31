@@ -1,4 +1,4 @@
--- import: fastn
+-- import: fpm
 -- import: fifthtry.github.io/package-doc/typography as tf
 -- import: fifthtry.github.io/package-doc/assets
 -- import: fifthtry.github.io/package-doc/code-block as cb
