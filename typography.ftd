@@ -1,4 +1,4 @@
--- import: fpm
+-- import: fastn
 -- import: fifthtry.github.io/package-doc/doc as pd
 
 
@@ -17,10 +17,10 @@ name: fifthtry.github.io/typography
 
 This component can be used to add heading. It has various heading namely h0, h1 and h2.Somewhat similar to heading tag in html. The variation of the numbers (0, 1 and 2) directly relates to the relevance that the content has in the interface. The lower the number, more prominence, and the importance it will have. So it helps creating the hierarchy of information.
 
-/-- ft.code: Add this to your FPM.ftd
+/-- ft.code: Add this to your FASTN.ftd
 lang: ftd
 
-/-- fpm.dependency: fifthtry.github.io/typography
+/-- fastn.dependency: fifthtry.github.io/typography
 
 -- pd.component: h2
 name: fifthtry.github.io/typography.h2
