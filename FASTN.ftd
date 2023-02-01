@@ -1,7 +1,7 @@
 -- import: fastn
 
 -- fastn.package: fifthtry.github.io/package-doc
-download-base-url: https://raw.githubusercontent.com/fifthtry/package-doc/to-fastn
+download-base-url: https://raw.githubusercontent.com/fifthtry/package-doc/main
 
 
 -- fastn.dependency: fifthtry.github.io/app-switcher
