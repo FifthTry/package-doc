@@ -298,6 +298,13 @@ role: $inherited.types.copy-regular
 color: $inherited.colors.text
 margin-bottom.px: 26
 
+-- ftd.text.classes:
+
+-- string: markdown
+
+-- end: ftd.text.classes
+
+
 -- end: markdown
 
 
