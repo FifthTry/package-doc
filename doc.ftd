@@ -131,7 +131,8 @@ padding-horizontal.px: 20
 border-top-left-radius.px: 2
 border-top-right-radius.px: 2
 role: $inherited.types.copy-large
-;;$on-click$: toggle(a = $output.reference-open)
+$on-click$: $ftd.toggle($a = $output.reference-open)
+
 
 -- ftd.column:
 width: fill-container
