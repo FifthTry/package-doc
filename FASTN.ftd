@@ -5,6 +5,7 @@ download-base-url: https://raw.githubusercontent.com/fifthtry/package-doc/main
 
 
 -- fastn.dependency: fifthtry.github.io/app-switcher
+-- fastn.dependency: fifthtry.github.io/doc-site-typography as typo
 
 
 /-- fastn.app: Todos for Family
