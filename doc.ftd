@@ -248,7 +248,7 @@ border-color: $inherited.colors.border
 border-radius.px: 4
 ;;z-index: 99999999999999
 
--- toggle:
+/-- toggle:
 
 -- end: ftd.row
 
