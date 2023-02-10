@@ -1,6 +1,8 @@
 -- import: fastn
 -- import: fifthtry.github.io/package-doc/assets
 -- import: fifthtry.github.io/package-doc/typography as tf
+-- import: fifthtry.github.io/package-doc/doc as pd
+-- import: fifthtry.github.io/package-doc/forest-theme as ft
 
 
 
@@ -17,81 +19,50 @@ dark: #2b303b
 
 
 
--- ftd.column:
-;;id: code-wrap
-height: hug-content
-width: fill-container
-spacing.fixed.px: 20
-padding-horizontal.px: 24
-padding-vertical.px: 24
-background.solid: $inherited.colors.background.base
+-- ft.page:
 
--- package: Code Block Component for FASTN Packages
-name: fifthtry.github.io/code-block
+-- pd.package: Code Block Component for FASTN Packages
+name: fifthtry.github.io/package-doc/code-block
 
-This package can be used to show source code in any document.
+The admonitions package(fifthtry.github.io/admonitions). Use `FTD` custom
+admonitions styles for your web pages.
 
--- ftd.text: Output on browser will as below:
-padding-top.px: 20
-color: $inherited.colors.text-strong
+How to use?
 
--- h2: How to add: onto your project:
-
--- ftd.column:
-width.fixed.percent: 50
-
--- code: Add this to FASTN.ftd
+-- code: Add this to your FASTN.ftd
 lang: ftd
 
 \-- fastn.dependency: fifthtry.github.io/code-block as cb
 
--- code: Then use the component:
+\-- fastn.auto-import: cb
+
+-- pd.component: `code` Basic usage example
+name: `-- code:`
+
+Use below code snippet to use this admonitions component as cbox.
+
+-- code: How to use
 lang: ftd
 
-\-- fastn.dependency: fifthtry.github.io/code-block as cb
-
-\-- import: cb
-
-\-- cb.code:
-if: $caption is not null
-caption: $caption
-lang: $lang
-
-$body
-
--- end: ftd.column
-
--- tf.markdown:
-
-- `lang` is the file name extension.
-
-- `caption` is the the title/caption of code block.
-
-- `lang` is the file name extension.
-
-- `body` is main body of the code block.
-
-
--- h2: Usage: how to write
-
--- code: How to write code block of image shown above
+\-- code: Title for the code block
 lang: ftd
 
-\-- cb.code: hello world ftd
+\\-- ftd.text: Some title
+role: $inherited.types.copy-regular
+color: $inherited.colors.text
+
+-- tf.h3: Output of above example:
+
+
+-- code: Title for the code block
 lang: ftd
 
-\-- string msg: hello world
-\-- ftd.text: $msg
+\-- ftd.text: Some title
+role: $inherited.types.copy-regular
+color: $inherited.colors.text
 
--- h2: Output: of above code snippet
 
--- code: hello world ftd
-lang: ftd
-
-\-- string msg: hello world
-\-- ftd.text: $msg
-
--- end: ftd.column
+-- end: ft.page
 
 
 

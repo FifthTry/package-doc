@@ -2,19 +2,12 @@
 -- import: fifthtry.github.io/package-doc/assets
 -- import: fifthtry.github.io/package-doc/doc as pd
 -- import: fifthtry.github.io/package-doc/code-block as cb
-;;-- import: fifthtry.github.io/package-doc/forest-theme as ft
+-- import: fifthtry.github.io/package-doc/forest-theme as ft
 
 
 
 
-;;-- ft.page: Package for documentation
-
--- ftd.column:
-;;id: doc-wrap
-width: fill-container
-padding-horizontal.px: 50
-padding-vertical.px: 20
-background.solid: $inherited.colors.background.base
+-- ft.page: Package for documentation
 
 
 -- pd.package: Package Docs
@@ -80,5 +73,5 @@ lang: ftd
 name: fifthtry.github.io/package-doc
 
 
--- end: ftd.column
 
+-- end: ft.page
