@@ -237,7 +237,7 @@ color: $inherited.colors.text
 spacing.fixed.px: 20
 ;;open: true
 
--- ftd.row:
+/-- ftd.row:
 anchor: window
 right.px: 50
 bottom.px: 100
@@ -250,7 +250,7 @@ border-radius.px: 4
 
 /-- toggle:
 
--- end: ftd.row
+/-- end: ftd.row
 
 -- ftd.column:
 
