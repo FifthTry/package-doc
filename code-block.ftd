@@ -77,27 +77,49 @@ color: $inherited.colors.text
 optional caption caption:
 body body:
 string lang:
+string $copy-text: Copy
 
 -- ftd.column:
 padding-bottom.px: 12
 padding-top.px: 12
 width: fill-container
 
--- ftd.text: $code.caption
-if: {$code.caption != NULL}
-role: $inherited.types.copy-regular
-color: $inherited.colors.text
+-- ftd.row:
 width: fill-container
-background.solid: $inherited.colors.background.step-2
+background.solid: $inherited.colors.background.step-1
 padding-top.px: 10
 padding-bottom.px: 10
 padding-left.px: 20
 padding-right.px: 20
 border-top-left-radius.px: 4
 border-top-right-radius.px: 4
+align-content: center
+
+-- ftd.text: $code.caption
+if: {$code.caption != NULL}
+role: $inherited.types.copy-regular
+color: $inherited.colors.text
+width: fill-container
+
+-- ftd.row:
+spacing.fixed.px: 10
+
+-- ftd.image:
+src: $assets.files.static.copy.png
+$on-click$: $ftd.copy-to-clipboard(a = $code.body)
+$on-click$: $ftd.set-string($a = $code.copy-text, v = Copied!)
+width.fixed.px: 20
+
+-- ftd.text: $code.copy-text
+role: $inherited.types.copy-regular
+color: $inherited.colors.text
+
+-- end: ftd.row
+
+-- end: ftd.row
 
 -- ftd.code:
-if: {$ftd.dark-mode}
+if: { ftd.dark-mode }
 text: $code.body
 lang: $code.lang
 width: fill-container
@@ -112,12 +134,12 @@ border-top-left-radius.px if {$code.caption == NULL}: 4
 border-top-right-radius.px if {$code.caption == NULL}: 4
 border-bottom-left-radius.px: 4
 border-bottom-right-radius.px: 4
-border-width.px: 1
-border-color: $code-bg-dark
+;; border-width.px: 1
+;; border-color: $code-bg-dark
 overflow-x: auto
 
 -- ftd.code:
-if: {!$ftd.dark-mode}
+if: { !ftd.dark-mode}
 text: $code.body
 lang: $code.lang
 width: fill-container
@@ -127,194 +149,16 @@ padding-top.px: 10
 padding-left.px: 20
 padding-bottom.px: 10
 padding-right.px: 20
-background.solid: $code-bg-light
+background.solid: #eff1f5
 border-top-left-radius.px if {$code.caption == NULL}: 4
 border-top-right-radius.px if {$code.caption == NULL}: 4
 border-bottom-left-radius.px if {$code.caption == NULL}: 4
 border-bottom-right-radius.px if {$code.caption == NULL}: 4
-border-color: $code-bg-light
-border-width.px: 1
+border-color: $inherited.colors.background.step-1
+border-width.px: 0
 overflow-x: auto
+theme: base16-ocean.light
 
 -- end: ftd.column
 
 -- end: code
-
-
-
-
-
-
-
-
-
-
--- component h1:
-caption title:
-optional body body:
-boolean open: true
-;;append-at: inner
-
--- ftd.column:
-width: fill-container
-region: h1
-padding-left.px: 20
-border-left.px: 5
-border-color: $inherited.colors.cta-secondary.text
-;;move-left: 25
-margin-bottom.px: 30
-;;$on-click$: toggle $open
-
--- ftd.text: $h1.title
-;;caption $title:
-;;region: title
-role: $inherited.types.heading-medium
-color: $inherited.colors.text
-padding-bottom.px: 8
-
--- end: ftd.column
-
--- end: h1
-
-
-
-
-
-
-
-
-
-
--- component h2:
-caption title:
-optional body body:
-
--- ftd.column:
-width: fill-container
-region: h2
-padding-bottom.px: 12
-
--- ftd.text: $h2.title
-;;caption $title:
-;;region: title
-role: $inherited.types.heading-small
-color: $inherited.colors.text
-padding-bottom.px: 8
-padding-top.px: 16
-
--- end: ftd.column
-
--- end: h2
-
-
-
-
-
-
-
-
-
-
--- component package:
-caption title:
-string name:
-body body:
-
--- ftd.column:
-width: fill-container
-spacing.fixed.px: 20
-;;open: true
-
--- ftd.row:
-anchor: window
-right.px: 50
-bottom.px: 100
-padding.px: 10
-background.solid: $inherited.colors.background.base
-border-width.px: 1
-border-color: $inherited.colors.text
-border-radius.px: 4
-;;z-index: 99999999999999
-
--- toggle:
-
--- end: ftd.row
-
--- tf.h0: $package.title
-
--- kv: Package Name
-value: $package.name
-
--- tf.markdown:
-
-$package.body
-
--- end: ftd.column
-
--- end: package
-
-
-
-
-
-
-
-
-
-
--- component toggle:
-
--- ftd.row:
-
--- ftd.image:
-if: {!$ftd.dark-mode}
-src: $assets.files.static.switch-mode-icon.svg
-height.fixed.px: 18
-;;$on-click$: message-host enable-dark-mode
-align-self: center
-
--- ftd.image:
-if: {$ftd.dark-mode}
-src: $assets.files.static.switch-mode-icon-dark.svg
-height.fixed.px: 18
-;;$on-click$: message-host enable-light-mode
-align-self: center
-
--- end: ftd.row
-
--- end: toggle
-
-
-
-
-
-
-
-
-
-
--- component kv:
-caption title:
-string value:
-
--- ftd.row:
-padding.px: 10
-border-width.px: 1
-border-color: $inherited.colors.text
-spacing.fixed.px: 7
-width: fill-container
-background.solid: $inherited.colors.background.base
-border-radius.px: 4
-
--- ftd.text: $kv.title
-role: $inherited.types.copy-regular
-color: $inherited.colors.text-strong
-
--- ftd.text: $kv.value
-color: $inherited.colors.text
-role: $inherited.types.copy-regular
-;;move-down: 2
-
--- end: ftd.row
-
--- end: kv
