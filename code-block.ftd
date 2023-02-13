@@ -112,7 +112,7 @@ width.fixed.px: 18
 
 -- ftd.text: $code.copy-text
 role: $inherited.types.copy-regular
-color: $inherited.colors.text
+color: $inherited.colors.border
 
 -- end: ftd.row
 
