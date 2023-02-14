@@ -339,7 +339,7 @@ children inner:
 -- ftd.column:
 width: fill-container
 region: h3
-margin-top.px: 32
+margin-top.px: 14
 margin-bottom.px: 16
 
 -- ftd.text: $h3.title
@@ -385,7 +385,7 @@ children inner:
 -- ftd.column:
 width: fill-container
 region: h4
-margin-top.px: 32
+margin-top.px: 8
 margin-bottom.px: 16
 
 -- ftd.text: $h4.title
@@ -433,7 +433,6 @@ optional boolean two_columns:
 text: $markdown.body
 role: $inherited.types.copy-regular
 color: $inherited.colors.text
-margin-bottom.px: 26
 
 -- ftd.text.classes:
 
