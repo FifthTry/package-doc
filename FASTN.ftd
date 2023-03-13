@@ -5,7 +5,7 @@
 
 -- fastn.dependency: fifthtry.github.io/app-switcher
 -- fastn.dependency: fifthtry.github.io/doc-site-typography as typo
-
+-- fastn.dependency: fifthtry.github.io/dark-mode-switcher
 
 /-- fastn.app: Todos for Family
 mount-point: /todos/
