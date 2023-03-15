@@ -2332,8 +2332,8 @@ optional caption caption:
 body body:
 string lang:
 boolean copy: true
-optional integer max-height:
-optional integer max-width:
+optional ftd.resizing max-height:
+optional ftd.resizing max-width:
 optional string download:
 
 -- cb.code:
