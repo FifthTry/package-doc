@@ -355,8 +355,8 @@ string $copy-text: null
 boolean $copy-mouse-in: false
 boolean $download-mouse-in: false
 boolean $mouse-in: false
-optional integer max-height:
-optional integer max-width:
+optional ftd.resizing max-height:
+optional ftd.resizing max-width:
 
 -- ftd.column:
 padding-bottom.px: 12
@@ -365,7 +365,6 @@ width: fill-container
 $on-mouse-enter$: $ftd.set-bool($a = $code.mouse-in, v = true)
 $on-mouse-leave$: $ftd.set-bool($a = $code.mouse-in, v = false)
 cursor: default
-max-height.fixed.px: 400
 overflow-y: auto
 
 -- ftd.row:
@@ -437,6 +436,7 @@ $on-click$: $download-text(filename = $code.download, text = $code.body)
 -- end: ftd.row
 
 -- ftd.code:
+if: { ftd.dark-mode }
 text: $code.body
 lang: $code.lang
 width: fill-container
@@ -453,11 +453,34 @@ border-bottom-left-radius.px if { code.caption == NULL }: 4
 border-bottom-right-radius.px if { code.caption == NULL }: 4
 overflow-x: auto
 overflow-y: auto
-max-height.fixed.px if { code.max-height != NULL }: $code.max-height
-max-width.fixed.px if { code.max-width != NULL }: $code.max-width
+max-height if { code.max-height != NULL }: $code.max-height
+max-width if { code.max-width != NULL }: $code.max-width
+
+
+-- ftd.code:
+if: { !ftd.dark-mode }
+text: $code.body
+lang: $code.lang
+width: fill-container
+role: $inherited.types.copy-regular
+color: $inherited.colors.text
+padding-top.px: 10
+padding-left.px: 20
+padding-bottom.px: 10
+padding-right.px: 20
+background.solid: $inherited.colors.background.code
+border-top-left-radius.px if { code.caption == NULL }: 4
+border-top-right-radius.px if { code.caption == NULL }: 4
+border-bottom-left-radius.px if { code.caption == NULL }: 4
+border-bottom-right-radius.px if { code.caption == NULL }: 4
+overflow-x: auto
+overflow-y: auto
+max-height if { code.max-height != NULL }: $code.max-height
+max-width if { code.max-width != NULL }: $code.max-width
+theme: base16-ocean.light
 
 -- ftd.column:
-if: {$code.download != NULL}
+if: { code.download != NULL }
 anchor: parent
 right.px: 0
 bottom.px: 12
@@ -467,7 +490,7 @@ border-bottom-right-radius.px: 4
 
 -- ftd.text: $code.download
 role: $inherited.types.fine-print
-color: $inherited.colors.text
+color: $inherited.colors.text.dark
 
 -- end: ftd.column
 
@@ -488,18 +511,25 @@ color: $inherited.colors.text
 
 -- component rendered:
 optional string download:
+optional caption title:
 body input:
 boolean copy: true
 string $copy-text: null
 boolean $copy-mouse-in: false
 boolean $download-mouse-in: false
 boolean $mouse-in: false
-optional integer max-height:
-optional integer max-width:
+optional ftd.resizing max-height:
+optional ftd.resizing max-width:
 ftd.ui list output:
 
 -- ftd.column:
 width: fill-container
+
+-- ftd.text: $rendered.title
+role: $inherited.types.heading-tiny
+color: $inherited.colors.text-strong
+margin-bottom.px: 20
+if: { rendered.title != NULL }
 
 -- ftd.text: Input:
 role: $inherited.types.copy-regular
@@ -515,7 +545,6 @@ width: fill-container
 $on-mouse-enter$: $ftd.set-bool($a = $rendered.mouse-in, v = true)
 $on-mouse-leave$: $ftd.set-bool($a = $rendered.mouse-in, v = false)
 cursor: default
-max-height.fixed.px: 400
 overflow-y: auto
 
 -- ftd.row:
@@ -567,6 +596,7 @@ $on-click$: $download-text(filename = $rendered.download, text = $rendered.input
 
 
 -- ftd.code:
+if: { ftd.dark-mode }
 text: $rendered.input
 lang: ftd
 width: fill-container
@@ -583,11 +613,35 @@ border-bottom-left-radius.px: 4
 border-bottom-right-radius.px: 4
 overflow-x: auto
 overflow-y: auto
-max-height.fixed.px if { rendered.max-height != NULL }: $rendered.max-height
-max-width.fixed.px if { rendered.max-width != NULL }: $rendered.max-width
+max-height if { rendered.max-height != NULL }: $rendered.max-height
+max-width if { rendered.max-width != NULL }: $rendered.max-width
+
+
+
+-- ftd.code:
+if: { !ftd.dark-mode }
+text: $rendered.input
+lang: ftd
+width: fill-container
+role: $inherited.types.copy-regular
+color: $inherited.colors.text
+padding-top.px: 10
+padding-left.px: 20
+padding-bottom.px: 10
+padding-right.px: 20
+background.solid: $inherited.colors.background.code
+border-top-left-radius.px: 4
+border-top-right-radius.px: 4
+border-bottom-left-radius.px: 4
+border-bottom-right-radius.px: 4
+overflow-x: auto
+overflow-y: auto
+max-height if { rendered.max-height != NULL }: $rendered.max-height
+max-width if { rendered.max-width != NULL }: $rendered.max-width
+theme: base16-ocean.light
 
 -- ftd.column:
-if: {$rendered.download != NULL}
+if: { rendered.download != NULL }
 anchor: parent
 right.px: 0
 bottom.px: 0
@@ -597,7 +651,7 @@ border-bottom-right-radius.px: 4
 
 -- ftd.text: $rendered.download
 role: $inherited.types.fine-print
-color: $inherited.colors.text
+color: $inherited.colors.text.dark
 
 -- end: ftd.column
 
