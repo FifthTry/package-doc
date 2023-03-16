@@ -357,6 +357,8 @@ boolean $download-mouse-in: false
 boolean $mouse-in: false
 optional ftd.resizing max-height:
 optional ftd.resizing max-width:
+string clean-code: $ftd.clean-code(a = $code.body, lang = $code.lang)
+
 
 -- ftd.column:
 padding-bottom.px: 12
@@ -403,7 +405,7 @@ src: $assets.files.static.copy.svg
 src if { code.copy-mouse-in }: $assets.files.static.copy-hover.svg
 $on-mouse-enter$: $ftd.set-bool($a = $code.copy-mouse-in, v = true)
 $on-mouse-leave$: $ftd.set-bool($a = $code.copy-mouse-in, v = false)
-$on-click$: $ftd.copy-to-clipboard(a = $code.body)
+$on-click$: $ftd.copy-to-clipboard(a = $code.clean-code)
 $on-click$: $ftd.set-string($a = $code.copy-text, v = Copied!)
 width.fixed.px: 18
 
@@ -431,7 +433,7 @@ top.px: 12
 right.px: 20
 $on-mouse-enter$: $ftd.set-bool($a = $code.download-mouse-in, v = true)
 $on-mouse-leave$: $ftd.set-bool($a = $code.download-mouse-in, v = false)
-$on-click$: $download-text(filename = $code.download, text = $code.body)
+$on-click$: $download-text(filename = $code.download, text = $code.clean-code)
 
 -- end: ftd.row
 
@@ -477,7 +479,7 @@ overflow-x: auto
 overflow-y: auto
 max-height if { code.max-height != NULL }: $code.max-height
 max-width if { code.max-width != NULL }: $code.max-width
-theme: base16-ocean.light
+theme: fastn-theme.light
 
 -- ftd.column:
 if: { code.download != NULL }
@@ -521,9 +523,11 @@ boolean $mouse-in: false
 optional ftd.resizing max-height:
 optional ftd.resizing max-width:
 ftd.ui list output:
+string clean-code: $ftd.clean-code(a = $rendered.input, lang = ftd)
 
 -- ftd.column:
 width: fill-container
+padding.px: 20
 
 -- ftd.text: $rendered.title
 role: $inherited.types.heading-tiny
@@ -531,14 +535,13 @@ color: $inherited.colors.text-strong
 margin-bottom.px: 20
 if: { rendered.title != NULL }
 
--- ftd.text: Input:
+-- ftd.text: Input
 role: $inherited.types.copy-regular
 color: $inherited.colors.text
-padding-bottom.px: 10
 width: fill-container
 border-color: $inherited.colors.border
 border-bottom-width.px: 1
-margin-bottom.px: 10
+text-align: end
 
 -- ftd.column:
 width: fill-container
@@ -564,7 +567,7 @@ src: $assets.files.static.copy.svg
 src if { rendered.copy-mouse-in }: $assets.files.static.copy-hover.svg
 $on-mouse-enter$: $ftd.set-bool($a = $rendered.copy-mouse-in, v = true)
 $on-mouse-leave$: $ftd.set-bool($a = $rendered.copy-mouse-in, v = false)
-$on-click$: $ftd.copy-to-clipboard(a = $rendered.input)
+$on-click$: $ftd.copy-to-clipboard(a = $rendered.clean-code)
 $on-click$: $ftd.set-string($a = $rendered.copy-text, v = Copied!)
 width.fixed.px: 18
 
@@ -592,7 +595,7 @@ top.px: 12
 right.px: 20
 $on-mouse-enter$: $ftd.set-bool($a = $rendered.download-mouse-in, v = true)
 $on-mouse-leave$: $ftd.set-bool($a = $rendered.download-mouse-in, v = false)
-$on-click$: $download-text(filename = $rendered.download, text = $rendered.input)
+$on-click$: $download-text(filename = $rendered.download, text = $rendered.clean-code)
 
 
 -- ftd.code:
@@ -607,8 +610,6 @@ padding-left.px: 20
 padding-bottom.px: 10
 padding-right.px: 20
 background.solid: $inherited.colors.background.code
-border-top-left-radius.px: 4
-border-top-right-radius.px: 4
 border-bottom-left-radius.px: 4
 border-bottom-right-radius.px: 4
 overflow-x: auto
@@ -630,15 +631,13 @@ padding-left.px: 20
 padding-bottom.px: 10
 padding-right.px: 20
 background.solid: $inherited.colors.background.code
-border-top-left-radius.px: 4
-border-top-right-radius.px: 4
 border-bottom-left-radius.px: 4
 border-bottom-right-radius.px: 4
 overflow-x: auto
 overflow-y: auto
 max-height if { rendered.max-height != NULL }: $rendered.max-height
 max-width if { rendered.max-width != NULL }: $rendered.max-width
-theme: base16-ocean.light
+theme: fastn-theme.light
 
 -- ftd.column:
 if: { rendered.download != NULL }
@@ -658,15 +657,14 @@ color: $inherited.colors.text.dark
 
 -- end: ftd.column
 
--- ftd.text: Rendered:
+-- ftd.text: Output
 role: $inherited.types.copy-regular
 color: $inherited.colors.text
-padding-bottom.px: 10
 border-bottom-width.px: 1
 width: fill-container
 border-color: $inherited.colors.border
-margin-bottom.px: 10
-margin-top.px: 24
+margin-top.px: 8
+text-align: end
 
 -- ftd.column:
 width: fill-container
