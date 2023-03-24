@@ -7,7 +7,6 @@
 -- import: fifthtry.github.io/package-doc/product-switcher as ps
 -- import: fifthtry.github.io/package-doc/code-block as cb
 
-
 -- ftd.image-src site-logo: 
 light: https://www.fifthtry.com/-/fifthtry.com/assets/images/logo-fifthtry-dark.svg
 dark: https://www.fifthtry.com/-/fifthtry.com/assets/images/logo-fifthtry-dark.svg
@@ -42,7 +41,6 @@ $processor$: pr.toc
 
 
 
-
 -- header:
 login-button: $login-button
 pricing-cta: $pricing-cta
@@ -60,9 +58,6 @@ site-url: $site-url
 site-name: $site-name
 logo-height: 38
 products: $ps.example-product
-
-
-
 
 
 
@@ -330,6 +325,7 @@ z-index: 14
 
 -- ftd.row:
 width: fill-container
+align-content: center
 
 -- ftd.column:
 if: { !menu-mobile.parent-brand }
@@ -347,8 +343,15 @@ role: $inherited.types.fine-print
 color: $inherited.colors.text-strong
 padding-bottom.px: 8
 
+-- ftd.column:
+if: { menu-mobile.site-logo != NULL }
+height.fixed.px: 38
+
 -- ftd.image:
 src: $menu-mobile.site-logo
+height.fixed.px: 44
+
+-- end: ftd.column
 
 -- end: ftd.column
 
@@ -506,7 +509,7 @@ role: $inherited.types.heading-medium
 color: $inherited.colors.text-strong
 margin-left.px if { header-desktop.site-logo != NULL }: 16
 white-space: nowrap
-margin-top.px: 10
+align-self: center
 
 -- fallback-title:
 if: { header-desktop.site-logo == NULL }
@@ -687,7 +690,7 @@ optional pr.toc-item current-page:
 boolean include-dark-mode-switcher:
 boolean include-language-switcher:
 integer logo-width: 120
-integer logo-height: 44
+integer logo-height: 38
 string link-style: 
 ftd.color background:  
 ftd.color text-color: 
@@ -708,6 +711,7 @@ $on-click-outside$: $ftd.set-bool($a = $header-mobile.show-section, v = false)
 padding-horizontal.px: 16
 padding-vertical.px: 16
 width: fill-container
+align-content: center
 
 -- ftd.column:
 
@@ -721,11 +725,15 @@ width.fixed.px: 24
 align-self: center
 $on-click$: $ftd.toggle($a = $header-mobile.sidebar-open) 
 
--- ftd.image:
+-- ftd.column:
 if: { header-mobile.site-logo != NULL } 
+height.fixed.px: 38
+
+-- ftd.image:
 src: $header-mobile.site-logo
-width.fixed.px: $header-mobile.logo-width
-height.fixed.px: $header-mobile.logo-height
+height.fixed.px: 44
+
+-- end: ftd.column
 
 -- ftd.text: $header-mobile.site-name
 if: { header-mobile.site-name != NULL }
@@ -786,7 +794,7 @@ align-self: start
 -- ftd.text: $header-mobile.current-section.title
 if: { header-mobile.current-section != NULL }
 role: $inherited.types.label-small
-color: $inherited.colors.text
+color: $inherited.colors.cta-tertiary.text
 link: $header-mobile.current-section.url
 background.solid: $inherited.colors.cta-tertiary.base
 padding-vertical.px: 8
@@ -821,6 +829,7 @@ menu-hover-bg: $header-mobile.menu-hover-bg
 -- end: ftd.row
 
 -- ftd.row:
+if: { !ftd.is_empty($header-mobile.toc) }
 width: fill-container
 background.solid: $inherited.colors.background.step-2
 padding-horizontal.px: 20
@@ -833,6 +842,12 @@ spacing.fixed.px: 4
 
 -- ftd.text: $header-mobile.current-subsection.title
 if: { header-mobile.current-subsection != NULL }
+role: $inherited.types.label-small
+color: $inherited.colors.text-strong
+white-space: nowrap
+
+-- ftd.text: Menu
+if: { header-mobile.current-subsection == NULL && header-mobile.current-page == NULL }
 role: $inherited.types.label-small
 color: $inherited.colors.text-strong
 white-space: nowrap
