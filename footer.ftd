@@ -2,8 +2,7 @@
 -- import: fifthtry.github.io/package-doc/powered-by
 
 
--- basic-footer:
-copyright: Copyright © 2023 - [FifthTry](https://www.fifthtry.com/)
+-- fastn-footer:
 
 
 
@@ -14,8 +13,8 @@ copyright: Copyright © 2023 - [FifthTry](https://www.fifthtry.com/)
 
 
 
--- component basic-footer:
-optional string copyright: 
+-- component fastn-footer:
+optional string copyright: Copyright © 2023 - [FifthTry](https://www.fifthtry.com/)
 optional ftd.color backgroundcolor: $inherited.colors.background.step-1
 ftd.color text-color: $inherited.colors.text
 ftd.color active-text-color: $inherited.colors.text-strong
@@ -25,7 +24,7 @@ integer logo-height: 32
 width: fill-container
 align-self: center
 align-content: center
-background.solid: $basic-footer.backgroundcolor
+background.solid: $fastn-footer.backgroundcolor
 
 -- ftd.row:
 width: fill-container
@@ -39,8 +38,8 @@ align-content: center
 width: fill-container
 
 -- ftd.text: 
-if: {basic-footer.copyright != NULL}
-text: $basic-footer.copyright
+if: {fastn-footer.copyright != NULL}
+text: $fastn-footer.copyright
 color: $inherited.colors.text
 text-align: center
 role: $inherited.types.copy-small
@@ -60,4 +59,4 @@ align-self: end
 
 -- end: ftd.column
 
--- end: basic-footer
+-- end: fastn-footer
