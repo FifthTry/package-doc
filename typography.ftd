@@ -188,19 +188,15 @@ children inner:
 
 -- ftd.column:
 width: fill-container
-margin-top.px: 32
-margin-bottom.px: 16
 
 -- ftd.text: $h0.title
 role: $inherited.types.heading-hero
 color: $inherited.colors.text-strong
-padding-bottom.px: 16
-padding-top.px: 8
-region: h1
-
--- ftd.column:
+margin-bottom.rem: 0.5
 width: fill-container
-margin-bottom.px if { h0.body != NULL }: -26
+border-bottom-width.px: 1
+border-color: $inherited.colors.border
+region: h1
 
 -- markdown:
 if: { h0.body != NULL }
@@ -209,8 +205,6 @@ body: $h0.body
 -- ftd.column:
 children: $h0.inner
 width: fill-container
-
--- end: ftd.column
 
 -- end: ftd.column
 
@@ -235,25 +229,16 @@ children inner:
 
 -- ftd.column:
 width: fill-container
-margin-top.px: 32
-margin-bottom.px: 16
-
--- ftd.row:
-width: fill-container
-spacing.fixed.px: 20
 
 -- ftd.text: $h1.title
 role: $inherited.types.heading-large
 color: $inherited.colors.text-strong
-padding-bottom.px: 16
-padding-top.px: 8
-region: h1
-
--- end: ftd.row
-
--- ftd.column:
+margin-bottom.rem: 0.5
 width: fill-container
-margin-bottom.px if { h1.body != NULL }: -26
+border-bottom-width.px: 1
+border-color: $inherited.colors.border
+padding-top.em: 0.5
+region: h1
 
 -- markdown:
 if: { h1.body != NULL }
@@ -262,8 +247,6 @@ body: $h1.body
 -- ftd.column:
 children: $h1.inner
 width: fill-container
-
--- end: ftd.column
 
 -- end: ftd.column
 
@@ -287,19 +270,14 @@ children inner:
 
 -- ftd.column:
 width: fill-container
-margin-top.px: 32
-margin-bottom.px: 16
 
 -- ftd.text: $h2.title
 role: $inherited.types.heading-medium
 color: $inherited.colors.text-strong
-padding-bottom.px: 16
-padding-top.px: 8
-region: h2
-
--- ftd.column:
+margin-bottom.rem: 0.5
 width: fill-container
-margin-bottom.px if { h2.body != NULL }: -26
+padding-top.em: 0.3
+region: h2
 
 -- markdown:
 if: { h2.body != NULL }
@@ -308,8 +286,6 @@ body: $h2.body
 -- ftd.column:
 children: $h2.inner
 width: fill-container
-
--- end: ftd.column
 
 -- end: ftd.column
 
@@ -333,19 +309,14 @@ children inner:
 
 -- ftd.column:
 width: fill-container
-margin-top.px: 14
-margin-bottom.px: 16
 
 -- ftd.text: $h3.title
 role: $inherited.types.heading-small
 color: $inherited.colors.text-strong
-padding-bottom.px: 16
-padding-top.px: 8
-region: h3
-
--- ftd.column:
+margin-bottom.rem: 0.5
 width: fill-container
-margin-bottom.px if { h3.body != NULL }: -26
+padding-top.em: 0.17
+region: h3
 
 -- markdown:
 if: { h3.body != NULL }
@@ -354,8 +325,6 @@ body: $h3.body
 -- ftd.column:
 children: $h3.inner
 width: fill-container
-
--- end: ftd.column
 
 -- end: ftd.column
 
@@ -379,19 +348,14 @@ children inner:
 
 -- ftd.column:
 width: fill-container
-margin-top.px: 8
-margin-bottom.px: 16
 
 -- ftd.text: $h4.title
 role: $inherited.types.heading-tiny
 color: $inherited.colors.text-strong
-padding-bottom.px: 16
-padding-top.px: 8
-region: h4
-
--- ftd.column:
+margin-bottom.rem: 0.5
 width: fill-container
-margin-bottom.px if { h4.body != NULL }: -26
+padding-top.em: 0.08
+region: h4
 
 -- markdown:
 if: { h4.body != NULL }
@@ -400,8 +364,6 @@ body: $h4.body
 -- ftd.column:
 children: $h4.inner
 width: fill-container
-
--- end: ftd.column
 
 -- end: ftd.column
 
@@ -428,13 +390,7 @@ optional boolean two_columns:
 text: $markdown.body
 role: $inherited.types.copy-regular
 color: $inherited.colors.text
-
--- ftd.text.classes:
-
--- string: markdown
-
--- end: ftd.text.classes
-
+classes: markdown
 
 -- end: markdown
 
@@ -459,10 +415,10 @@ spacing.fixed.px: 2
 -- ftd.text: $key-value.key
 
 -- ftd.text: $key-value.value
-if: { key-value.value != NULL }
+if: {$key-value.value != NULL}
 
 -- ftd.text: $key-value.default
-if: { key-value.value = NULL }
+if: {$key-value.value = NULL}
 
 -- end: ftd.row
 
@@ -483,8 +439,7 @@ optional body body:
 
 -- ftd.column:
 width: fill-container
-region: h2
-margin-top.px: 32
+margin-top.px: 0
 margin-bottom.px: 16
 ;;boolean open: true -- TODO FTD 0.3
 
@@ -492,9 +447,10 @@ margin-bottom.px: 16
 text: $h2-text.title
 role: $inherited.types.heading-small
 color: $inherited.colors.text
-padding-bottom.px: 8
-padding-top.px: 16
-;;$on-click$: toggle $open -- TODO FTD 0.3
+margin-bottom.rem: 0.5
+width: fill-container
+padding-top.em: 0.3
+region: h2
 
 -- end: ftd.column
 
