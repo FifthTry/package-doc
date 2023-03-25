@@ -2364,8 +2364,8 @@ string $copy-text: null
 boolean $copy-mouse-in: false
 boolean $download-mouse-in: false
 boolean $mouse-in: false
-optional integer max-height:
-optional integer max-width:
+optional ftd.resizing max-height:
+optional ftd.resizing max-width:
 ftd.ui list output:
 
 -- cb.rendered:
