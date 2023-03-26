@@ -43,7 +43,8 @@ afterwards add any number of components.
 
 <Body text here> // This is optional
 
-\-- <other-components>: you can add any component also in the body of this component.
+\-- <other-components>: you can add any component also in the body of this
+    component.
 
 
 
@@ -60,7 +61,8 @@ afterwards add any number of components.
 
 <Body text here> // This is optional
 
-\-- <other-components>: you can add any component also in the body of this component.
+\-- <other-components>: you can add any component also in the body of this
+    component.
 
 
 
@@ -77,7 +79,8 @@ afterwards add any number of components.
 
 <Body text here> // This is optional
 
-\-- <other-components>: you can add any component also in the body of this component.
+\-- <other-components>: you can add any component also in the body of this
+    component.
 
 
 -- pd.component: `h3`
@@ -93,7 +96,8 @@ afterwards add any number of components.
 
 <Body text here> // This is optional
 
-\-- <other-components>: you can add any component also in the body of this component.
+\-- <other-components>: you can add any component also in the body of this
+    component.
 
 
 
@@ -111,15 +115,16 @@ afterwards add any number of components.
 
 <Body text here> // This is optional
 
-\-- <other-components>: you can add any component also in the body of this component.
+\-- <other-components>: you can add any component also in the body of this
+    component.
 
 
 
 -- pd.component: `markdown`
 name: `-- tf.markdown:`
 
-This is used to add string type data in body text, you can add as many paragraphs
-using this component.
+This is used to add string type data in body text, you can add as many
+paragraphs using this component.
 
 -- pd.hidden-code: How to use
 
@@ -127,13 +132,15 @@ using this component.
 
 <Body text here> // This is optional
 
-\-- <other-components>: you can add any component also in the body of this component.
+\-- <other-components>: you can add any component also in the body of this
+    component.
 
 
 
 -- h1: Output of all above components:
 
-Below are examples of above components, how they will be rendered on your browser.
+Below are examples of above components, how they will be rendered on your
+browser.
 
 
 -- h0: Title of the Heading Hero
@@ -181,6 +188,7 @@ Below are examples of above components, how they will be rendered on your browse
 
 
 
+
 -- component h0:
 caption title:
 optional body body:
@@ -211,7 +219,6 @@ width: fill-container
 -- end: ftd.column
 
 -- end: h0
-
 
 
 
