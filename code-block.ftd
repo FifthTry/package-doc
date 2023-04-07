@@ -444,10 +444,6 @@ lang: $code.lang
 width: fill-container
 role: $inherited.types.copy-regular
 color: $inherited.colors.text
-padding-top.px: 10
-padding-left.px: 20
-padding-bottom.px: 10
-padding-right.px: 20
 background.solid: $inherited.colors.background.code
 border-top-left-radius.px if { code.caption == NULL }: 4
 border-top-right-radius.px if { code.caption == NULL }: 4
@@ -466,10 +462,6 @@ lang: $code.lang
 width: fill-container
 role: $inherited.types.copy-regular
 color: $inherited.colors.text
-padding-top.px: 10
-padding-left.px: 20
-padding-bottom.px: 10
-padding-right.px: 20
 background.solid: $inherited.colors.background.code
 border-top-left-radius.px if { code.caption == NULL }: 4
 border-top-right-radius.px if { code.caption == NULL }: 4
@@ -527,12 +519,12 @@ string clean-code: $ftd.clean-code(a = $rendered.input, lang = ftd)
 
 -- ftd.column:
 width: fill-container
-padding.px: 20
+padding-bottom.em: 0.8
 
 -- ftd.text: $rendered.title
 role: $inherited.types.heading-tiny
 color: $inherited.colors.text-strong
-margin-bottom.px: 20
+margin-bottom.em: 0.2
 if: { rendered.title != NULL }
 
 -- ftd.text: Input
@@ -605,10 +597,6 @@ lang: ftd
 width: fill-container
 role: $inherited.types.copy-regular
 color: $inherited.colors.text
-padding-top.px: 10
-padding-left.px: 20
-padding-bottom.px: 10
-padding-right.px: 20
 background.solid: $inherited.colors.background.code
 border-bottom-left-radius.px: 4
 border-bottom-right-radius.px: 4
@@ -626,10 +614,6 @@ lang: ftd
 width: fill-container
 role: $inherited.types.copy-regular
 color: $inherited.colors.text
-padding-top.px: 10
-padding-left.px: 20
-padding-bottom.px: 10
-padding-right.px: 20
 background.solid: $inherited.colors.background.code
 border-bottom-left-radius.px: 4
 border-bottom-right-radius.px: 4

@@ -573,13 +573,14 @@ width: 100%;
 body {
 height: 100%;
 width: 100%;
-word-wrap: break-word;
 }
+
 input, code {
 vertical-align: middle;
 }
 pre {
 white-space: break-spaces;
+word-wrap: break-word;
 }
 html {
 -webkit-font-smoothing: antialiased;
@@ -703,7 +704,7 @@ background-color: #ffffff1f;
 }
 
 
-.markdown p {
+p {
 margin-block-end: 1em;
 }
 
@@ -1107,11 +1108,13 @@ change_value(function_arguments, ftd_data[id], id);
 }
 }
 exports.handle_event = function (evt, id, event, obj) {
+window.ftd.utils.reset_full_height();
 console_log(id, event);
 let actions = JSON.parse(event);
 for (const action in actions) {
 handle_event(evt, id, actions[action], obj);
 }
+window.ftd.utils.set_full_height();
 };
 exports.handle_function = function (evt, id, event, obj) {
 console_log(id, event);
@@ -1394,6 +1397,54 @@ data[argument] = eval(component.getAttribute(argument));
 }
 return data;
 };
+exports.call_mutable_value_changes = function (key, id) {
+if (!window.ftd[`mutable_value_${id}`]) {
+return;
+}
+if (!!window.ftd[`mutable_value_${id}`][key]) {
+let changes = window.ftd[`mutable_value_${id}`][key].changes;
+for (let i in changes) {
+changes[i]();
+}
+}
+const pattern = new RegExp(`^${key}\\..+`);
+const result = Object.keys(window.ftd[`mutable_value_${id}`])
+.filter(key => pattern.test(key))
+.reduce((acc, key) => {
+acc[key] = window.ftd[`mutable_value_${id}`][key];
+return acc;
+}, {});
+for (let i in result) {
+let changes = result[i].changes;
+for (let i in changes) {
+changes[i]();
+}
+}
+};
+exports.call_immutable_value_changes = function (key, id) {
+if (!window.ftd[`immutable_value_${id}`]) {
+return;
+}
+if (!!window.ftd[`immutable_value_${id}`][key]) {
+let changes = window.ftd[`immutable_value_${id}`][key].changes;
+for (let i in changes) {
+changes[i]();
+}
+}
+const pattern = new RegExp(`^${key}\\..+`);
+const result = Object.keys(window.ftd[`immutable_value_${id}`])
+.filter(key => pattern.test(key))
+.reduce((acc, key) => {
+acc[key] = window.ftd[`immutable_value_${id}`][key];
+return acc;
+}, {});
+for (let i in result) {
+let changes = result[i].changes;
+for (let i in changes) {
+changes[i]();
+}
+}
+};
 return exports;
 })();
 window.ftd.post_init = function () {
@@ -1410,10 +1461,6 @@ const MOBILE_CLASS = "ftd-mobile";
 const XL_CLASS = "ftd-xl";
 const FTD_DEVICE = "ftd#device";
 const FTD_BREAKPOINT_WIDTH = "ftd#breakpoint-width";
-const FTD_THEME_COLOR = "ftd#theme-color";
-const THEME_COLOR_META = "theme-color";
-const MARKDOWN_COLOR = "ftd#markdown-color";
-const MARKDOWN_BACKGROUND_COLOR = "ftd#markdown-background-color";
 let last_device;
 function initialise_device() {
 last_device = get_device();
@@ -1573,7 +1620,6 @@ window.ftd.set_bool_for_all(FOLLOW_SYSTEM_DARK_MODE, false);
 window.ftd.set_bool_for_all(SYSTEM_DARK_MODE, system_dark_mode());
 document.body.classList.add(DARK_MODE_CLASS);
 set_cookie(DARK_MODE_COOKIE, COOKIE_DARK_MODE);
-update_theme_color();
 };
 window.enable_light_mode = function () {
 // TODO: coalesce the two set_bool-s into one so there is only one DOM
@@ -1585,7 +1631,6 @@ if (document.body.classList.contains(DARK_MODE_CLASS)) {
 document.body.classList.remove(DARK_MODE_CLASS);
 }
 set_cookie(DARK_MODE_COOKIE, COOKIE_LIGHT_MODE);
-update_theme_color();
 };
 window.enable_system_mode = function () {
 // TODO: coalesce the two set_bool-s into one so there is only one DOM
@@ -1604,37 +1649,7 @@ document.body.classList.remove(DARK_MODE_CLASS);
 }
 set_cookie(DARK_MODE_COOKIE, COOKIE_SYSTEM_LIGHT);
 }
-update_theme_color();
 };
-function update_theme_color() {
-let theme_color = window.ftd.get_value("main", FTD_THEME_COLOR);
-if (!!theme_color) {
-document.body.style.backgroundColor = FTD_THEME_COLOR;
-set_meta(THEME_COLOR_META, theme_color);
-}
-else {
-document.body.style.backgroundColor = FTD_THEME_COLOR;
-delete_meta(THEME_COLOR_META);
-}
-}
-function set_meta(name, value) {
-let meta = document.querySelector("meta[name=" + name + "]");
-if (!!meta) {
-meta.content = value;
-}
-else {
-meta = document.createElement('meta');
-meta.name = name;
-meta.content = value;
-document.getElementsByTagName('head')[0].appendChild(meta);
-}
-}
-function delete_meta(name) {
-let meta = document.querySelector("meta[name=" + name + "]");
-if (!!meta) {
-meta.remove();
-}
-}
 function set_cookie(name, value) {
 document.cookie = name + "=" + value + "; path=/";
 }
@@ -1673,6 +1688,7 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener("change", upd
 }
 initialise_dark_mode();
 initialise_device();
+window.ftd.utils.set_full_height();
 // update_markdown_colors();
 };
 function console_log(...message) {
@@ -1849,6 +1865,13 @@ console.error('Fallback: Oops, unable to copy', err);
 }
 document.body.removeChild(textArea);
 }
+window.ftd.utils = {};
+window.ftd.utils.set_full_height = function () {
+document.body.style.height = `max(${document.documentElement.scrollHeight}px, 100%)`;
+};
+window.ftd.utils.reset_full_height = function () {
+document.body.style.height = `100%`;
+};
 (function () {
 document.addEventListener('keypress', (event) => {
 let key = event.key;
@@ -2029,9 +2052,128 @@ else {document.querySelector(`[data-id="0:main"]`).style["background-color"] = r
 
 window.node_change_main["0:main__background-image"] = function(data) {
 if(!data["ftd#dark-mode"]){
-document.querySelector(`[data-id="0:main"]`).style["background-image"] = `url({0})`.format(JSONstringify(resolve_reference("ftd#default-colors.background.step-1", data).light));
+document.querySelector(`[data-id="0:main"]`).style["background-image"] = eval(`
+let bg = {0};
+if (typeof bg === 'object' && "src" in bg) {
+let img_src = bg.src;
+if(!data["ftd#dark-mode"] && typeof img_src === 'object' && "light" in img_src) {
+"url(" + img_src.light + ")"
 }
-else {document.querySelector(`[data-id="0:main"]`).style["background-image"] = `url({0})`.format(JSONstringify(resolve_reference("ftd#default-colors.background.step-1", data).dark));}
+else if(data["ftd#dark-mode"] && typeof img_src === 'object' && "dark" in img_src){
+"url(" + img_src.dark + ")"
+}
+else {
+null
+}
+} else {
+null
+}
+`.format(JSON.stringify(resolve_reference("ftd#default-colors.background.step-1", data).light)));
+}
+else {document.querySelector(`[data-id="0:main"]`).style["background-image"] = eval(`
+let bg = {0};
+if (typeof bg === 'object' && "src" in bg) {
+let img_src = bg.src;
+if(!data["ftd#dark-mode"] && typeof img_src === 'object' && "light" in img_src) {
+"url(" + img_src.light + ")"
+}
+else if(data["ftd#dark-mode"] && typeof img_src === 'object' && "dark" in img_src){
+"url(" + img_src.dark + ")"
+}
+else {
+null
+}
+} else {
+null
+}
+`.format(JSON.stringify(resolve_reference("ftd#default-colors.background.step-1", data).dark)));}
+}
+
+window.node_change_main["0:main__background-position"] = function(data) {
+if(!data["ftd#dark-mode"]){
+document.querySelector(`[data-id="0:main"]`).style["background-position"] = eval(`
+let bg = {0};
+if (typeof bg === 'object' && "position" in bg) {
+let pos = bg.position;
+if (typeof pos === 'object' && "x" in pos && "y" in pos) {
+pos.x + " " + pos.y
+}
+else {
+pos.replace("-", " ")
+}
+} else {
+null
+}
+`.format(JSON.stringify(resolve_reference("ftd#default-colors.background.step-1", data).light)));
+}
+else {document.querySelector(`[data-id="0:main"]`).style["background-position"] = eval(`
+let bg = {0};
+if (typeof bg === 'object' && "position" in bg) {
+let pos = bg.position;
+if (typeof pos === 'object' && "x" in pos && "y" in pos) {
+pos.x + " " + pos.y
+}
+else {
+pos.replace("-", " ")
+}
+} else {
+null
+}
+`.format(JSON.stringify(resolve_reference("ftd#default-colors.background.step-1", data).dark)));}
+}
+
+window.node_change_main["0:main__background-repeat"] = function(data) {
+if(!data["ftd#dark-mode"]){
+document.querySelector(`[data-id="0:main"]`).style["background-repeat"] = eval(`
+let bg = {0};
+if (typeof bg === 'object' && "repeat" in bg) {
+bg.repeat
+} else {
+null
+}
+`.format(JSON.stringify(resolve_reference("ftd#default-colors.background.step-1", data).light)));
+}
+else {document.querySelector(`[data-id="0:main"]`).style["background-repeat"] = eval(`
+let bg = {0};
+if (typeof bg === 'object' && "repeat" in bg) {
+bg.repeat
+} else {
+null
+}
+`.format(JSON.stringify(resolve_reference("ftd#default-colors.background.step-1", data).dark)));}
+}
+
+window.node_change_main["0:main__background-size"] = function(data) {
+if(!data["ftd#dark-mode"]){
+document.querySelector(`[data-id="0:main"]`).style["background-size"] = eval(`
+let bg = {0};
+if (typeof bg === 'object' && "size" in bg) {
+let sz = bg.size;
+if (typeof sz === 'object' && "x" in sz && "y" in sz) {
+sz.x + " " + sz.y
+}
+else {
+sz
+}
+} else {
+null
+}
+`.format(JSON.stringify(resolve_reference("ftd#default-colors.background.step-1", data).light)));
+}
+else {document.querySelector(`[data-id="0:main"]`).style["background-size"] = eval(`
+let bg = {0};
+if (typeof bg === 'object' && "size" in bg) {
+let sz = bg.size;
+if (typeof sz === 'object' && "x" in sz && "y" in sz) {
+sz.x + " " + sz.y
+}
+else {
+sz
+}
+} else {
+null
+}
+`.format(JSON.stringify(resolve_reference("ftd#default-colors.background.step-1", data).dark)));}
 }
 
 window.node_change_main["0,0:main__border-color"] = function(data) {
@@ -2063,37 +2205,37 @@ else {document.querySelector(`[data-id="0,0,0,0:main"]`).style["color"] = resolv
 
 window.node_change_main["0,0,0,0:main__font-family"] = function(data) {
 if(data["ftd#device"] == "desktop"){
-document.querySelector(`[data-id="0,0,0,0:main"]`).style["font-family"] = eval(`({0})["font-family"]`.format(JSONstringify(resolve_reference("ftd#default-types.copy-small", data).desktop)));
+document.querySelector(`[data-id="0,0,0,0:main"]`).style["font-family"] = eval(`({0})["font-family"]`.format(JSON.stringify(resolve_reference("ftd#default-types.copy-small", data).desktop)));
 }
-else {document.querySelector(`[data-id="0,0,0,0:main"]`).style["font-family"] = eval(`({0})["font-family"]`.format(JSONstringify(resolve_reference("ftd#default-types.copy-small", data).mobile)));}
+else {document.querySelector(`[data-id="0,0,0,0:main"]`).style["font-family"] = eval(`({0})["font-family"]`.format(JSON.stringify(resolve_reference("ftd#default-types.copy-small", data).mobile)));}
 }
 
 window.node_change_main["0,0,0,0:main__font-size"] = function(data) {
 if(data["ftd#device"] == "desktop"){
-document.querySelector(`[data-id="0,0,0,0:main"]`).style["font-size"] = eval(`({0})["size"]`.format(JSONstringify(resolve_reference("ftd#default-types.copy-small", data).desktop)));
+document.querySelector(`[data-id="0,0,0,0:main"]`).style["font-size"] = eval(`({0})["size"]`.format(JSON.stringify(resolve_reference("ftd#default-types.copy-small", data).desktop)));
 }
-else {document.querySelector(`[data-id="0,0,0,0:main"]`).style["font-size"] = eval(`({0})["size"]`.format(JSONstringify(resolve_reference("ftd#default-types.copy-small", data).mobile)));}
+else {document.querySelector(`[data-id="0,0,0,0:main"]`).style["font-size"] = eval(`({0})["size"]`.format(JSON.stringify(resolve_reference("ftd#default-types.copy-small", data).mobile)));}
 }
 
 window.node_change_main["0,0,0,0:main__font-weight"] = function(data) {
 if(data["ftd#device"] == "desktop"){
-document.querySelector(`[data-id="0,0,0,0:main"]`).style["font-weight"] = eval(`({0}).weight`.format(JSONstringify(resolve_reference("ftd#default-types.copy-small", data).desktop)));
+document.querySelector(`[data-id="0,0,0,0:main"]`).style["font-weight"] = eval(`({0}).weight`.format(JSON.stringify(resolve_reference("ftd#default-types.copy-small", data).desktop)));
 }
-else {document.querySelector(`[data-id="0,0,0,0:main"]`).style["font-weight"] = eval(`({0}).weight`.format(JSONstringify(resolve_reference("ftd#default-types.copy-small", data).mobile)));}
+else {document.querySelector(`[data-id="0,0,0,0:main"]`).style["font-weight"] = eval(`({0}).weight`.format(JSON.stringify(resolve_reference("ftd#default-types.copy-small", data).mobile)));}
 }
 
 window.node_change_main["0,0,0,0:main__letter-spacing"] = function(data) {
 if(data["ftd#device"] == "desktop"){
-document.querySelector(`[data-id="0,0,0,0:main"]`).style["letter-spacing"] = eval(`({0})["letter-spacing"]`.format(JSONstringify(resolve_reference("ftd#default-types.copy-small", data).desktop)));
+document.querySelector(`[data-id="0,0,0,0:main"]`).style["letter-spacing"] = eval(`({0})["letter-spacing"]`.format(JSON.stringify(resolve_reference("ftd#default-types.copy-small", data).desktop)));
 }
-else {document.querySelector(`[data-id="0,0,0,0:main"]`).style["letter-spacing"] = eval(`({0})["letter-spacing"]`.format(JSONstringify(resolve_reference("ftd#default-types.copy-small", data).mobile)));}
+else {document.querySelector(`[data-id="0,0,0,0:main"]`).style["letter-spacing"] = eval(`({0})["letter-spacing"]`.format(JSON.stringify(resolve_reference("ftd#default-types.copy-small", data).mobile)));}
 }
 
 window.node_change_main["0,0,0,0:main__line-height"] = function(data) {
 if(data["ftd#device"] == "desktop"){
-document.querySelector(`[data-id="0,0,0,0:main"]`).style["line-height"] = eval(`({0})["line-height"]`.format(JSONstringify(resolve_reference("ftd#default-types.copy-small", data).desktop)));
+document.querySelector(`[data-id="0,0,0,0:main"]`).style["line-height"] = eval(`({0})["line-height"]`.format(JSON.stringify(resolve_reference("ftd#default-types.copy-small", data).desktop)));
 }
-else {document.querySelector(`[data-id="0,0,0,0:main"]`).style["line-height"] = eval(`({0})["line-height"]`.format(JSONstringify(resolve_reference("ftd#default-types.copy-small", data).mobile)));}
+else {document.querySelector(`[data-id="0,0,0,0:main"]`).style["line-height"] = eval(`({0})["line-height"]`.format(JSON.stringify(resolve_reference("ftd#default-types.copy-small", data).mobile)));}
 }
 window.node_change_main["0,0,1,0:main__href"] = function(data) {
 document.querySelector(`[data-id="0,0,1,0:main"]`).setAttribute("href", resolve_reference("fifthtry.github.io/package-doc/powered-by#powered-by:link:0,0,1,0", data));
@@ -2116,37 +2258,37 @@ else {document.querySelector(`[data-id="0,0,1,0,0:main"]`).style["color"] = reso
 
 window.node_change_main["0,0,1,0,0:main__font-family"] = function(data) {
 if(data["ftd#device"] == "desktop"){
-document.querySelector(`[data-id="0,0,1,0,0:main"]`).style["font-family"] = eval(`({0})["font-family"]`.format(JSONstringify(resolve_reference("ftd#default-types.fine-print", data).desktop)));
+document.querySelector(`[data-id="0,0,1,0,0:main"]`).style["font-family"] = eval(`({0})["font-family"]`.format(JSON.stringify(resolve_reference("ftd#default-types.fine-print", data).desktop)));
 }
-else {document.querySelector(`[data-id="0,0,1,0,0:main"]`).style["font-family"] = eval(`({0})["font-family"]`.format(JSONstringify(resolve_reference("ftd#default-types.fine-print", data).mobile)));}
+else {document.querySelector(`[data-id="0,0,1,0,0:main"]`).style["font-family"] = eval(`({0})["font-family"]`.format(JSON.stringify(resolve_reference("ftd#default-types.fine-print", data).mobile)));}
 }
 
 window.node_change_main["0,0,1,0,0:main__font-size"] = function(data) {
 if(data["ftd#device"] == "desktop"){
-document.querySelector(`[data-id="0,0,1,0,0:main"]`).style["font-size"] = eval(`({0})["size"]`.format(JSONstringify(resolve_reference("ftd#default-types.fine-print", data).desktop)));
+document.querySelector(`[data-id="0,0,1,0,0:main"]`).style["font-size"] = eval(`({0})["size"]`.format(JSON.stringify(resolve_reference("ftd#default-types.fine-print", data).desktop)));
 }
-else {document.querySelector(`[data-id="0,0,1,0,0:main"]`).style["font-size"] = eval(`({0})["size"]`.format(JSONstringify(resolve_reference("ftd#default-types.fine-print", data).mobile)));}
+else {document.querySelector(`[data-id="0,0,1,0,0:main"]`).style["font-size"] = eval(`({0})["size"]`.format(JSON.stringify(resolve_reference("ftd#default-types.fine-print", data).mobile)));}
 }
 
 window.node_change_main["0,0,1,0,0:main__font-weight"] = function(data) {
 if(data["ftd#device"] == "desktop"){
-document.querySelector(`[data-id="0,0,1,0,0:main"]`).style["font-weight"] = eval(`({0}).weight`.format(JSONstringify(resolve_reference("ftd#default-types.fine-print", data).desktop)));
+document.querySelector(`[data-id="0,0,1,0,0:main"]`).style["font-weight"] = eval(`({0}).weight`.format(JSON.stringify(resolve_reference("ftd#default-types.fine-print", data).desktop)));
 }
-else {document.querySelector(`[data-id="0,0,1,0,0:main"]`).style["font-weight"] = eval(`({0}).weight`.format(JSONstringify(resolve_reference("ftd#default-types.fine-print", data).mobile)));}
+else {document.querySelector(`[data-id="0,0,1,0,0:main"]`).style["font-weight"] = eval(`({0}).weight`.format(JSON.stringify(resolve_reference("ftd#default-types.fine-print", data).mobile)));}
 }
 
 window.node_change_main["0,0,1,0,0:main__letter-spacing"] = function(data) {
 if(data["ftd#device"] == "desktop"){
-document.querySelector(`[data-id="0,0,1,0,0:main"]`).style["letter-spacing"] = eval(`({0})["letter-spacing"]`.format(JSONstringify(resolve_reference("ftd#default-types.fine-print", data).desktop)));
+document.querySelector(`[data-id="0,0,1,0,0:main"]`).style["letter-spacing"] = eval(`({0})["letter-spacing"]`.format(JSON.stringify(resolve_reference("ftd#default-types.fine-print", data).desktop)));
 }
-else {document.querySelector(`[data-id="0,0,1,0,0:main"]`).style["letter-spacing"] = eval(`({0})["letter-spacing"]`.format(JSONstringify(resolve_reference("ftd#default-types.fine-print", data).mobile)));}
+else {document.querySelector(`[data-id="0,0,1,0,0:main"]`).style["letter-spacing"] = eval(`({0})["letter-spacing"]`.format(JSON.stringify(resolve_reference("ftd#default-types.fine-print", data).mobile)));}
 }
 
 window.node_change_main["0,0,1,0,0:main__line-height"] = function(data) {
 if(data["ftd#device"] == "desktop"){
-document.querySelector(`[data-id="0,0,1,0,0:main"]`).style["line-height"] = eval(`({0})["line-height"]`.format(JSONstringify(resolve_reference("ftd#default-types.fine-print", data).desktop)));
+document.querySelector(`[data-id="0,0,1,0,0:main"]`).style["line-height"] = eval(`({0})["line-height"]`.format(JSON.stringify(resolve_reference("ftd#default-types.fine-print", data).desktop)));
 }
-else {document.querySelector(`[data-id="0,0,1,0,0:main"]`).style["line-height"] = eval(`({0})["line-height"]`.format(JSONstringify(resolve_reference("ftd#default-types.fine-print", data).mobile)));}
+else {document.querySelector(`[data-id="0,0,1,0,0:main"]`).style["line-height"] = eval(`({0})["line-height"]`.format(JSON.stringify(resolve_reference("ftd#default-types.fine-print", data).mobile)));}
 }
 window.node_change_main["0,0,1,0,1:main__src"] = function(data) {
 if(!data["ftd#dark-mode"]){
@@ -2167,14 +2309,8 @@ set_data_value(data, "fifthtry.github.io/package-doc/footer/#fastn-footer:copyri
 set_data_value(data, "fifthtry.github.io/package-doc/footer/#fastn-footer:copyright:0", new_value);
 }
 
-if (!!window.ftd.mutable_value_main && !!window.ftd.mutable_value_main["fifthtry.github.io/package-doc/footer/#fastn-footer:copyright:0"]) {
-let changes = window.ftd.mutable_value_main["fifthtry.github.io/package-doc/footer/#fastn-footer:copyright:0"].changes;
-for(let i in changes) { changes[i](); }
-}
-if (!!window.ftd.immutable_value_main && !!window.ftd.immutable_value_main["fifthtry.github.io/package-doc/footer/#fastn-footer:copyright:0"]) {
-let changes = window.ftd.immutable_value_main["fifthtry.github.io/package-doc/footer/#fastn-footer:copyright:0"].changes;
-for(let i in changes) { changes[i](); }
-}
+window.ftd.call_mutable_value_changes("fifthtry.github.io/package-doc/footer/#fastn-footer:copyright:0", "main");
+window.ftd.call_immutable_value_changes("fifthtry.github.io/package-doc/footer/#fastn-footer:copyright:0", "main");
 if(!!window["node_change_main"] && !!window.node_change_main["0,0,0,0:main__text"]){window.node_change_main["0,0,0,0:main__text"](data);
 }
 if(!!window["node_change_main"] && !!window.node_change_main["0,0,0,0:main__display"]){window.node_change_main["0,0,0,0:main__display"](data);
@@ -2188,14 +2324,8 @@ set_data_value(data, "fifthtry.github.io/package-doc/powered-by#fastn" + "." + r
 set_data_value(data, "fifthtry.github.io/package-doc/powered-by#fastn", new_value);
 }
 
-if (!!window.ftd.mutable_value_main && !!window.ftd.mutable_value_main["fifthtry.github.io/package-doc/powered-by#fastn"]) {
-let changes = window.ftd.mutable_value_main["fifthtry.github.io/package-doc/powered-by#fastn"].changes;
-for(let i in changes) { changes[i](); }
-}
-if (!!window.ftd.immutable_value_main && !!window.ftd.immutable_value_main["fifthtry.github.io/package-doc/powered-by#fastn"]) {
-let changes = window.ftd.immutable_value_main["fifthtry.github.io/package-doc/powered-by#fastn"].changes;
-for(let i in changes) { changes[i](); }
-}
+window.ftd.call_mutable_value_changes("fifthtry.github.io/package-doc/powered-by#fastn", "main");
+window.ftd.call_immutable_value_changes("fifthtry.github.io/package-doc/powered-by#fastn", "main");
 if(!!window["node_change_main"] && !!window.node_change_main["0,0,1,0,1:main__src"]){window.node_change_main["0,0,1,0,1:main__src"](data);
 }
 };
@@ -2207,14 +2337,8 @@ set_data_value(data, "fifthtry.github.io/package-doc/powered-by#powered-by:link:
 set_data_value(data, "fifthtry.github.io/package-doc/powered-by#powered-by:link:0,0,1,0", new_value);
 }
 
-if (!!window.ftd.mutable_value_main && !!window.ftd.mutable_value_main["fifthtry.github.io/package-doc/powered-by#powered-by:link:0,0,1,0"]) {
-let changes = window.ftd.mutable_value_main["fifthtry.github.io/package-doc/powered-by#powered-by:link:0,0,1,0"].changes;
-for(let i in changes) { changes[i](); }
-}
-if (!!window.ftd.immutable_value_main && !!window.ftd.immutable_value_main["fifthtry.github.io/package-doc/powered-by#powered-by:link:0,0,1,0"]) {
-let changes = window.ftd.immutable_value_main["fifthtry.github.io/package-doc/powered-by#powered-by:link:0,0,1,0"].changes;
-for(let i in changes) { changes[i](); }
-}
+window.ftd.call_mutable_value_changes("fifthtry.github.io/package-doc/powered-by#powered-by:link:0,0,1,0", "main");
+window.ftd.call_immutable_value_changes("fifthtry.github.io/package-doc/powered-by#powered-by:link:0,0,1,0", "main");
 if(!!window["node_change_main"] && !!window.node_change_main["0,0,1,0:main__href"]){window.node_change_main["0,0,1,0:main__href"](data);
 }
 };
@@ -2226,14 +2350,8 @@ set_data_value(data, "fifthtry.github.io/package-doc/powered-by#powered-by:title
 set_data_value(data, "fifthtry.github.io/package-doc/powered-by#powered-by:title:0,0,1,0", new_value);
 }
 
-if (!!window.ftd.mutable_value_main && !!window.ftd.mutable_value_main["fifthtry.github.io/package-doc/powered-by#powered-by:title:0,0,1,0"]) {
-let changes = window.ftd.mutable_value_main["fifthtry.github.io/package-doc/powered-by#powered-by:title:0,0,1,0"].changes;
-for(let i in changes) { changes[i](); }
-}
-if (!!window.ftd.immutable_value_main && !!window.ftd.immutable_value_main["fifthtry.github.io/package-doc/powered-by#powered-by:title:0,0,1,0"]) {
-let changes = window.ftd.immutable_value_main["fifthtry.github.io/package-doc/powered-by#powered-by:title:0,0,1,0"].changes;
-for(let i in changes) { changes[i](); }
-}
+window.ftd.call_mutable_value_changes("fifthtry.github.io/package-doc/powered-by#powered-by:title:0,0,1,0", "main");
+window.ftd.call_immutable_value_changes("fifthtry.github.io/package-doc/powered-by#powered-by:title:0,0,1,0", "main");
 if(!!window["node_change_main"] && !!window.node_change_main["0,0,1,0,0:main__text"]){window.node_change_main["0,0,1,0,0:main__text"](data);
 }
 };
@@ -2245,25 +2363,25 @@ set_data_value(data, "ftd#dark-mode" + "." + remaining, new_value);
 set_data_value(data, "ftd#dark-mode", new_value);
 }
 
-if (!!window.ftd.mutable_value_main && !!window.ftd.mutable_value_main["ftd#dark-mode"]) {
-let changes = window.ftd.mutable_value_main["ftd#dark-mode"].changes;
-for(let i in changes) { changes[i](); }
-}
-if (!!window.ftd.immutable_value_main && !!window.ftd.immutable_value_main["ftd#dark-mode"]) {
-let changes = window.ftd.immutable_value_main["ftd#dark-mode"].changes;
-for(let i in changes) { changes[i](); }
+window.ftd.call_mutable_value_changes("ftd#dark-mode", "main");
+window.ftd.call_immutable_value_changes("ftd#dark-mode", "main");
+if(!!window["node_change_main"] && !!window.node_change_main["0,0,1,0,1:main__src"]){window.node_change_main["0,0,1,0,1:main__src"](data);
 }
 if(!!window["node_change_main"] && !!window.node_change_main["0:main__background-color"]){window.node_change_main["0:main__background-color"](data);
 }
-if(!!window["node_change_main"] && !!window.node_change_main["0,0,1,0,1:main__src"]){window.node_change_main["0,0,1,0,1:main__src"](data);
+if(!!window["node_change_main"] && !!window.node_change_main["0:main__background-repeat"]){window.node_change_main["0:main__background-repeat"](data);
 }
-if(!!window["node_change_main"] && !!window.node_change_main["0,0:main__border-color"]){window.node_change_main["0,0:main__border-color"](data);
+if(!!window["node_change_main"] && !!window.node_change_main["0:main__background-size"]){window.node_change_main["0:main__background-size"](data);
 }
-if(!!window["node_change_main"] && !!window.node_change_main["0:main__background-image"]){window.node_change_main["0:main__background-image"](data);
+if(!!window["node_change_main"] && !!window.node_change_main["0,0,1,0,0:main__color"]){window.node_change_main["0,0,1,0,0:main__color"](data);
 }
 if(!!window["node_change_main"] && !!window.node_change_main["0,0,0,0:main__color"]){window.node_change_main["0,0,0,0:main__color"](data);
 }
-if(!!window["node_change_main"] && !!window.node_change_main["0,0,1,0,0:main__color"]){window.node_change_main["0,0,1,0,0:main__color"](data);
+if(!!window["node_change_main"] && !!window.node_change_main["0:main__background-image"]){window.node_change_main["0:main__background-image"](data);
+}
+if(!!window["node_change_main"] && !!window.node_change_main["0:main__background-position"]){window.node_change_main["0:main__background-position"](data);
+}
+if(!!window["node_change_main"] && !!window.node_change_main["0,0:main__border-color"]){window.node_change_main["0,0:main__border-color"](data);
 }
 };
 
@@ -2274,19 +2392,13 @@ set_data_value(data, "ftd#default-colors" + "." + remaining, new_value);
 set_data_value(data, "ftd#default-colors", new_value);
 }
 
-if (!!window.ftd.mutable_value_main && !!window.ftd.mutable_value_main["ftd#default-colors"]) {
-let changes = window.ftd.mutable_value_main["ftd#default-colors"].changes;
-for(let i in changes) { changes[i](); }
-}
-if (!!window.ftd.immutable_value_main && !!window.ftd.immutable_value_main["ftd#default-colors"]) {
-let changes = window.ftd.immutable_value_main["ftd#default-colors"].changes;
-for(let i in changes) { changes[i](); }
-}
-if(!!window["node_change_main"] && !!window.node_change_main["0,0,0,0:main__color"]){window.node_change_main["0,0,0,0:main__color"](data);
+window.ftd.call_mutable_value_changes("ftd#default-colors", "main");
+window.ftd.call_immutable_value_changes("ftd#default-colors", "main");
+if(!!window["node_change_main"] && !!window.node_change_main["0,0:main__border-color"]){window.node_change_main["0,0:main__border-color"](data);
 }
 if(!!window["node_change_main"] && !!window.node_change_main["0,0,1,0,0:main__color"]){window.node_change_main["0,0,1,0,0:main__color"](data);
 }
-if(!!window["node_change_main"] && !!window.node_change_main["0,0:main__border-color"]){window.node_change_main["0,0:main__border-color"](data);
+if(!!window["node_change_main"] && !!window.node_change_main["0,0,0,0:main__color"]){window.node_change_main["0,0,0,0:main__color"](data);
 }
 };
 
@@ -2297,33 +2409,27 @@ set_data_value(data, "ftd#default-types" + "." + remaining, new_value);
 set_data_value(data, "ftd#default-types", new_value);
 }
 
-if (!!window.ftd.mutable_value_main && !!window.ftd.mutable_value_main["ftd#default-types"]) {
-let changes = window.ftd.mutable_value_main["ftd#default-types"].changes;
-for(let i in changes) { changes[i](); }
-}
-if (!!window.ftd.immutable_value_main && !!window.ftd.immutable_value_main["ftd#default-types"]) {
-let changes = window.ftd.immutable_value_main["ftd#default-types"].changes;
-for(let i in changes) { changes[i](); }
-}
-if(!!window["node_change_main"] && !!window.node_change_main["0,0,1,0,0:main__font-size"]){window.node_change_main["0,0,1,0,0:main__font-size"](data);
-}
-if(!!window["node_change_main"] && !!window.node_change_main["0,0,1,0,0:main__letter-spacing"]){window.node_change_main["0,0,1,0,0:main__letter-spacing"](data);
-}
-if(!!window["node_change_main"] && !!window.node_change_main["0,0,0,0:main__font-size"]){window.node_change_main["0,0,0,0:main__font-size"](data);
-}
-if(!!window["node_change_main"] && !!window.node_change_main["0,0,1,0,0:main__font-weight"]){window.node_change_main["0,0,1,0,0:main__font-weight"](data);
+window.ftd.call_mutable_value_changes("ftd#default-types", "main");
+window.ftd.call_immutable_value_changes("ftd#default-types", "main");
+if(!!window["node_change_main"] && !!window.node_change_main["0,0,1,0,0:main__font-family"]){window.node_change_main["0,0,1,0,0:main__font-family"](data);
 }
 if(!!window["node_change_main"] && !!window.node_change_main["0,0,0,0:main__letter-spacing"]){window.node_change_main["0,0,0,0:main__letter-spacing"](data);
 }
-if(!!window["node_change_main"] && !!window.node_change_main["0,0,0,0:main__font-family"]){window.node_change_main["0,0,0,0:main__font-family"](data);
+if(!!window["node_change_main"] && !!window.node_change_main["0,0,0,0:main__line-height"]){window.node_change_main["0,0,0,0:main__line-height"](data);
 }
 if(!!window["node_change_main"] && !!window.node_change_main["0,0,0,0:main__font-weight"]){window.node_change_main["0,0,0,0:main__font-weight"](data);
 }
-if(!!window["node_change_main"] && !!window.node_change_main["0,0,0,0:main__line-height"]){window.node_change_main["0,0,0,0:main__line-height"](data);
+if(!!window["node_change_main"] && !!window.node_change_main["0,0,0,0:main__font-size"]){window.node_change_main["0,0,0,0:main__font-size"](data);
 }
-if(!!window["node_change_main"] && !!window.node_change_main["0,0,1,0,0:main__font-family"]){window.node_change_main["0,0,1,0,0:main__font-family"](data);
+if(!!window["node_change_main"] && !!window.node_change_main["0,0,1,0,0:main__letter-spacing"]){window.node_change_main["0,0,1,0,0:main__letter-spacing"](data);
 }
 if(!!window["node_change_main"] && !!window.node_change_main["0,0,1,0,0:main__line-height"]){window.node_change_main["0,0,1,0,0:main__line-height"](data);
+}
+if(!!window["node_change_main"] && !!window.node_change_main["0,0,0,0:main__font-family"]){window.node_change_main["0,0,0,0:main__font-family"](data);
+}
+if(!!window["node_change_main"] && !!window.node_change_main["0,0,1,0,0:main__font-size"]){window.node_change_main["0,0,1,0,0:main__font-size"](data);
+}
+if(!!window["node_change_main"] && !!window.node_change_main["0,0,1,0,0:main__font-weight"]){window.node_change_main["0,0,1,0,0:main__font-weight"](data);
 }
 };
 
@@ -2334,31 +2440,25 @@ set_data_value(data, "ftd#device" + "." + remaining, new_value);
 set_data_value(data, "ftd#device", new_value);
 }
 
-if (!!window.ftd.mutable_value_main && !!window.ftd.mutable_value_main["ftd#device"]) {
-let changes = window.ftd.mutable_value_main["ftd#device"].changes;
-for(let i in changes) { changes[i](); }
-}
-if (!!window.ftd.immutable_value_main && !!window.ftd.immutable_value_main["ftd#device"]) {
-let changes = window.ftd.immutable_value_main["ftd#device"].changes;
-for(let i in changes) { changes[i](); }
-}
-if(!!window["node_change_main"] && !!window.node_change_main["0,0,0,0:main__font-size"]){window.node_change_main["0,0,0,0:main__font-size"](data);
-}
-if(!!window["node_change_main"] && !!window.node_change_main["0,0,0,0:main__font-weight"]){window.node_change_main["0,0,0,0:main__font-weight"](data);
-}
-if(!!window["node_change_main"] && !!window.node_change_main["0,0,0,0:main__line-height"]){window.node_change_main["0,0,0,0:main__line-height"](data);
+window.ftd.call_mutable_value_changes("ftd#device", "main");
+window.ftd.call_immutable_value_changes("ftd#device", "main");
+if(!!window["node_change_main"] && !!window.node_change_main["0,0,0,0:main__letter-spacing"]){window.node_change_main["0,0,0,0:main__letter-spacing"](data);
 }
 if(!!window["node_change_main"] && !!window.node_change_main["0,0,1,0,0:main__font-size"]){window.node_change_main["0,0,1,0,0:main__font-size"](data);
 }
 if(!!window["node_change_main"] && !!window.node_change_main["0,0,1,0,0:main__font-family"]){window.node_change_main["0,0,1,0,0:main__font-family"](data);
 }
-if(!!window["node_change_main"] && !!window.node_change_main["0,0,0,0:main__letter-spacing"]){window.node_change_main["0,0,0,0:main__letter-spacing"](data);
+if(!!window["node_change_main"] && !!window.node_change_main["0,0,0,0:main__font-size"]){window.node_change_main["0,0,0,0:main__font-size"](data);
+}
+if(!!window["node_change_main"] && !!window.node_change_main["0,0,0,0:main__line-height"]){window.node_change_main["0,0,0,0:main__line-height"](data);
 }
 if(!!window["node_change_main"] && !!window.node_change_main["0,0,0,0:main__font-family"]){window.node_change_main["0,0,0,0:main__font-family"](data);
 }
-if(!!window["node_change_main"] && !!window.node_change_main["0,0,1,0,0:main__letter-spacing"]){window.node_change_main["0,0,1,0,0:main__letter-spacing"](data);
+if(!!window["node_change_main"] && !!window.node_change_main["0,0,0,0:main__font-weight"]){window.node_change_main["0,0,0,0:main__font-weight"](data);
 }
 if(!!window["node_change_main"] && !!window.node_change_main["0,0,1,0,0:main__font-weight"]){window.node_change_main["0,0,1,0,0:main__font-weight"](data);
+}
+if(!!window["node_change_main"] && !!window.node_change_main["0,0,1,0,0:main__letter-spacing"]){window.node_change_main["0,0,1,0,0:main__letter-spacing"](data);
 }
 if(!!window["node_change_main"] && !!window.node_change_main["0,0,1,0,0:main__line-height"]){window.node_change_main["0,0,1,0,0:main__line-height"](data);
 }
